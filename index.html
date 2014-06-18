@@ -1,76 +1,135 @@
 <!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <title>Admiraljs by StudioDeTelevision</title>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Admiraljs : the pluggable admin interface" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Admiraljs</title>
   </head>
 
   <body>
-    <div id="container">
-      <div class="inner">
 
-        <header>
-          <h1>Admiraljs</h1>
-          <h2>the pluggable admin interface</h2>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/StudioDeTelevision/admiraljs">View on GitHub</a>
+
+          <h1 id="project_title">Admiraljs</h1>
+          <h2 id="project_tagline">the pluggable admin interface</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/StudioDeTelevision/admiraljs/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/StudioDeTelevision/admiraljs/tarball/master">Download this project as a tar.gz file</a>
+            </section>
         </header>
-
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/StudioDeTelevision/admiraljs/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/StudioDeTelevision/admiraljs/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/StudioDeTelevision/admiraljs" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
-
-        <hr>
-
-        <section id="main_content">
-          <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-        </section>
-
-        <footer>
-          Admiraljs is maintained by <a href="https://github.com/StudioDeTelevision">StudioDeTelevision</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
-
-        
-      </div>
     </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="admiraljs" class="anchor" href="#admiraljs"><span class="octicon octicon-link"></span></a>AdmiralJS</h1>
+
+<p><strong>Lightweight, cross framework, plug and play admin interface</strong>  </p>
+
+<p>Entirely written in javascript, with dependencies on bootstrap, jquery, backbone, underscore,
+on a module logic with REQUIREJS  </p>
+
+<p><strong>PLUGGABLE</strong> on any RESTFUL API<br>
+ex: with codeigniter, symphony, expressjs, railsjs or whatever and as soon as you can provide http crud controllers http://myserver/todo/create http://myserver/todo/update http://myserver/todo/find http://myserver/todo/destroy  </p>
+
+<p>easily <strong>CONFIGURABLE</strong>:<br>
+config.json - define your project settings<br>
+schemas.json - define your models  </p>
+
+<p><strong>EXTENSIBLE</strong> - define your own field editors  </p>
+
+<p>Actually developped for a project based on SAILS.JS<br>
+sails installation must have Access-Control-Allow-Origin<br>
+setting allRoutes: true, in config/cors.js  </p>
+
+<h2>
+<a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>SETUP</h2>
+
+<p>You must provide settings and data structure in 
+config/config.json
+config/schemas.json</p>
+
+<p>see 
+config/config.sample.json
+config/schemas.sample.json</p>
+
+<h2>
+<a name="configjson" class="anchor" href="#configjson"><span class="octicon octicon-link"></span></a>CONFIG.JSON</h2>
+
+<p>A configuration object that will be loaded at startup.<br>
+Attributes are:<br><strong>title</strong> the name of your project, will be displayed on top of the page<br><strong>api</strong> base url of your restful api (must end with /)<br><strong>debug</strong> debugging mode (true/false)
+<strong>fileUploadUrl</strong> the url for file upload<br><strong>fileDir</strong> full url for reading files<br><strong>customClass</strong> relative path to your custom class ex: "./custom/example/example"
+<strong>dateTimeFormat</strong> define your time format for fields like date or datetime (ex: "YYYY-MM-DD HH:mm:ss" )<br><strong>tinymce</strong> define tinymce toolbar for textarea</p>
+
+<h2>
+<a name="schemasjson" class="anchor" href="#schemasjson"><span class="octicon octicon-link"></span></a>SCHEMAS.JSON</h2>
+
+<p>An array of schema configuration 
+Attributes are:<br><strong>schemaName</strong> a unique configuration name<br><strong>model</strong> your model name<br><strong>label</strong> the label displayed in left menu bar<br>
+then define the right url for:<br><strong>create</strong> ex: "events/create" (will use the base url defined in config.json)<br><strong>update</strong><br><strong>find</strong><br><strong>destroy</strong><br>
+you may specify a find filter ex:<br>
+"findFilter":{"where":{"space_id":"Pm4jPHmoakKcRAEo4"}},<br>
+in case your schema<br>
+TIP:<br>
+you may use many schemas based on the same model<br>
+you'll have to give them different schemaName<br>
+and you may also provide different findFilter<br>
+(this can be useful on nosql database, if you want to use a single collection for documents with differents schemas)<br><strong>listFields</strong> the fields displayed in a list view<br><strong>fields</strong> define your fields (see config/example/schemas.json for more explanations)  </p>
+
+<h2>
+<a name="editors" class="anchor" href="#editors"><span class="octicon octicon-link"></span></a>EDITORS</h2>
+
+<p>they mostly inherit from core/editor<br>
+a static method View.display is used to customize appearance in view list mode  </p>
+
+<h2>
+<a name="custom-class-custom-editors" class="anchor" href="#custom-class-custom-editors"><span class="octicon octicon-link"></span></a>CUSTOM CLASS, CUSTOM EDITORS</h2>
+
+<p>defined in config.json
+points to a class in the 'custom' folder
+permits to define your own field editors (custom string editors, custom images galleries etc )</p>
+
+<h2>
+<a name="best-practice-contribution-and-sharing" class="anchor" href="#best-practice-contribution-and-sharing"><span class="octicon octicon-link"></span></a>BEST PRACTICE, CONTRIBUTION AND SHARING...</h2>
+
+<p>Changes on ADMIRALJS should only occurs in CONFIG AND CUSTOM Folder.
+You might of course also make propositions and fork on the core of the system.
+Don't forget to share your own field editors if you think they might help others </p>
+
+<h2>
+<a name="start-up" class="anchor" href="#start-up"><span class="octicon octicon-link"></span></a>START UP</h2>
+
+<p>launch index.html on a web server (can be node in a static public folder or apache or ...)<br>
+login with admin / admin</p>
+
+<h2>
+<a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>DOCUMENTATION</h2>
+
+<p>soon available ...<br>
+you may ask me questions on <a href="mailto:studiodetelevision@gmail.com">studiodetelevision@gmail.com</a><br>
+any help is welcome !!!!!   </p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Admiraljs maintained by <a href="https://github.com/StudioDeTelevision">StudioDeTelevision</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
   </body>
 </html>
