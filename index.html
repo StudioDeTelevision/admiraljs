@@ -52,66 +52,6 @@ sails installation must have Access-Control-Allow-Origin<br>
 setting allRoutes: true, in config/cors.js  </p>
 
 <h2>
-<a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>SETUP</h2>
-
-<p>You must provide settings and data structure in 
-config/config.json
-config/schemas.json</p>
-
-<p>see 
-config/config.sample.json
-config/schemas.sample.json</p>
-
-<h2>
-<a name="configjson" class="anchor" href="#configjson"><span class="octicon octicon-link"></span></a>CONFIG.JSON</h2>
-
-<p>A configuration object that will be loaded at startup.<br>
-Attributes are:<br><strong>title</strong> the name of your project, will be displayed on top of the page<br><strong>api</strong> base url of your restful api (must end with /)<br><strong>debug</strong> debugging mode (true/false)
-<strong>fileUploadUrl</strong> the url for file upload<br><strong>fileDir</strong> full url for reading files<br><strong>customClass</strong> relative path to your custom class ex: "./custom/example/example"
-<strong>dateTimeFormat</strong> define your time format for fields like date or datetime (ex: "YYYY-MM-DD HH:mm:ss" )<br><strong>tinymce</strong> define tinymce toolbar for textarea</p>
-
-<h2>
-<a name="schemasjson" class="anchor" href="#schemasjson"><span class="octicon octicon-link"></span></a>SCHEMAS.JSON</h2>
-
-<p>An array of schema configuration 
-Attributes are:<br><strong>schemaName</strong> a unique configuration name<br><strong>model</strong> your model name<br><strong>label</strong> the label displayed in left menu bar<br>
-then define the right url for:<br><strong>create</strong> ex: "events/create" (will use the base url defined in config.json)<br><strong>update</strong><br><strong>find</strong><br><strong>destroy</strong><br>
-you may specify a find filter ex:<br>
-"findFilter":{"where":{"space_id":"Pm4jPHmoakKcRAEo4"}},<br>
-in case your schema<br>
-TIP:<br>
-you may use many schemas based on the same model<br>
-you'll have to give them different schemaName<br>
-and you may also provide different findFilter<br>
-(this can be useful on nosql database, if you want to use a single collection for documents with differents schemas)<br><strong>listFields</strong> the fields displayed in a list view<br><strong>fields</strong> define your fields (see config/example/schemas.json for more explanations)  </p>
-
-<h2>
-<a name="editors" class="anchor" href="#editors"><span class="octicon octicon-link"></span></a>EDITORS</h2>
-
-<p>they mostly inherit from core/editor<br>
-a static method View.display is used to customize appearance in view list mode  </p>
-
-<h2>
-<a name="custom-class-custom-editors" class="anchor" href="#custom-class-custom-editors"><span class="octicon octicon-link"></span></a>CUSTOM CLASS, CUSTOM EDITORS</h2>
-
-<p>defined in config.json
-points to a class in the 'custom' folder
-permits to define your own field editors (custom string editors, custom images galleries etc )</p>
-
-<h2>
-<a name="best-practice-contribution-and-sharing" class="anchor" href="#best-practice-contribution-and-sharing"><span class="octicon octicon-link"></span></a>BEST PRACTICE, CONTRIBUTION AND SHARING...</h2>
-
-<p>Changes on ADMIRALJS should only occurs in CONFIG AND CUSTOM Folder.
-You might of course also make propositions and fork on the core of the system.
-Don't forget to share your own field editors if you think they might help others </p>
-
-<h2>
-<a name="start-up" class="anchor" href="#start-up"><span class="octicon octicon-link"></span></a>START UP</h2>
-
-<p>launch index.html on a web server (can be node in a static public folder or apache or ...)<br>
-login with admin / admin</p>
-
-<h2>
 <a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>DOCUMENTATION</h2>
 
 <p>soon available ...<br>
