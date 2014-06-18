@@ -1,0 +1,99 @@
+.imagecropresize .displayWrapper {
+position:relative;
+padding:0px !important;
+}
+.imagecropresize .display {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background:grey;
+	overflow:hidden;
+	border:1px solid #DDD;
+	display:none;
+}
+.imagecropresize .display img {
+
+	width:100%;
+	height:100%;
+}
+.imagecropresize .edit {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width:400px;
+	height:400px;
+	background:grey;
+	overflow:hidden;
+	border:1px solid #DDD;
+}
+.imagecropresize .edit canvas {
+	width:100%;
+	height:100%;
+	background:black;
+	
+}
+.imagecropresize .dropzone {
+	width: 90%; 
+	height: 90%; 
+	text-align:center;
+	
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.imagecropresize  .dropzone span {
+	display:block;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-80px;
+	margin-top:-8px;
+	text-align:center;
+	color:#B3B3B3;
+	
+}
+.imagecropresize .toptools {
+	
+	position:absolute;
+	top:4px;
+	right:4px;
+}
+.imagecropresize .toptools a {
+	float:right;
+}
+.imagecropresize .removeButton {
+	
+	
+}
+.imagecropresize  .buttons {
+	
+	padding:0px 2px 1px;
+	background:white;
+	height:11px;
+	line-height:12px;
+	color:black;
+	margin-left:3px;
+	display:block;
+	font-size:9px;
+	text-transform:uppercase;
+	cursor:pointer;
+	text-decoration:none;
+}
+.imagecropresize  .uploadButton {
+	position:absolute;
+	bottom:4px;
+	right:4px;
+	font-size: 13px;
+	line-height: 16px;
+	height:16px;
+	padding: 1px 2px 0px;
+	
+	border: 1px solid #BEBEBE;
+
+	
+}
+
+
+.imagecropresize .editbuttons {
+display: none;
+}

@@ -1,0 +1,4 @@
+table.backgrid tr:hover {
+background: #EEE;
+cursor:pointer;
+}

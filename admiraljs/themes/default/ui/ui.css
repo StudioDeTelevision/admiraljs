@@ -1,0 +1,73 @@
+.button {
+	border:1px solid grey;
+	background:black;
+	color:white;
+	padding:2px 10px;
+	display:inline-block;
+	cursor:pointer;
+}
+.button-edit-delete {
+	clear: both;
+	display: block !important;
+	width: 100px;
+	margin-top: 10px;
+}
+.button-remove {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	cursor: pointer;
+	background: url('../images/glyphicons_207_remove_2.png') no-repeat;
+	background-size: 54%;
+	background-position: center;
+}
+
+.cell-delete {
+	width:25px;
+}
+
+.ap-mini-button {
+	background: #000;
+	border: 1px solid white;
+	display: inline-block;
+	color: white;
+	text-transform: uppercase;
+	font-size: 8px;
+	padding: 0px 2px;
+	cursor:pointer;
+	float:left;
+	line-height: 14px;
+}
+
+.recordscontainer .recorditem {
+	width:100%;
+	cursor:pointer;
+	background: #DDDDDD;
+	padding: 4px 10px 4px 11px;
+	margin-bottom: 1px;
+	
+	
+}
+.recordscontainer .recorditem:hover {
+	background:#CCC;
+	
+
+}
+
+.mce-ico {
+	width: 9px !important;
+	height: 9px !important;
+}
+
+.mce-container, .mce-container *, .mce-widget, .mce-widget * {
+	background: rgba(245, 243, 243, 1)!important;
+}
+.form-group .col-sm-8{
+	margin-bottom:10px;
+	
+}
+.form-group {
+	display:block;
+	clear:both;
+	margin-bottom:10px;
+}
