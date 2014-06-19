@@ -1,6 +1,6 @@
 # ignore custom folders
 /admiraljs/config/*
-\!/admiraljs/config/config.sample.json
-\!/admiraljs/config/schemas.sample.json
+!admiraljs/config/config.sample.json
+!admiraljs/config/schemas.sample.json
 /admiraljs/custom/*
-!/admiraljs/custom/example
+!admiraljs/custom/example
