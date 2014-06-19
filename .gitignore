@@ -1,0 +1,4 @@
+/admiraljs/config/*
+!/admiraljs/config/sample
+/admiraljs/custom/*
+!/admiraljs/custom/example
