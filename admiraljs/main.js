@@ -135,7 +135,7 @@ editorsPathesArray.push("./editors/"+editor)
 	
 require.config(configObj);
 
-var requirepathes=['require'].concat(["./core/application","./core/helpers/tools","text!"+configFolder+"config.json","text!"+configFolder+"schemas.json","css!./themes/default/style"]).concat(editorsPathesArray);
+var requirepathes=['require'].concat(["./core/application","./core/helpers/tools","text!"+configFolder+"config.json","text!"+configFolder+"schemas.json"]).concat(editorsPathesArray);
 
 console.log('pathes',requirepathes)
   	
@@ -162,6 +162,27 @@ if (AJS.config.debug) {
 	debug(AJS.config.debug);
 }
 else debug(false);
+
+// APPLY THEME
+var themeFolder="default";
+if (AJS.config.theme) {
+	themeFolder=AJS.config.theme;
+}
+//,"css!./themes/default/style"
+
+var cssUrl = require.toUrl("./themes/"+themeFolder+"style");
+
+$(document).ready(function(){
+
+  
+           if (document.createStyleSheet){
+               document.createStyleSheet(cssUrl);
+           }
+           else {
+               $("head").append($("<link rel='stylesheet' href='"+cssUrl+"' type='text/css' media='screen' />"));
+           }
+       
+   });
 
 
 	// try {
