@@ -28,6 +28,12 @@ see
 config/config.sample.json
 config/schemas.sample.json
 
+## STARTUP
+put folder in a http server
+and open http://yourserverorlocalhost/admiraljs/index.html
+
+connect with admin / admin
+
 ## CONFIG.JSON
 A configuration object that will be loaded at startup.  
 Attributes are:  
