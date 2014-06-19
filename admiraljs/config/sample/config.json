@@ -1,0 +1,22 @@
+{
+"title":"EXAMPLE PROJECT",
+
+"api":"http://localhost:3000/",
+
+"fileUploadUrl":"http://localhost:4000/",
+
+"fileDir":"http://localhost:4000/files/",
+
+"defaultLanguage":"fr",
+
+"currentLanguage":"fr",
+
+"dateTimeFormat":"YYYY-MM-DD HH:mm:ss",
+
+"tinymce":{"plugins":"code,link,paste",
+           "toolbar":"code | bold italic | alignleft aligncenter alignright alignjustify   | link unlink | pastetext | undo redo",
+		   "theme": "modern",
+		    "skin": "light"}
+
+
+}
