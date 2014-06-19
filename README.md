@@ -29,8 +29,12 @@ config/config.sample.json
 config/schemas.sample.json
 
 ## STARTUP
-put folder in a http server
+put admiraljs folder in a http server
 and open http://yourserverorlocalhost/admiraljs/index.html
+
+edit baseUrl if needed in admiraljs/main.js
+var configObj={
+    baseUrl: 'admiraljs/',
 
 connect with admin / admin
 
