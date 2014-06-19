@@ -170,8 +170,8 @@ if (AJS.config.theme) {
 }
 //,"css!./themes/default/style"
 
-var cssUrl = require.toUrl("./themes/"+themeFolder+"style");
-
+var cssUrl = require.toUrl("./themes/"+themeFolder+"/style.css");
+alert(cssUrl)
 $(document).ready(function(){
 
   
