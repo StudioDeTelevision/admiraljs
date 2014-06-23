@@ -45,4 +45,6 @@ https://github.com/StudioDeTelevision/admiraljs/wiki
 
 contact: studiodetelevision@gmail.com  
 
+website: http://www.admiraljs.com
+
 any suggestions or contributions are welcome !!!!!   
