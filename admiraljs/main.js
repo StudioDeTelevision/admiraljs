@@ -19,10 +19,26 @@ function debug(bool){
         console = consoleHolder;
 }
 
+function extractUrlParams() {
+var t = location.search.substring(1).split('&');
+var f = [];
+for (var i=0; i<t.length; i++) {
+var x = t[ i ].split('=');
+f[x[0]]=x[1];
+}
+return f;
+}
 
-
+var params=extractUrlParams();
 
 var configFolder="./config/";
+console.log(params)
+if (params["config"]) {
+	
+	configFolder=configFolder+params["config"]+"/";
+}
+
+
 
 var configObj={
     baseUrl: 'admiraljs/',

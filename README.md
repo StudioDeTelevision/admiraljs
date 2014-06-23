@@ -33,6 +33,9 @@ config/config.json
 config/schemas.json
 (see the wiki for details)
 
+TIPS: If you want to manage different projects, create a subfolder called myproject in the config folder and pass it as a "config" parameter when opening admiraljs, ex:
+http://yourserverorlocalhost/admiraljs/index.html?config=myproject
+
 connect with admin / admin
 
 
