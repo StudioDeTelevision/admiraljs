@@ -42,5 +42,7 @@ connect with admin / admin
 ## DOCUMENTATION
 check the wiki
 https://github.com/StudioDeTelevision/admiraljs/wiki
-you may ask me questions on studiodetelevision@gmail.com  
-any help is welcome !!!!!   
+
+contact: studiodetelevision@gmail.com  
+
+any suggestions or contributions are welcome !!!!!   
