@@ -1,6 +1,7 @@
 AdmiralJS
 ===========
 **Lightweight, cross framework, plug and play admin interface**  
+http://www.admiraljs.com
   
 Entirely written in javascript, with dependencies on bootstrap, jquery, backbone, underscore,
 on a module logic with REQUIREJS  
@@ -44,7 +45,5 @@ check the wiki
 https://github.com/StudioDeTelevision/admiraljs/wiki
 
 contact: studiodetelevision@gmail.com  
-
-website: http://www.admiraljs.com
 
 any suggestions or contributions are welcome !!!!!   
