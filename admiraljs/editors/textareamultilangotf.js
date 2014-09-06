@@ -99,7 +99,7 @@
 						   setup: function(editor) {
 							   that.redactor=editor;
 						           editor.on('blur', function(e) {
-						              
+									 
 				   					var val= that.input.val();
 					
 				   					var rawtext=$('<div/>').html(val).text();

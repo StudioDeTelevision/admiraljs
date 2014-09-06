@@ -33,9 +33,13 @@ define(['jquery',     // lib/jquery/jquery
 console.log('DISPLAY'+this.value)
 			this.display.empty();
 									//alert(options.value)
-									var img=$('<img/>');
-									img.attr('src',AJS.config.fileDir+"thumbnail/"+this.value)
-								this.display.append(img)
+								
+									if (this.value) {
+										var img=$('<img/>');
+										img.attr('src',AJS.config.fileDir+"thumbnail/"+this.value)
+										this.display.append(img)
+									}
+								
 							
 				
 			}

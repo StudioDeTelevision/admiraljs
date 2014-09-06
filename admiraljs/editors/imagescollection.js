@@ -21,7 +21,7 @@ define(['jquery',     // lib/jquery/jquery
 					console.log("image collection use "+options.fieldOptions.imageField+" as image Field")
 					
 				}
-				
+			
 				var imageDir=AJS.config.thumbDir;
 				
 				if (options.fieldOptions.useThumbs=="false") {
@@ -29,6 +29,7 @@ define(['jquery',     // lib/jquery/jquery
 						 imageDir=AJS.config.fileDir;
 					
 				}
+			
 				
 				img.attr('src',imageDir+options.model[options.fieldOptions.imageField])
 			that.$el.append(img)
@@ -49,6 +50,7 @@ define(['jquery',     // lib/jquery/jquery
 			className:"imagecollection",
 			initialize:function(options) {
 				var that=this;
+				
 				CollectionClass.prototype.initialize.call(this,options);
 				
 			

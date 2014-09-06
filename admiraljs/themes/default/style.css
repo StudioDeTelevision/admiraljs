@@ -57,7 +57,10 @@
 	min-width:400px;
 	min-height:200px;
 }
-
+.editview input[type=text],.editview  textarea {
+border: 1px solid #E2E2E2;
+padding: 2px 5px;
+}
 /*.footer {
 	position:fixed;
 	bottom:0px;

@@ -31,7 +31,7 @@ return f;
 
 var params=extractUrlParams();
 
-var configFolder="./config/";
+var configFolder="./config/magasin/";
 console.log(params)
 if (params["config"]) {
 	

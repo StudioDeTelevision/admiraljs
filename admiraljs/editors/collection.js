@@ -187,9 +187,10 @@ define([     // lib/jquery/jquery
 				}
 				console.log("COLLECTION VALUE",this.value)
 				
-				var datax={'where':{ id: this.value }};
+				var datax={'where':JSON.stringify({ "id": this.value })};
 				
 				//alert(that.relatedModel)
+				console.log('datax',datax)
 				
  				 var url=AJS.config.api+AJS.schemas[that.relatedModel].find;
  				 $.ajax({

@@ -74,7 +74,25 @@ fetch: function( fetchOptions ) {
 				
 			},render:function() {
 				var that=this;
+				
 				var fields=this.schema.fields;
+				
+				if (this.model.attributes._schema) {
+					
+					// Embedded schema exists 
+					// For dynamic schema 
+					
+					var additionalFields=this.model.attributes._schema.fields;
+					console.log("___ FIELDS EXTENSION")
+					console.log(fields)
+					console.log(additionalFields)
+					//_.extend(fields, additionalFields);
+					
+					var fields = fields.concat(additionalFields);
+					console.log("___ FIELDS EXTENSION DONE",fields)
+				}
+				
+				
 				var fieldsGrid=[];
 	  		  var fieldClasses=AJS.fieldClasses;
 		  
