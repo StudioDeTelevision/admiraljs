@@ -1,4 +1,4 @@
-define(['backbone','./lib/session','controllers/auth/auth','./ui/sidebar','./ui/topbar','controllers/listview','controllers/editview','./ui/popup','core/approuter'],
+define(['backbone','./lib/session','controllers/auth/auth','./ui/sidebar','./ui/topbar','controllers/listview/listview','controllers/editview','./ui/popup','core/approuter'],
     function(Backbone,Session,AuthView,SideBar,TopBar,ListView,EditView,Popup,AppRouter) {
       
 	
@@ -31,6 +31,11 @@ define(['backbone','./lib/session','controllers/auth/auth','./ui/sidebar','./ui/
 			        }
 			    }
 			});
+			
+			
+		AJS.Data={};
+			AJS.Data.Model=Backbone.Model.extend({idAttribute:AJS.config.recordID})
+			AJS.Data.Collection=Backbone.Collection.extend({model:AJS.Data.Model})
 		
 		
 			var sb=new SideBar();

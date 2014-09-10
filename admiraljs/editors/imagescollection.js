@@ -31,7 +31,7 @@ define(['jquery',     // lib/jquery/jquery
 				}
 			
 				
-				img.attr('src',imageDir+options.model[options.fieldOptions.imageField])
+				img.attr('src',imageDir+options.model.get(options.fieldOptions.imageField))
 			that.$el.append(img)
 			  
 			var deleteButton=$("<div class='button-remove' ></div>");

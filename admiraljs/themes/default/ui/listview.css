@@ -1,4 +1,48 @@
-table.backgrid tr:hover {
+.listview .list {
+min-height:400px;
+
+}
+.listview table {
+width:100%;
+border: solid 1px #DDDDDD;
+table-layout: fixed;
+
+}
+.listview table thead {
+background: #F5F5F5;
+}
+.listview table th , .listview table td {
+	padding: 0.44444rem 0.55556rem 0.55556rem;
+}
+.listview table th {
+	font-weight: bold;
+	color: #222222;
+}
+.listview table td {
+	
+
+}
+
+.listview table tr:hover {
 background: #EEE;
 cursor:pointer;
+}
+.listview table img {
+height:60px;
+}
+.listview .button-remove {
+	float:right;
+}
+
+.pagination {
+	border-top:1px solid grey;
+	text-align:center;
+width:100%;
+}
+
+.pagination div {
+	display:inline-block;
+	
+	margin-right:20px;
+	cursor:pointer;
 }

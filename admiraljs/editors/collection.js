@@ -1,24 +1,16 @@
-define([     // lib/jquery/jquery
-  'underscore', // lib/underscore/underscore
-  'backbone','core/editor',"./components/recordslist",'text!./collection/collection.html','jquery','jquery.ui'],
-    function( _, Backbone,EditorClass,RecordList,htmlTemplate,$) {
-        //return a function to define "foo/title".
-        //It gets or sets the window title.
+define(['underscore','backbone','core/editor',"./components/recordslist",'text!./collection/collection.html','jquery','jquery.ui'],function( _, Backbone,EditorClass,RecordList,htmlTemplate,$) {
+     
 		
 		var DefaultCollectionItem=Backbone.View.extend({
 			tagName:"p",
 			className:"item defaultitem",
 			initialize:function(options) {
 				var that=this;
-				//alert(options.modelName)
-				//alert(0)
-  				
-			
-				//var first=this.model;
+				
 				var displayValue="";
 				var firstValue="";
 				var count=0;
-				//console.log(options.modelName,'MODEL LIST',this.model)
+				
 				
 			 this.schema=AJS.schemas[options.modelName];
    			 var displayFieldName=this.schema.listFields[0];
@@ -33,7 +25,7 @@ define([     // lib/jquery/jquery
    			   var fieldClass=AJS.fieldClasses[editor];
    			 }
 				
-		  var raw=this.model[displayFieldName];
+		  var raw=this.model.get(displayFieldName);
 		   if (fieldClass!=null) {
 		    if (fieldClass.display!=null) {
 				this.$el.append(fieldClass.display(raw))
@@ -52,21 +44,7 @@ define([     // lib/jquery/jquery
 				that.trigger('delete',that.model.id);
 			})
 				
-				// for (var a in this.model) {
-// 					if (count==0) firstValue=a;
-// 					if (typeof a=="string" && this.model[a].length>0  && a!="modelName") {
-// 						displayValue=a;
-// 					}
-// 					
-// 					count++;
-// 					
-// 				}
-// 				if (displayValue=="") displayValue=firstValue;
-// 				
-// 				this.$el.append(this.model[displayValue])
-// 				
-// 				console.log(displayValue)
-			
+				
 			
 		   
 				
@@ -80,7 +58,7 @@ define([     // lib/jquery/jquery
 			initialize:function(options) {
 				var that=this;
 				
-				//this.$el.html(_.template(htmlTemplate,options));
+			
 				
 				EditorClass.prototype.initialize.call(this,options);
 				
@@ -93,12 +71,7 @@ define([     // lib/jquery/jquery
 				
 			that.relatedModel=options.relatedModel;
 			
-			// $(".add",this.$el).click(function() {
-	// 			var popup=new AJS.ui.PopUp();
-	// 			
-	// 			
-	// 			
-	// 		});
+			
 			
 			$(".selectone",this.$el).click(function() {
 				var popup=new AJS.ui.PopUp();
@@ -107,16 +80,17 @@ define([     // lib/jquery/jquery
 				recordlist.bind('selectitem',function(itemdata) {
 					popup.closeMe();
 					console.log('insert ',that,that.value)
+					console.log(' typeof that.value ', typeof that.value)
 					
-					if (that.value==null || typeof that.value=="undefined" || typeof that.value!="Array") {
+					if (that.value==null || typeof that.value=="undefined" || typeof that.value!="object") {
 						
 						that.value=new Array();
 				
 					}
-					//alert(data.id)
+				
 					
 					that.value.push(itemdata);
-					
+					console.log('new value ',that.value)
 					that.trigger('change');
 					
 					that.displayValue();
@@ -134,9 +108,9 @@ define([     // lib/jquery/jquery
    				   dataType: "json",
    				   url: url,
    				   success: function(data) {
-					   console.log("DATA ID",data.id)
+					   console.log("DATA ID",data[AJS.config.recordID])
 					  var schemaName= AJS.schemas[options.relatedModel].schemaName;
-				   	var v=new AJS.ui.EditView({schemaName:schemaName,modelId:data.id});
+				   	var v=new AJS.ui.EditView({schemaName:schemaName,modelId:data[AJS.config.recordID]});
 					
 					popup.setContent(v.$el)
 					
@@ -153,17 +127,14 @@ define([     // lib/jquery/jquery
 							that.value=new Array();
 					
 						}
-						//alert(data.id)
-						that.value.push(data.id);
+					
+						that.value.push(data[AJS.config.recordID]);
 						
 						that.trigger('change');
 						
 						that.displayValue();
 					})
 					
-   					   //AJS.currentModel=this.model;
-   	//AJS.router.navigate("edit/"+that.collection.modelName+"/"+data.id, {trigger: true})
-			
 					
    				   }
    				 });
@@ -186,81 +157,144 @@ define([     // lib/jquery/jquery
 			
 				}
 				console.log("COLLECTION VALUE",this.value)
+				var whereQuery={};
+				whereQuery[AJS.config.recordID]=this.value;
+				var datax={'where':whereQuery};
 				
-				var datax={'where':JSON.stringify({ "id": this.value })};
 				
-				//alert(that.relatedModel)
 				console.log('datax',datax)
 				
- 				 var url=AJS.config.api+AJS.schemas[that.relatedModel].find;
- 				 $.ajax({
- 				   dataType: "json",
- 				   url: url,
-				   method: "POST",
-				   data:datax,
- 				   success: function(data) {
-					   console.log('REPONSE',data,that.value)
-					   for (var i=0;i<that.value.length;i++) {
-					   	
-						 var modelItemFind=_.where(data, {"id":that.value[i]}) ;
-						 if (modelItemFind.length<=0) {
-						 	modelItemFind=_.where(data, {"id":Number(that.value[i])}) ;
-						 }
-						 
-						 
-						 if (modelItemFind.length>0) {
-							 var modelItem=modelItemFind[0];
-							 console.log('CREATE ITEM')
-		  				   var CollectionItem=that.CollectionItem;
-						   
-						  // alert(that.fieldOptions)
-						  
-						  
-						   
-		  			  var im=new CollectionItem({model:modelItem,modelName:that.relatedModel,fieldOptions:that.fieldOptions});
-					  
-					  
-		  			  im.$el.attr('itemid',modelItem.id)
-					  im.bind('delete',function(itemid) {
-					  	
-						that.value.splice(that.value.indexOf(itemid), 1);
-						  $(this.$el).remove();
-						  that.trigger('change');
-						
-					  })
-		  			 $('.collection-container',that.$el).append(im.$el)
-							
-						 }
-						
-						
-					   }
-					  
-					   
-					 //  console.log('RESOONSE',data)
-			   // _.each(data,function(item) {
-  // 				  
-  // 		
-  // 			  
-  // 		  });
-		  
-		  $('.collection-container',that.$el).sortable({"stop":function(event,ui) {
-			  
-			  var result = $(this).sortable('toArray', {attribute: 'itemid'});
-			  that.value=result;
-			  that.trigger('change');
-		  }});
-			// var it=$('<p/>');
-// 			
-// 			it.html(data)
-// 			
-// 			// img.attr('src',AJS.config.fileDir+"thumbnail/"+data.src)
-// 		that.$el.append(it)
-		
-		
-		
-		   }
-	   });
-							
+				
+				var col=new AJS.Data.Collection()
+				col.url=AJS.config.api+AJS.schemas[that.relatedModel].find+"?where="+JSON.stringify(whereQuery);
+				col.fetch({'success':function(data) {
+					console.log('DATA',data)
+					
+				    console.log('REPONSE',data,that.value)
+				
+
+
+				  					   for (var i=0;i<that.value.length;i++) {
+				  						   var whereQuery={}
+				  						   whereQuery[AJS.config.recordID]=that.value[i];
+										   
+										   var modelItem=col.get(that.value[i]);
+										   
+										   console.log('MODEL',modelItem)
+										   
+										   
+				  						 // var modelItemFind=_.where(data, whereQuery) ;
+ // 				  						 if (modelItemFind.length<=0) {
+ // 				  							   whereQuery[AJS.config.recordID]=Number(that.value[i]);
+ // 				  						 	modelItemFind=_.where(data, whereQuery) ;
+ // 				  						 }
+
+
+				  						 // if (modelItemFind.length>0) {
+ //
+ //
+ // 				  							 var modelItem=modelItemFind[0];
+				  							 console.log('CREATE ITEM')
+				  		  				   var CollectionItem=that.CollectionItem;
+
+				  						  // alert(that.fieldOptions)
+
+
+
+				  		  			  var im=new CollectionItem({model:modelItem,modelName:that.relatedModel,fieldOptions:that.fieldOptions});
+
+
+				  		  			  im.$el.attr('itemid',modelItem[AJS.config.recordID])
+				  					  im.bind('delete',function(itemid) {
+
+				  						that.value.splice(that.value.indexOf(itemid), 1);
+				  						  $(this.$el).remove();
+				  						  that.trigger('change');
+
+				  					  })
+				  		  			 $('.collection-container',that.$el).append(im.$el)
+
+				  						 }
+
+
+				  					  // }
+
+
+
+				  		  $('.collection-container',that.$el).sortable({"stop":function(event,ui) {
+
+				  			  var result = $(this).sortable('toArray', {attribute: 'itemid'});
+				  			  that.value=result;
+				  			  that.trigger('change');
+				  		  }});
+
+
+				  
+				}})
+				
+ 				 // var url=AJS.config.api+AJS.schemas[that.relatedModel].find;
+ // 				 $.ajax({
+ // 				   dataType: "json",
+ // 				   url: url,
+ // 				   method: "POST",
+ // 				   data:datax,
+ // 				   success: function(data) {
+ // 					   console.log('REPONSE',data,that.value)
+ //
+ //
+ //
+ // 					   for (var i=0;i<that.value.length;i++) {
+ // 						   var whereQuery={}
+ // 						   whereQuery[AJS.config.recordID]=that.value[i];
+ // 						 var modelItemFind=_.where(data, whereQuery) ;
+ // 						 if (modelItemFind.length<=0) {
+ // 							   whereQuery[AJS.config.recordID]=Number(that.value[i]);
+ // 						 	modelItemFind=_.where(data, whereQuery) ;
+ // 						 }
+ //
+ //
+ // 						 if (modelItemFind.length>0) {
+ // 							 var modelItem=modelItemFind[0];
+ // 							 console.log('CREATE ITEM')
+ // 		  				   var CollectionItem=that.CollectionItem;
+ //
+ // 						  // alert(that.fieldOptions)
+ //
+ //
+ //
+ // 		  			  var im=new CollectionItem({model:modelItem,modelName:that.relatedModel,fieldOptions:that.fieldOptions});
+ //
+ //
+ // 		  			  im.$el.attr('itemid',modelItem[AJS.config.recordID])
+ // 					  im.bind('delete',function(itemid) {
+ //
+ // 						that.value.splice(that.value.indexOf(itemid), 1);
+ // 						  $(this.$el).remove();
+ // 						  that.trigger('change');
+ //
+ // 					  })
+ // 		  			 $('.collection-container',that.$el).append(im.$el)
+ //
+ // 						 }
+ //
+ //
+ // 					   }
+ //
+ //
+ //
+ // 		  $('.collection-container',that.$el).sortable({"stop":function(event,ui) {
+ //
+ // 			  var result = $(this).sortable('toArray', {attribute: 'itemid'});
+ // 			  that.value=result;
+ // 			  that.trigger('change');
+ // 		  }});
+ //
+ //
+ //
+ // 		   }
+ // 	   });
+				
+				//////// HERE			
 				
 			}
 		})

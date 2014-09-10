@@ -2,9 +2,6 @@ define( ['jquery','underscore','backbone'],function( $,_,Backbone ) {
 		  
 		
 		
-        //return a function to define "foo/title".
-        //It gets or sets the window title.
-		
 		var Form=Backbone.View.extend({
 			tagName:"div",
 			className:"editview" 
@@ -14,13 +11,14 @@ define( ['jquery','underscore','backbone'],function( $,_,Backbone ) {
 			schema:null,
 			schemaName:null,
 			modelId:null,
+			idAttribute:AJS.config.recordID,
 			initialize:function(options) {
 			
 				
 				
 			},
   urlRoot: function(){
-				//console.log('fetch model',this.id)
+		
 	 
     if (this.isNew()){
 		console.log('create model')
@@ -39,7 +37,7 @@ fetch: function( fetchOptions ) {
  							fetchData[f]=this.schema.findFilter[f];
  						}
  					}
-		//fetchOptions.reset=true;
+	
  	fetchOptions.data=	fetchData;			
  	fetchOptions.type="POST";
 	
@@ -79,8 +77,7 @@ fetch: function( fetchOptions ) {
 				
 				if (this.model.attributes._schema) {
 					
-					// Embedded schema exists 
-					// For dynamic schema 
+				
 					
 					var additionalFields=this.model.attributes._schema.fields;
 					console.log("___ FIELDS EXTENSION")
@@ -104,27 +101,16 @@ fetch: function( fetchOptions ) {
 					
 					var options=fields[f];
 					options.value=this.model.get(fields[f].name);
-				//	console.log(fields[f].name+" - editor:"+fields[f].editor+" &class: "+fieldClass )
 					var newfield=new fieldClass(options);
 					newfield.setValue(this.model.get(fields[f].name));
-				// if (fields[f].relatedModel!=null && typeof fields[f].relatedModel!="undefined" ) {
-// 					
-// 					newfield.relatedModel=fields[f].relatedModel;
-// 					
-// 				}
+			
 					
 					newfield.bind('change',function() {
-						//console.log('CHANGE ON #'+this.name+"#",this.getValue())
-						//console.log(typeof this.getValue())
-						//console.log("ACTUAL",that.model.get(this.name))
+					
 						that.model.set(this.name,this.getValue());
-						//that.model.attributes[this.name]=this.getValue();
+					
 				console.log('CHECK CHANGE ON #'+this.name,that.model.get(this.name))
-						//console.log("VALUEthat.model.get(this.name))
-						//console.log('MODEL SAVE',that.model,AJS.config.api+AJS.schemas[that.schemaName].update+'/'+that.model.id)
-						
-						// var attrtochange={};
-// 						attrtochange[this.name]=this.getValue();
+					
 						
 						that.model.save({}, {
         url: AJS.config.api+AJS.schemas[that.schemaName].update+'/'+that.model.id,
@@ -132,10 +118,10 @@ fetch: function( fetchOptions ) {
 		console.log("MODEL WAS SUCCESS FULLY SAVED",that.model) 
 		}
 	})
-		//		   			console.log('MODEL SAVED',that.model)
+	
 						
 					})
-					//newfield.setValue(this.model.get(fields[f].name));
+			
 					newfield.$el.addClass('form-group');
 					
 					
@@ -148,21 +134,18 @@ fetch: function( fetchOptions ) {
 					
 					
 				}
-			//	alert(AJS.templates["kunstTemplate"])
-				//alert(this.templateName)
+			
 				if (this.templateName && AJS.templates[this.templateName]) {
 					
 					 var templateRAW=AJS.templates[this.templateName];
-					//console.log('RAW TEMPLATE',templateRAW)
-// 					var compiled=_.template(templateRAW);
-// 					this.form.$el.html(compiled(fieldsGrid));
+					
 					var template=$("<div>"+templateRAW+"</div>");
 					for (var f in fieldsGrid ) {
-					//console.log('FIND','div[for="'+f+'"]')
+				
 						var block=template.find('[for="'+f+'"]').first();
-						//	console.log('FIND',block)
+					
 						if (block.size()>0) {
-						//	alert(f)
+					
 							block.append(fieldsGrid[f])
 							
 						}
@@ -184,7 +167,7 @@ fetch: function( fetchOptions ) {
 				
 				
    			 var deleteButton=$('<div type="button" class="button-edit-delete btn btn-danger" >Delete</div>');
-			 //$(this.$el).append("<hr/>");
+			
    			 $(this.$el).append(deleteButton);
 				
 			 deleteButton.click(function() {
@@ -197,7 +180,7 @@ fetch: function( fetchOptions ) {
 				   url: url,
 				   success: function(data) {
 			   	
-					   //AJS.currentModel=this.model;
+					
 					   AJS.router.navigate("list/"+that.schema.schemaName, {trigger: true})
 		
 				

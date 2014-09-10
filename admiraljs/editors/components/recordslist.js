@@ -22,8 +22,11 @@ define(['jquery',     // lib/jquery/jquery
 				this.$el.html(_.template(htmlTemplate,options));
 				
 				this.container=$(".recordscontainer",this.$el);
-				
-			this.collection=new Backbone.Collection();
+				var ModelDynamic=Backbone.Model.extend({
+					 idAttribute: AJS.config.recordID
+				});
+				var MyCollection = Backbone.Collection.extend({model:ModelDynamic});
+			this.collection=new MyCollection();
 				this.collection.modelName=options.modelName;
 			 this.collection.url = AJS.config.api+AJS.schemas[options.modelName].find;
 			 
@@ -42,13 +45,13 @@ define(['jquery',     // lib/jquery/jquery
 			
 		  // console.log(AJS.fieldClasses,"fieldClass",fieldClass)
 		   
-    
+		
 			 
 			  this.collection.fetch({success:function(col) {
 			  	
 				  col.forEach(function(item) {
-				  	
-					  console.log(item)
+					  console.log('ITEM',item.id)
+					
 					  var i=$("<div class='recorditem' />");
 					  i.attr('itemid',item.id)
 					  var raw=item.get(displayFieldName);

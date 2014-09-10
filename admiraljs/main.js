@@ -31,7 +31,7 @@ return f;
 
 var params=extractUrlParams();
 
-var configFolder="./config/magasin/";
+var configFolder="./config/sample/";
 console.log(params)
 if (params["config"]) {
 	
@@ -41,7 +41,7 @@ if (params["config"]) {
 
 
 var configObj={
-    baseUrl: 'admiraljs/',
+    baseUrl: '/admiraljs/',
     paths: {
         "css": "./vendor/require/css",
         "text": "./vendor/require/text",
@@ -51,9 +51,11 @@ var configObj={
 		"jquery": './vendor/jquery-2.1.0.min',
 		"backbone": './vendor/backbone-min',
     "marionette" : './vendor/backbone.marionette.min',
+    "backbone.paginator" : './vendor/backbone.paginator.min',
 		'bootstrap': './vendor/bootstrap/js/bootstrap.min',
 		'datetimepicker': './vendor/datetime/jquery.datetimepicker',
 		  'backgrid': './vendor/backgrid.min',
+		  'backgrid-paginator': './vendor/backgrid-paginator.min',
 		  'moment': './vendor/moment.min',
 		  'jquery.ui.widget': './vendor/fileupload/jquery.ui.widget',
 		  'jquery.ui': './vendor/jquery-ui.min',
@@ -171,6 +173,8 @@ catch (e) {
 	return;
 }
 
+var idType=AJS.config.recordID;
+if (idType==null) alert('You must specify a recordID key to use for your models in config.json . ex: "recordID":"_id"')
 
 // SWITCH DEBUG MODE
 

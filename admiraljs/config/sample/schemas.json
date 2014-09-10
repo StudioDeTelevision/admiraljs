@@ -6,6 +6,7 @@
 	"find":"evenements/find",
 	"destroy":"evenements/destroy",
 	"listFields":["title","artist","description"],
+	"searchFields":["title","diapo_title1"],
 	"fields":[{"name":"title","type":"string","editor":"stringmultilangotf","label":"Titre"},
 	{"name":"artist","type":"string","editor":"string","label":"Artiste"},
 	{"name":"shortdescription","type":"string","editor":"textareamultilangotf","label":"Courte Description"},

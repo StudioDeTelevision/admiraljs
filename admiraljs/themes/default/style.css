@@ -6,9 +6,7 @@
 /*body { padding-top: 100px; }
 
 */
-.backgrid {
-	
-}
+
 #page_title {
 	margin-left: 10px;
 	font-size: 30px;
@@ -42,6 +40,9 @@
 	display:block;
 	width:100%;
 	height:30px;
+}
+#sidebar a.selected {
+	text-decoration:underline;
 }
 #screen {
 	margin-left:240px;
