@@ -7,6 +7,7 @@ based on NODE.JS, written in Javascript.
 
 ## INSTALLATION
 
+
 admiral.start();
 
 sudo npm install https://github.com/StudioDeTelevision/admiraljs/tarball/beta
