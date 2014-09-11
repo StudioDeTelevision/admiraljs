@@ -12,9 +12,13 @@ sudo npm install https://github.com/StudioDeTelevision/admiraljs/tarball/beta
 Then in app.js
 
 var admiral=require('admiraljs');
+
 admiral.mongoUrl( ** your mongodb url ** )
+
 admiral.mongoPort(27017)
+
 admiral.mongoBase( ** name of your database ** )
+
 admiral.start();
 
 That's it !
