@@ -1,7 +1,7 @@
 {
   "name": "admiraljs",
   "version": "1.0.0",
-  "description": "Ready made admin interface",
+  "description": "Lightweight, plug and play admin interface",
   "main": "index.js",
   "dependencies": {
     "formidable": "^1.0.15",

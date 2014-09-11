@@ -15,6 +15,7 @@ define(['jquery',     // lib/jquery/jquery
 				this.$el.html('<a href="#list/'+options.model+'" model="'+options.model+'" url="'+options.find+'" >'+options.label+'</a>');
 			},
 			clickME:function() {
+				
 				$('#sidebar').find('a').removeClass('selected')
 				this.$el.find('a').addClass('selected');
 				

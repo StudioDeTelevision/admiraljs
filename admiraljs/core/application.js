@@ -103,7 +103,7 @@ define(['backbone','./lib/session','controllers/auth/auth','./ui/sidebar','./ui/
 		  	});
 				/////
 				AppRouter.register("list/:model","list",function(schemaName) {
-				//	alert(0)
+					
 				
   				  AJS.currentSchema=schemaName;
   				  var v=new ListView({schemaName:schemaName});

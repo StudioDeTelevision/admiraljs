@@ -31,7 +31,7 @@ return f;
 
 var params=extractUrlParams();
 
-var configFolder="./config/sample/";
+var configFolder="./config/";
 console.log(params)
 if (params["config"]) {
 	
@@ -166,7 +166,7 @@ require(requirepathes, function(req) {
 	var schemas=req("text!"+configFolder+"schemas.json");
 	try {
 		AJS.config=JSON.parse(config)
-	
+		console.log(AJS.config)
 }
 catch (e) {
 	alert('Error in json syntax in config file')
@@ -213,6 +213,8 @@ $(document).ready(function(){
 // 	return;
 // }
 //schemas=eval(schemas);
+
+
 schemas=eval('(' + schemas + ')');
 
 

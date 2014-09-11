@@ -2,6 +2,8 @@ var express = require('express');
 var fileserver = require('./lib/fileserver');
 var app = express();
 
+var lodash = require('lodash');
+
 var bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -10,31 +12,45 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 var config={
-	port:7000,
-	mongoPort:27017,
-	mongoHost:"176.31.250.73:27017",
-	mongoBase:"hop",
+	title:"Your project name",
+	port:7000, /// admiraljs port 
+	host:"localhost",
+	database:{
+		port:27017,
+		host:"your mongodb host adress",
+		basename:"your database name"
+	},
+	"recordID":"_id",
+	"defaultLanguage":"fr",
+
+	"currentLanguage":"fr",
+
+	"debug":false,
+
+	"theme":"default",
+
+	"dateTimeFormat":"YYYY-MM-DD HH:mm:ss",
+
+	"tinymce":{"plugins":"code,link,paste",
+	           "toolbar":"code | bold italic | alignleft aligncenter alignright alignjustify   | link unlink | pastetext | undo redo",
+			   "theme": "modern",
+			    "skin": "light"}// ,
+//
+// 	"customClass":"./custom/example/example"
 }
 
 
-module.exports.port=function(num) {
-	config.port=num;
+var schema=null;
+module.exports.setSchema=function(sch) {
+	schema=sch;
 }
-
-module.exports.mongoUrl=function(mmuu) {
-	config.mongoUrl=mu;
-}
-
-module.exports.mongoHost=function(mu) {
-	config.mongoHost=mu;
-}
-module.exports.mongoBase=function(mu) {
-	config.mongoBase=mu;
-}
-
-
-module.exports.config=function(cfg) {
-	config=config;
+module.exports.setConfig=function(cfg) {
+	if (cfg.fileserver) {
+			fileserver.setConfig(cfg.fileserver)
+		delete cfg.fileserver;
+	}
+	lodash.merge(config, cfg);
+	console.log('Use Configuration ',config)
 }
 
 
@@ -43,8 +59,8 @@ module.exports.start=function() {
 
 var MongoClient = require('mongodb').MongoClient
     , format = require('util').format;
-	
-	MongoClient.connect('mongodb://'+config.mongoHost+':'+config.mongoPort+'/'+config.mongoBase, function(err, db) {
+	console.log('Try to connect to database ','mongodb://'+config.database.host+':'+config.database.port+'/'+config.database.basename)
+	MongoClient.connect('mongodb://'+config.database.host+':'+config.database.port+'/'+config.database.basename, function(err, db) {
 	    if(err) throw err;
 
 	
@@ -279,6 +295,57 @@ collection.findAndModify({_id: req.id},{}, {}, {remove:true}, function(err, obje
 				
 				
 	  });
+   router.route('/admiraljs/config/schemas.json').get(function(req, res,next){
+	   
+	   if (!schema) {
+   	    schema=require('./admiraljs/config/schemas.json')
+	
+	   }
+	   
+		
+		
+		
+	   res.json(schema)
+	   
+	   
+   });
+	  
+	   router.route('/admiraljs/config/config.json').get(function(req, res,next){
+		 //  var configFile=require('./admiraljs/config/config.json')
+		  // console.log('GOT CONFIG',configFile)
+		   
+		   
+		   var fileserverOptions=fileserver.getConfig();
+		   
+		   // "api":"http://localhost:3000/",
+		   //
+		   // "fileUploadUrl":"http://localhost:4000/",
+		   //
+		   // "fileDir":"http://localhost:4000/files/",
+		   //
+		   // "thumbDir":"http://localhost:4000/files/thumbnail/",
+		   
+		   
+		   config.api="http://"+config.host+":"+config.port+"/";
+		   config.fileUploadUrl="http://"+config.host+":"+fileserverOptions.port+"/";
+		   config.fileDir="http://"+config.host+":"+fileserverOptions.port+fileserverOptions.uploadDir+"/";
+		   config.thumbDir="http://"+config.host+":"+fileserverOptions.port+fileserverOptions.uploadDir+"/thumbnail/";
+		   
+		   
+		   delete config.database;
+		   
+		   
+		   
+		   
+		  // lodash.merge(configFile, config);
+		   
+		   
+		   
+		   
+		   res.json(config)
+		   
+		   
+	   });
 	  
 	  
 	  app.use( router);

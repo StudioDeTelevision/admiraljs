@@ -22,6 +22,7 @@ define(['jquery',
 			
 			initialize:function(options) {
 				var that=this;
+				
 				this.schema=AJS.schemas[options.schemaName];
 	
 				var MyPaginated=PaginatedCollection.extend({
@@ -95,8 +96,9 @@ define(['jquery',
    			 $(this.$el).append(createButton);
 			 
    			 createButton.click(function() {
-   				 var url=AJS.config.api+AJS.schemas[that.collection.schemaName].create;
 				 
+   				 var url=AJS.config.api+AJS.schemas[that.collection.schemaName].create;
+				 alert(url)
    				 $.ajax({
    				   dataType: "json",
    				   url: url,

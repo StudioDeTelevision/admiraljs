@@ -1,6 +1,6 @@
 AdmiralJS 1.0
 ===========
-**Lightweight, cross framework, plug and play admin interface**  
+**Lightweight plug and play admin interface**  
 http://www.admiraljs.com
 
 based on NODE.JS, written in Javascript.
