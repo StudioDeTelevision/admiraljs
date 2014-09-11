@@ -1,4 +1,4 @@
-AdmiralJS
+AdmiralJS 1.0
 ===========
 **Lightweight, cross framework, plug and play admin interface**  
 http://www.admiraljs.com

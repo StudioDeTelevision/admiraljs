@@ -1,0 +1,36 @@
+{
+  "name": "admiraljs",
+  "version": "1.0.0",
+  "description": "Ready made admin interface",
+  "main": "index.js",
+  "dependencies": {
+    "formidable": "^1.0.15",
+    "imagemagick": "^0.1.3",
+    "express": "^4.8.8",
+    "mongodb": "^1.4.10",
+    "mkdirp": "^0.5.0",
+    "node-static": "^0.7.4",
+    "body-parser": "^1.8.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StudioDeTelevision/admiraljs.git"
+  },
+  "keywords": [
+    "admin",
+    "admnistration",
+    "backend",
+    "restful",
+    "api"
+  ],
+  "author": "Frédéric Jean / Studiodetelevision.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/StudioDeTelevision/admiraljs/issues"
+  },
+  "homepage": "https://github.com/StudioDeTelevision/admiraljs"
+}
