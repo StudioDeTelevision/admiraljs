@@ -18,8 +18,14 @@ define(['jquery',     // lib/jquery/jquery
 		 var that=this;
 		 this.schema=AJS.schemas[options.schemaName];
 		 var searchFields=this.schema.searchFields;
-	
-		if (typeof searchFields=="undefined") searchFields=["string"];
+		
+		if (typeof searchFields=="undefined" || searchFields==null) {
+			searchFields=[];
+			for (var f in this.schema.fields) { 
+				searchFields.push(this.schema.fields[f].name);
+			}
+			
+		}
 		this.searchFields=searchFields;
 		
 		

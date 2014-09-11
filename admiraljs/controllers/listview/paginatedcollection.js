@@ -6,7 +6,7 @@ define(['jquery',
 
 var PaginatedCollection = Backbone.Collection.extend({
 	page:1,
-	perPage:5,
+	perPage:10,
 	filters:null,
   initialize: function() {
     _.bindAll(this, 'parse', 'url', 'pageInfo', 'nextPage', 'previousPage');
