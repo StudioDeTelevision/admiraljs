@@ -25,7 +25,7 @@ fileserver:{port:7020},
 }
 )
 
-// some schema (see the docs)
+// define some schema (see the docs)
 
 admiral.setSchema([
 
