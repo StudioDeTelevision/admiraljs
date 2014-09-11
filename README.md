@@ -5,34 +5,63 @@ http://www.admiraljs.com
 
 based on NODE.JS, written in Javascript.
 
-Installation 
+## INSTALLATION
+
+admiral.start();
 
 sudo npm install https://github.com/StudioDeTelevision/admiraljs/tarball/beta
 
-Then in app.js
+create an app.js file with minimum:
 
 var admiral=require('admiraljs');
 
-admiral.mongoUrl( ** your mongodb url ** )
+admiral.setConfig({
+	database:{"basename":"projects",
+	host:"176.31.250.73"},
+	port:7010,
+	hello:7010,
+fileserver:{port:7020},
 
-admiral.mongoPort(27017)
+}
+)
 
-admiral.mongoBase( ** name of your database ** )
+// some schema (see the doc)
+admiral.setSchema([
+	{  "schemaName":"user",
+		"model":"user",
+		"label":"Utilisateurs",
+		"create":"user/create",
+		"update":"user/update",
+		"find":"user/find",
+		"destroy":"user/destroy",
+		"listFields":["email"],
+		"fields":[{"name":"email","type":"string","editor":"string","label":"Email"}]
+	},{  "schemaName":"projects",
+		"model":"projects",
+		"label":"projects",
+		"create":"projects/create",
+		"update":"projects/update",
+		"find":"projects/find",
+		"destroy":"projects/destroy",
+		"listFields":["name"],
+		"fields":[{"name":"name","type":"string","editor":"string","label":"Name"}]
+	}
+
+	]
+)
 
 admiral.start();
 
 That's it !
+
   
 AdmiralJS is entirely written in javascript, with dependencies on bootstrap, jquery, backbone, underscore,
 on a module logic with REQUIREJS  
 
-AdmiralJS is 
-**PLUGGABLE** on any RESTFUL API  
+AdmiralJS might be **PLUGGABLE** on any RESTFUL API  
 ex: with codeigniter, symphony, expressjs, railsjs or whatever and as soon as you can provide http crud controllers http://myserver/todo/create http://myserver/todo/update http://myserver/todo/find http://myserver/todo/destroy  
   
 easily **CONFIGURABLE**:  
-config.json - define your project settings  
-schemas.json - define your models  
   
 **EXTENSIBLE** - define your own field editors  
   
@@ -40,25 +69,6 @@ Actually developped for a project based on SAILS.JS
 sails installation must have Access-Control-Allow-Origin   
 setting allRoutes: true, in config/cors.js  
 
-
-## INSTALLATION
-
-put admiraljs folder in a http server
-and open http://yourserverorlocalhost/admiraljs/index.html
-
-edit baseUrl if needed in admiraljs/main.js
-var configObj={
-    baseUrl: 'admiraljs/',
-	
-provide settings and data structure in 
-config/config.json
-config/schemas.json
-(see the wiki for details)
-
-TIPS: If you want to manage different projects, create a subfolder called myproject in the config folder and pass it as a "config" parameter when opening admiraljs, ex:
-http://yourserverorlocalhost/admiraljs/index.html?config=myproject
-
-connect with admin / admin
 
 
 ## DOCUMENTATION
