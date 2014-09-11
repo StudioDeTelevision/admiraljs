@@ -1,5 +1,5 @@
 var express = require('express');
-var fileserver = require('./server/fileserver');
+var fileserver = require('./lib/fileserver');
 var app = express();
 
 var bodyParser = require('body-parser')
