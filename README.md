@@ -47,10 +47,8 @@ admiral.setSchema([
 		"destroy":"projects/destroy",
 		"listFields":["name"],
 		"fields":[{"name":"name","type":"string","editor":"string","label":"Name"}]
-	}
-
-	]
-)
+		}
+		])
 
 admiral.start();
 
