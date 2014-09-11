@@ -28,8 +28,9 @@ fileserver:{port:7020},
 // some schema (see the docs)
 
 admiral.setSchema([
+
 	{  "schemaName":"user",
-		"model":"user",
+	    "model":"user",
 		"label":"Utilisateurs",
 		"create":"user/create",
 		"update":"user/update",
