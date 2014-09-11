@@ -2,10 +2,25 @@ AdmiralJS 1.0
 ===========
 **Lightweight, cross framework, plug and play admin interface**  
 http://www.admiraljs.com
+
+based on NODE.JS, written in Javascript.
+
+Installation 
+
+sudo npm install https://github.com/StudioDeTelevision/admiraljs/tarball/beta
+
+Then in app.js
+
+var admiral=require('admiraljs');
+admiral.mongoBase('projects')
+admiral.start();
+
+That's it !
   
-Entirely written in javascript, with dependencies on bootstrap, jquery, backbone, underscore,
+AdmiralJS is entirely written in javascript, with dependencies on bootstrap, jquery, backbone, underscore,
 on a module logic with REQUIREJS  
-  
+
+AdmiralJS is 
 **PLUGGABLE** on any RESTFUL API  
 ex: with codeigniter, symphony, expressjs, railsjs or whatever and as soon as you can provide http crud controllers http://myserver/todo/create http://myserver/todo/update http://myserver/todo/find http://myserver/todo/destroy  
   
