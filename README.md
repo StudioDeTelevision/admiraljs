@@ -26,6 +26,7 @@ fileserver:{port:7020},
 )
 
 // some schema (see the doc)
+
 admiral.setSchema([
 	{  "schemaName":"user",
 		"model":"user",
@@ -54,21 +55,12 @@ admiral.start();
 
 That's it !
 
-  
-AdmiralJS is entirely written in javascript, with dependencies on bootstrap, jquery, backbone, underscore,
-on a module logic with REQUIREJS  
-
-AdmiralJS might be **PLUGGABLE** on any RESTFUL API  
-ex: with codeigniter, symphony, expressjs, railsjs or whatever and as soon as you can provide http crud controllers http://myserver/todo/create http://myserver/todo/update http://myserver/todo/find http://myserver/todo/destroy  
-  
 easily **CONFIGURABLE**:  
   
 **EXTENSIBLE** - define your own field editors  
-  
-Actually developped for a project based on SAILS.JS  
-sails installation must have Access-Control-Allow-Origin   
-setting allRoutes: true, in config/cors.js  
 
+AdmiralJS might also be **PLUGGABLE** on any RESTFUL API  
+ex: with codeigniter, symphony, expressjs, railsjs or whatever and as soon as you can provide http crud controllers http://myserver/todo/create http://myserver/todo/update http://myserver/todo/find http://myserver/todo/destroy  
 
 
 ## DOCUMENTATION
