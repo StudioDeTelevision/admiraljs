@@ -35,12 +35,12 @@ admiral.setSchema([
 	    "model":"user",
 		"label":"Utilisateurs",
 		"listFields":["email"],
-		"fields":[{"name":"email","type":"string","editor":"string","label":"Email"}]
+		"fields":[{"name":"email","editor":"string","label":"Email"}]
 	},{  "schemaName":"projects",
 		"model":"projects",
 		"label":"projects",
 		"listFields":["name"],
-		"fields":[{"name":"name","type":"string","editor":"string","label":"Name"}]
+		"fields":[{"name":"name","editor":"string","label":"Name"}]
 		}
 		])
 
