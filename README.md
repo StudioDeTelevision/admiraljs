@@ -19,10 +19,10 @@ create an app.js file with minimum:
 var admiral=require('admiraljs');
 
 admiral.setConfig({
+	port:** the port you want admiraljs to run on **,
 	database:{"basename":" ** database name ** ",
-		host:" ** your database host ** "},
-			port:** your database host port **,
-			fileserver:{port:7020},
+		      host:" ** your database host ** "},
+	fileserver:{port: ** ex: 7020 ** },
 
 }
 )
