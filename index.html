@@ -32,34 +32,42 @@
         <hr>
 
         <section id="main_content">
-<p><strong>Lightweight, plug and play, extensible admin interface. Actually optimized for the <a href="http://www.sailsjs.org" target="_blank" >SailsJS</a> Framework.</strong>  </p>
+				<h3>About</h3>
+			<p>Admiral JS is a admin web app entirely written in javascript with dependencies on bootstrap, jquery, backbone, underscore,
+			on a module logic with REQUIREJS</p>
+			<p>The data connection is ensured by a RestFul Api + File Upload Server based on NodeJS (but it might easily be ported to other systems)</p>
+				<div class="clear" ></div>
+			<div class="block" >
+				<h3>Installation</h3>
+			Requirement:  a Nodejs installation , a mongodb host.<br>
+<br>
+			1. sudo npm install https://github.com/StudioDeTelevision/admiraljs/tarball/beta<br>
+<br>
+			2. var admiral=require('admiraljs');<br>
+			<br>
+			3. admiral.config({....})<br>
+			see all configuration options<br>
+<br>
+			4. admiral.start();<br>
+			
+		</div>
+						<div class="block " >
+							<h3>Custom Field Editors</h3>
+					Admiral JS comes with a bunch of useful field editors.<br>
+					-> see the list<br>
+					<br>
+					A simple and modular pattern is proposed to develop your own fields and share them with the admiral's community
+					-> see the doc<br>
+			
+					</div>
+			<div class="clear" ></div>
+			
+			
+			
+		<div class="block " >	
 
-<iframe width="560" height="315" src="//www.youtube.com/embed/bOMg1cfvWDE" frameborder="0" allowfullscreen></iframe>
-<p>Entirely written in javascript<br/><small>with dependencies on bootstrap, jquery, backbone, underscore,
-on a module logic with REQUIREJS  </small></p>
-
-<p><strong>EASILY CONFIGURABLE</strong>:<br>
-config.json - define your project settings<br>
-schemas.json - define your models and field editors types  </p>
-
-
-
-<p><strong>MODULAR AND EXTENSIBLE</strong> <br>
-	AdmiralJS comes with a set of default field editors<br>
-	- Text editors with multilingual support<br>
-	- Images upload<br>
-	- Collection of images (ex: for Galleries or slideshows), collection of anything...<br>
-	- Date editors<br>
-	- ...<br>
-	but you might define your own editors and share it with the community ! </p>
-
-
-
-<p><strong>PLUGGABLE</strong> <br/>
-Initially developped to work with the <a href="http://www.sailsjs.org" target="_blank" >Sailsjs</a> restful api system, AdmiralJS can be easily plugged on any database though Sails or directly to any other restful api (crud configuration in config.json)</p>
-
-<h2>
-<a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Documentation</h2>
+<h3>
+<a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Documentation</h3>
 <a href="https://github.com/StudioDeTelevision/admiraljs/wiki" ><span>Explore the WIKI</span></a>
  <a href="https://github.com/StudioDeTelevision/admiraljs" ><span>View on GitHub</span></a>
  This project is completely new, check the todo list, any help is welcome !
@@ -67,6 +75,7 @@ Initially developped to work with the <a href="http://www.sailsjs.org" target="_
 	
 contact: <a href="mailto:studiodetelevision@gmail.com">studiodetelevision@gmail.com</a><br>
 </p>
+</div>
         </section>
 
         <footer>
