@@ -3,7 +3,7 @@ AdmiralJS
 **Lightweight plug and play admin interface**  
 http://www.admiraljs.com
 
-based on NODE.JS, written in Javascript.
+a web app for admin generation + a node server for api + file upload.
 
 ## INSTALLATION
 
