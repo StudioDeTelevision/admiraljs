@@ -8,7 +8,8 @@ based on NODE.JS, written in Javascript.
 ## INSTALLATION
 
 
-
+npm install admiraljs
+or
 sudo npm install https://github.com/StudioDeTelevision/admiraljs/tarball/beta
 
 create an app.js file with minimum:
