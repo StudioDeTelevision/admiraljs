@@ -19,10 +19,9 @@ create an app.js file with minimum:
 var admiral=require('admiraljs');
 
 admiral.setConfig({
-	database:{"basename":"projects",
-	host:"176.31.250.73"},
-	port:7010,
-	hello:7010,
+	database:{"basename":" ** database name ** ",
+	host:" ** your database host ** "},
+	port:** your database host port **,
 fileserver:{port:7020},
 
 }
@@ -61,8 +60,7 @@ easily **CONFIGURABLE**:
   
 **EXTENSIBLE** - define your own field editors  
 
-AdmiralJS might also be **PLUGGABLE** on any RESTFUL API  
-ex: with codeigniter, symphony, expressjs, railsjs or whatever and as soon as you can provide http crud controllers http://myserver/todo/create http://myserver/todo/update http://myserver/todo/find http://myserver/todo/destroy  
+As AdmiralJS is a webapp, it might also be easily ported for any RESTFUL API.
 
 
 ## DOCUMENTATION
