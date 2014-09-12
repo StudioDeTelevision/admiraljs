@@ -20,9 +20,9 @@ var admiral=require('admiraljs');
 
 admiral.setConfig({
 	database:{"basename":" ** database name ** ",
-	host:" ** your database host ** "},
-	port:** your database host port **,
-fileserver:{port:7020},
+		host:" ** your database host ** "},
+			port:** your database host port **,
+			fileserver:{port:7020},
 
 }
 )
