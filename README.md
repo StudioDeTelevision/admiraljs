@@ -34,19 +34,11 @@ admiral.setSchema([
 	{  "schemaName":"user",
 	    "model":"user",
 		"label":"Utilisateurs",
-		"create":"user/create",
-		"update":"user/update",
-		"find":"user/find",
-		"destroy":"user/destroy",
 		"listFields":["email"],
 		"fields":[{"name":"email","type":"string","editor":"string","label":"Email"}]
 	},{  "schemaName":"projects",
 		"model":"projects",
 		"label":"projects",
-		"create":"projects/create",
-		"update":"projects/update",
-		"find":"projects/find",
-		"destroy":"projects/destroy",
 		"listFields":["name"],
 		"fields":[{"name":"name","type":"string","editor":"string","label":"Name"}]
 		}

@@ -253,7 +253,16 @@ for (var i=0; i<schemas.length; i++) {
 		
 	}
 	
+	// adds CRUD Urls if needed
 	
+	
+	if (schem.create==null) schem.create=schem.model+"/create";
+	if (schem.update==null) schem.update=schem.model+"/update";
+	if (schem.find==null) schem.find=schem.model+"/find";
+	if (schem.destroy==null) schem.destroy=schem.model+"/destroy";
+	
+	// Little loop to authorize use of Function in the schema definitions
+
 	
 	for (var p in schem) {
 		(function(p,myschem){
@@ -261,12 +270,12 @@ for (var i=0; i<schemas.length; i++) {
 	
 		myschem["_"+p]=myschem[p];
 		delete myschem[p];
-		//console.log('define '+p,schem["_"+p])
+		
+		
+		
 		Object.defineProperty(myschem,p,{
 		    get: function() { 
-				// console.log(this)
-		// 		return Kunst["_"+p]
-			//	console.log("VALUE",this)
+			
 				if (typeof this["_"+p]=="function") {
 					return this["_"+p]();
 				}
@@ -276,7 +285,7 @@ for (var i=0; i<schemas.length; i++) {
 		  })(p,schem)
 	}
 	
-	
+	// End of Little loop to authorize use of Function in the schema definitions
 		
 		
 		
