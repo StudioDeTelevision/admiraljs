@@ -9,7 +9,7 @@ min-height:400px;
 }
 
 .listview .line {
-background: #F5F5F5;
+/*background: #F5F5F5;*/
 }
 .listview table {
 width:100%;
@@ -17,14 +17,14 @@ table-layout: fixed;
 
 }
 .listview table thead {
-background: #EEEEEE;
+/*background: #EEEEEE;*/
 }
 .listview table th , .listview table td {
 	padding: 0.44444rem 0.55556rem 0.55556rem;
 }
 .listview table th {
 	font-weight: bold;
-	color: #222222;
+	color: grey;
 }
 .listview table td {
 	
@@ -32,7 +32,7 @@ background: #EEEEEE;
 }
 
 .listview table tr:hover {
-background: #F2F2F2;
+/*background: #F2F2F2;*/
 cursor:pointer;
 }
 .listview table img {

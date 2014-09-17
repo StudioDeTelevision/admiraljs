@@ -1,5 +1,6 @@
 test.js
 /test.js
+/customs/*
 /node_modules/*
 /admiraljs/config/*
 !/admiraljs/config/sample

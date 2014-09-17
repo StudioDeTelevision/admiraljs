@@ -1,6 +1,6 @@
 {
   "name": "admiraljs",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "Lightweight, plug and play admin interface",
   "main": "index.js",
   "dependencies": {
@@ -14,8 +14,7 @@
     "lodash": "^2.4.1"
   },
   "devDependencies": {},
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/StudioDeTelevision/admiraljs.git"

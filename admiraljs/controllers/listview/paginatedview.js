@@ -20,12 +20,7 @@ var PaginatedLine= Backbone.View.extend({
 		this.columns=options.columns;
 		this.model=options.model;
 		this.schemaName=options.schemaName;
-	 // var cell={
- // 		   editor: fieldDescription.editor,
- // 		   name: fieldDescription.name,
- // 		   label: fieldDescription.label
- //
- // 		 };
+	
 		 
 		 
 		for (var c in this.columns) {
@@ -71,14 +66,14 @@ var PaginatedLine= Backbone.View.extend({
 	
    
    
- var url=AJS.config.api+AJS.schemas[that.collection.schemaName].destroy+"/"+that.model.id;
+ var url=AJS.config.api+AJS.schemas[that.model.collection.schemaName].destroy+"/"+that.model.id;
  $.ajax({
    dataType: "json",
    url: url,
    success: function(data) {
  	
 	 that.model.collection.remove(that.model);
-
+	 that.$el.remove();
 
    }
  });
@@ -139,7 +134,7 @@ var PaginatedView = Backbone.View.extend({
 	    var tr=$('<tr/>');
 		tableHead.append(tr)
 	  _.each(this.columns,function(hi) {
-		  var td=$('<td/>');
+		  var td=$('<th/>');
 		  td.html(hi.label)
 		tr.append(td)
 		  
@@ -148,7 +143,7 @@ var PaginatedView = Backbone.View.extend({
 	  })
 	  
 	  //tools header
-	   var td=$('<td/>');
+	   var td=$('<th/>');
 	tr.append(td)
 	 
 	 

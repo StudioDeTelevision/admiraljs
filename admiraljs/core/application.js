@@ -6,7 +6,7 @@ define(['backbone','./lib/session','controllers/auth/auth','./ui/sidebar','./ui/
 		Backbone.View.prototype._super =
 		Backbone.Router.prototype._super =
 		Backbone.Collection.prototype._super = function(funcName){
-			console.log("type of args",typeof arguments)
+			//console.log("type of args",typeof arguments)
 		  return this.constructor.__super__[funcName].apply(this, _.rest(arguments));
 		}
 		

@@ -9,7 +9,8 @@ define(['jquery',     // lib/jquery/jquery
 			tagName:"div",
 			className:"list-search",
 			events:{
-				"click .searchButton":"searchIt"
+				"click .searchButton":"searchIt",
+				"click .resetButton":"resetMe"
 			},
 			
 			initialize:function(options) {
@@ -29,13 +30,19 @@ define(['jquery',     // lib/jquery/jquery
 		this.searchFields=searchFields;
 		
 		
-		this.input=$('<input type="text" name="search" value="" />');
+		this.input=$('<input class="input" type="text" name="search" value="" />');
 		
 		this.button=$('<button class="searchButton" >search</button>');
+		this.rbutton=$('<button class="resetButton" >reset</button>');
 		
 		this.$el.append(this.input)
 		this.$el.append(this.button)
+		this.$el.append(this.rbutton)
 		
+	},resetMe:function() {
+		this.input.val("");
+		 this.filters=null;
+		 this.trigger('search')
 	},searchIt:function() {
 		
 	
@@ -56,35 +63,38 @@ if (searchFields.length>0) {
 				console.log(fieldName)
 				
 				var fieldDeclaration=_.findWhere(this.schema.fields, {"name":fieldName}) ;
-				//var fieldClass=this.fieldClasses[searchFields[f]];
+				
 				var editorName=fieldDeclaration.editor;
 				console.log(editorName)
-				//	this.filters[fieldName]={};
+			
+				
+				
+				
 				if (editorName.indexOf("multilang")!=-1) {
 				
 									var langExt="."+AJS.config.defaultLanguage;
-									//alert(langExt)
+									
 									var qObj={};
 									qObj[fieldName+langExt]={};
 								
 									qObj[fieldName+langExt][criteria]= ".*"+val+".*";
+									qObj[fieldName+langExt]["$options"]= "i";
 									this.filters["$or"].push(qObj)
-									// this.filters["$or"][fieldName+langExt]={};
-		// 											this.filters["$or"][fieldName+langExt][criteria]= ".*"+val+".*";
+									
 					
 				}
 				else {
 					console.log(editorName+"is multilang")
-						//alert(langExt)
+						
 						
 						var qObj={};
 						qObj[fieldName]={};
 						
 						qObj[fieldName][criteria]= ".*"+val+".*";
+						qObj[fieldName]["$options"]= "i";
 						this.filters["$or"].push(qObj)
 						
-						// this.filters["$or"][fieldName]={};
-	// 									this.filters["$or"][fieldName][criteria]= ".*"+val+".*";
+					
 					
 				}
 				
@@ -106,50 +116,7 @@ if (searchFields.length>0) {
 		this.trigger('search')
 
 
-		//this.listView=options.listView;
-
-				// for (var f in searchFields) {
-// 					var fieldClass=fieldClasses[searchFields[f].editor];
-//
-// 					var newfield=new fieldClass(searchFields[f]);
-// 					this.$el.append(newfield.$el)
-// 						newfield.bind('change',function() {
-//
-//
-//
-// 						var fieldName=this.name
-// 						var val=this.getValue();
-//
-// 					    // criteria attribute can be = ['not', 'greaterThan', 'lessThan', 'greaterThanOrEqual', 'lessThanOrEqual',
-//    // 					      '<', '<=', '!', '>', '>=', 'startsWith', 'endsWith', 'contains', 'like'];
-// 						var langExt="";
-// 						if (this.multilang) {
-//
-// 							langExt="."+AJS.config.defaultLanguage;
-//
-// 						}
-//
-// 						if (val!="") {
-//
-// 							var criteria="contains";
-//
-// 							if (this.criteria) criteria=this.criteria
-//
-//
-//
-// 							that.filters[fieldName+langExt]={};
-// 							that.filters[fieldName+langExt][criteria]=val;
-// 						}
-// 						else {
-//
-// 							delete that.filters[fieldName+langExt];
-// 						}
-//
-//
-// 						that.listView.fetch();
-//
-// 						});
-// }
+		
 				}
 	
 		});

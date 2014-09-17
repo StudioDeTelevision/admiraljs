@@ -48,6 +48,7 @@ var configObj={
         "image": "./vendor/require/image",
         "ejs": "./vendor/ejs_production",
 		"underscore": './vendor/underscore-min',
+		"lodash": './vendor/lodash.compat.min',
 		"jquery": './vendor/jquery-2.1.0.min',
 		"backbone": './vendor/backbone-min',
     "marionette" : './vendor/backbone.marionette.min',
@@ -155,7 +156,7 @@ require.config(configObj);
 
 var requirepathes=['require'].concat(["./core/application","./core/helpers/tools","text!"+configFolder+"config.json","text!"+configFolder+"schemas.json"]).concat(editorsPathesArray);
 
-console.log('pathes',requirepathes)
+//console.log('pathes',requirepathes)
   	
 require(requirepathes, function(req) {
 	

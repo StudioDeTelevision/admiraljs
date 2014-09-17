@@ -23,11 +23,14 @@ admiral.setConfig({
 	database:{"basename":" ** database name ** ",  
 		      host:" ** your database host ** "},  
 	fileserver:{port: ** ex: 7020 ** },  
-  
+  customFolder:" ** path to local custom js files ** "
 }  
 )  
   
 // define some schema (see the docs)  
+
+If you use a customFolder, you may use a schemas.json file in that folder
+or set schema with:
   
 admiral.setSchema([  
   

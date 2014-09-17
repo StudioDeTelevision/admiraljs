@@ -36,6 +36,7 @@ define(['jquery',
 		
 				this.collection.modelName=this.schema.model;
 				this.collection.schemaName=options.schemaName;
+				this.collection.schema=this.schema;
 				
 				
    			 var columns = [];
@@ -80,6 +81,7 @@ define(['jquery',
 	 			this.searchView.on('search',function() {
 				
 					var filters=this.filters;
+					that.collection.page=1;
 					that.collection.setFilters(filters);
 					
 					
@@ -98,7 +100,7 @@ define(['jquery',
    			 createButton.click(function() {
 				 
    				 var url=AJS.config.api+AJS.schemas[that.collection.schemaName].create;
-				 alert(url)
+				
    				 $.ajax({
    				   dataType: "json",
    				   url: url,

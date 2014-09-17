@@ -2,8 +2,10 @@ var express = require('express');
 var fileserver = require('./lib/fileserver');
 var app = express();
 
-var lodash = require('lodash');
 
+ 
+var lodash = require('lodash');
+ fs = require('fs');
 var bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -52,10 +54,23 @@ module.exports.setConfig=function(cfg) {
 	lodash.merge(config, cfg);
 	console.log('Use Configuration ',config)
 }
+module.exports.setCustom=module.exports.setCustomFolder=function(cf) {
+config.customFolder=cf;
+}
 
 
 module.exports.start=function() {
-
+	
+   
+ 
+    // mongoAdapter.database = config.database.basename;
+ //    mongoAdapter.host = config.database.host;
+ //    mongoAdapter.port = config.database.port;
+ // 	mongoAdapter.user = '';
+ // 	mongoAdapter.password = '';
+ // 	mongoAdapter.config = { url: 'mongodb://'+config.database.host+':'+config.database.port+'/'+config.database.basename };
+	
+	//console.log(mongoAdapter)
 
 var MongoClient = require('mongodb').MongoClient
     , format = require('util').format;
@@ -66,6 +81,9 @@ var MongoClient = require('mongodb').MongoClient
 	
    
 	 var router = express.Router();
+	 
+	 
+	 
 	 
 	 router.param('model', function(req, res, next, model) {
 	   // sample user, would actually fetch from DB, etc...
@@ -93,7 +111,6 @@ res.header('Access-Control-Allow-Headers', 'content-Type,x-requested-with');
 	  app.get('/hello.txt', function(req, res){
 	    res.send('Hello World');
 	  });
-	  
 	  
 	
 	  
@@ -141,12 +158,16 @@ res.header('Access-Control-Allow-Headers', 'content-Type,x-requested-with');
 				
 				
 			}
+			else {
+				where={};
+			}
 			console.log("where",where)
 			
 			var find=collection.find(where);
 			
 			
 			find.count(function(err, count) {
+				console.log("count",count)
 				if (count>0) {
 					
 					
@@ -295,17 +316,55 @@ collection.findAndModify({_id: req.id},{}, {}, {remove:true}, function(err, obje
 				
 				
 	  });
+	  
+	  
+	  if (config.customFolder) {
+		  
+		  if (fs.existsSync(config.customFolder)) {
+   		   app.use('/admiraljs/custom/folder', express.static(config.customFolder));
+	  	 console.log("CUSTOM FOLDER : "+config.customFolder + " OK")
+		   
+   		config.customClass="./custom/folder/index";
+			
+		  }
+		  else {
+			  console.log("CUSTOM FOLDER : "+config.customFolder + " DOES NOT EXIST")
+		  }
+		  
+		
+		
+	  }
+	  
    router.route('/admiraljs/config/schemas.json').get(function(req, res,next){
 	   
-	   if (!schema) {
-   	    schema=require('./admiraljs/config/schemas.json')
-	
-	   }
+	    if (config.customFolder && !schema) {
+ 		   var file = config.customFolder+'/schemas.json';
+ console.log("loading")
+ 		 var data=  fs.readFileSync(file, 'utf8');
+ 		 console.log("loaded")
+		 console.log("DATA",data)
+ 		     schema = data;
+			
+		}
+	  //  if (!schema) {
+//
+// 		 //  var fs = require('fs');
+// 		   var file = './admiraljs/config/schemas.json';
+// console.log("loading")
+// 		 var data=  fs.readFileSync(file, 'utf8');
+// 		 console.log("loaded")
+// 		     schema = JSON.parse(data);
+//
+//
+//
+//    	    //schema=require('./admiraljs/config/schemas.json')
+//
+// 	   }
 	   
 		
 		
 		
-	   res.json(schema)
+	   res.send(schema)
 	   
 	   
    });
@@ -313,7 +372,8 @@ collection.findAndModify({_id: req.id},{}, {}, {remove:true}, function(err, obje
 	   router.route('/admiraljs/config/config.json').get(function(req, res,next){
 		 //  var configFile=require('./admiraljs/config/config.json')
 		  // console.log('GOT CONFIG',configFile)
-		   
+		
+		  // util.debug(exists ? "it's there" : "no passwd!");
 		   
 		   var fileserverOptions=fileserver.getConfig();
 		   
@@ -327,9 +387,12 @@ collection.findAndModify({_id: req.id},{}, {}, {remove:true}, function(err, obje
 		   
 		   
 		   config.api="http://"+config.host+":"+config.port+"/";
-		   config.fileUploadUrl="http://"+config.host+":"+fileserverOptions.port+"/";
-		   config.fileDir="http://"+config.host+":"+fileserverOptions.port+fileserverOptions.uploadDir+"/";
-		   config.thumbDir="http://"+config.host+":"+fileserverOptions.port+fileserverOptions.uploadDir+"/thumbnail/";
+		   
+		   
+		   var fileHost=fileserverOptions.host || config.host;
+		   config.fileUploadUrl="http://"+fileHost+":"+fileserverOptions.port+"/";
+		   config.fileDir="http://"+fileHost+":"+fileserverOptions.port+fileserverOptions.uploadDir+"/";
+		   config.thumbDir="http://"+fileHost+":"+fileserverOptions.port+fileserverOptions.uploadDir+"/thumbnail/";
 		   
 		   
 		   delete config.database;
@@ -345,7 +408,88 @@ collection.findAndModify({_id: req.id},{}, {}, {remove:true}, function(err, obje
 		   res.json(config)
 		   
 		   
+	 
+		   
+		   
 	   });
+	   
+	   router.route("/admiraljs/datadump").get(function(req,res,next) {
+var now = new Date();
+function pad(number, length) {
+
+       var str = '' + number;
+       while (str.length < length) {
+           str = '0' + str;
+       }
+
+       return str;
+
+   }
+function getDateString(date) {
+  if (typeof date === 'number') {
+    date = new Date(date);
+  }
+  
+  var yyyy = date.getFullYear().toString();
+         var MM = pad(date.getMonth() + 1,2);
+         var dd = pad(date.getDate(), 2);
+         var hh = pad(date.getHours(), 2);
+         var mm = pad(date.getMinutes(), 2)
+         var ss = pad(date.getSeconds(), 2)
+
+         return yyyy + MM + dd+  hh + mm + ss;
+  
+  //return String(date.getFullYear()) + (date.getMonth() + 1) + date.getDate();
+}
+	var spawn = require('child_process').spawn;
+    res.set('Content-Type', 'text/json');
+    // Export collection and pipe to `res`
+	var dstr=getDateString(now);
+	var dumpDir='dump'
+	var dirName=dumpDir+'/'+dstr;
+	
+	try {
+	    fs.mkdirSync(dumpDir);
+	  } catch(e) {
+	    if ( e.code != 'EEXIST' ) throw e;
+	  }
+	  
+	  try {
+	      fs.mkdirSync(dirName);
+	    } catch(e) {
+	      if ( e.code != 'EEXIST' ) throw e;
+	    }
+	console.log('dir ok');
+	
+    var md=spawn('mongodump', [ '--db', 'lokremise', '-o', dirName ]);
+	md.on('error', function (err) {
+	    console.log('spawn error:', err);
+		 res.end(err+", mongo may not be installed locally ? ");
+	});
+	md.stderr.on('data', function (data) {
+	  console.log('Error with MongoDump: ' + data);
+	  res.end('Error with MongoDump');
+	  return;
+	});
+	md.stdout.on('data', function (data1) {
+		console.log('export done')
+		var dest=dumpDir+'/'+dstr+'.tar.gz';
+		var tarme = spawn('tar', ['-C',dirName,'-zcvf', dest,'.']);
+		//['-C','/home/tony/Desktop','-xvf', '/home/tony/Desktop/tmp.tbz'])
+	//	res.send('hey')
+		
+		tarme.stdout.on('data', function (data2) {
+			console.log('compression done')
+			res.send('Successfull Backup ! <a href="http://91.121.150.143:8888/files/db/'+dstr+'.tar.gz'+'" >click here to download</a>')
+		});
+		tarme.stderr.on('data', function (data) {
+		  console.log('tarme stderr: ' + data);
+		});
+	 
+	});	
+	
+	
+})
 	  
 	  
 	  app.use( router);

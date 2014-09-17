@@ -1,7 +1,8 @@
 define(['jquery',    
   'underscore', 
+  'lodash',
   'backbone'],
-    function($, _, Backbone) {
+    function($, _,lodash, Backbone) {
 
 
 var PaginatedCollection = Backbone.Collection.extend({
@@ -20,16 +21,37 @@ var PaginatedCollection = Backbone.Collection.extend({
 	options.type="POST";
     this.trigger("fetching");
     var self = this;
-    
+   
 	var success = options.success;
-	var data={page: this.page, per_page: this.perPage};
+	var data={page: this.page, per_page: this.perPage,where:{}};
+	
+    if (this.schema.findFilter) {
+		
+		var ff=this.schema.findFilter;
+		
+		
+	
+    lodash.merge(data,ff)
+	console.log('SCHEMA FF',data)
+		
+    }
 	
   if (this.filters) {
-	  data.where=JSON.stringify(this.filters);
+	 // if (!data.where) data.where={};
+	
+	  console.log("FILTERS",typeof this.filters)
+	  console.log("data.where",typeof data.where)
+	  
+	data.where=lodash.assign(data.where,this.filters)
+	 
   }
-  else {
-  	
-  }
+ 
+  
+		
+			data.where=JSON.stringify(data.where);
+			if (data.sort) data.sort=JSON.stringify(data.sort);
+  
+  
 	
 	options.data=data;
 	
