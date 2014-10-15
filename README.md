@@ -57,21 +57,14 @@ maintaining the core of the app as cleaner as possible :-)
 ( See the related sections for creating those or make a copy of the example project )
 
 - 2 ways to activate your configuration: 
-1. in main.js, replace AJS.path.customFolder="example";
-by AJS.path.customFolder="myproject";
-2. start the project with a config param: http://localhost:9999/admiraljs?config=myproject
+in main.js, replace AJS.path.customFolder="example"; by AJS.path.customFolder="myproject"; OR start admiraljs with a config param: http://localhost:9999/admiraljs?config=myproject
 
 
-## Complete documentation
+## Contributions
 
-Have a look at the wiki
 
-https://github.com/StudioDeTelevision/admiraljs/wiki
-
-contact: studiodetelevision@gmail.com  
-
-any suggestions or contributions are welcome !!!!! 
 
 ## Contact
 
+Frédéric: studiodetelevision@gmail.com  
 	
