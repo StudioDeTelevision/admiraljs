@@ -25,8 +25,8 @@
     "type": "git",
     "url": "https://github.com/StudioDeTelevision/admiraljs.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Frédéric Jean / studiodetelevision.com",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/StudioDeTelevision/admiraljs/issues"
   },
