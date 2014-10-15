@@ -3,6 +3,8 @@ AdmiralJS
 **Lightweight plug and play admin interface**  
 http://www.admiraljs.com
 
+github page: https://github.com/StudioDeTelevision/admiraljs  
+
 a web app for admin generation + a node server for api + file upload.
   
 Customisable admin interface  
