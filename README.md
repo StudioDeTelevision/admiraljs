@@ -4,64 +4,46 @@ AdmiralJS
 http://www.admiraljs.com
 
 a web app for admin generation + a node server for api + file upload.
-
-## INSTALLATION
-
+  
+Customisable admin interface  
+instant admin generation from a schema.json  
+Written in javascript with requirejs / jquery / backbone  
+Pluggable on any CRUD or RESTFUL API  
+  
+## USE WITH BUNDLED SERVER
 
 npm install admiraljs  
-  
-or  
-  
-sudo npm install https://github.com/StudioDeTelevision/admiraljs/tarball/beta  
-  
-create an app.js file with minimum:  
-  
-var admiral=require('admiraljs');  
-  
-admiral.setConfig({   
-	port:** the port you want admiraljs to run on **,  
-	database:{"basename":" ** database name ** ",  
-		      host:" ** your database host ** "},  
-	fileserver:{port: ** ex: 7020 ** },  
-  customFolder:" ** path to local custom js files ** "
+admiral.setConfig({  
+	"webappPath":"./admiraljs",  
+	"defaultProject":"example",  
+	"runApiServer":true,  
+	"runFileServer":true  
+	,  
+	api: {"database":{host:"37.59.30.80",  
+		name:"test"}  
+	},  
+	fileserver: {  
+		uploadDir:__dirname+"/public"  
+	}  
 }  
 )  
   
-// define some schema (see the docs)  
+admiral.start();
 
-If you use a customFolder, you may use a schemas.json file in that folder
-or set schema with:
-  
-admiral.setSchema([  
-  
-	{  "schemaName":"user",  
-	    "model":"user",  
-		"label":"Utilisateurs",  
-		"listFields":["email"],  
-		"fields":[{"name":"email","editor":"string","label":"Email"}]  
-	},{  "schemaName":"projects",  
-		"model":"projects",  
-		"label":"projects",  
-		"listFields":["name"],  
-		"fields":[{"name":"name","editor":"string","label":"Name"}]  
-		}  
-		])  
-  
-admiral.start();  
-  
-That's it !  
-  
-easily **CONFIGURABLE**:  
-  
-**EXTENSIBLE** - define your own field editors  
+## USE AS A STANDALONE WEBAPP
 
-As AdmiralJS is a webapp, it might also be easily ported for any RESTFUL API.
+Maybe used as a stand alone web app
+(download latest and use admiraljs folder)
+and configure for your own restful api server
 
+## Complete documentation
 
-## DOCUMENTATION
-check the wiki
+Have a look at the wiki
+
 https://github.com/StudioDeTelevision/admiraljs/wiki
 
 contact: studiodetelevision@gmail.com  
 
-any suggestions or contributions are welcome !!!!!   
+any suggestions or contributions are welcome !!!!! 
+
+	
