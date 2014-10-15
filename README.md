@@ -9,7 +9,7 @@ a web app for admin generation + a node server for api + file upload.
 
 ## About
 
-The goal of this project is to allow a quick generation of an admin interface, letting you spend more interesting time on the design of the front end with your favorite framework.
+AdmiralJS allows a quick generation of an admin interface, letting you spend more interesting time on the design of the front end with your favorite framework.
   
 - Customisable field editors for your models 
 - Instant admin generation from a schema.json  
@@ -19,8 +19,12 @@ The goal of this project is to allow a quick generation of an admin interface, l
   
 ## Use with bundled express/node server
 
-Admiral can be easily plugged into a SAILSJS project, but in order to stay more flexible, it also comes as a nodejs module, offering a restful api server which can be used to manipulate your mongo database for your project.
-
+AdmiralJS comes as a nodejs module, offering a restful api server which can be used to manipulate your mongo database for your project.  
+  
+Admiral can also be easily plugged into a SAILSJS project and thanks to waterline, you might have the hability to administrate data stored on a MYsql, Mongo, Redis server , etc  
+  
+### Installation
+  
 npm install admiraljs  
   
   
