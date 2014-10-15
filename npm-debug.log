@@ -1,0 +1,118 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@1.4.23
+3 info using node@v0.10.31
+4 verbose publish [ '.' ]
+5 verbose cache add [ '.', null ]
+6 verbose cache add name=undefined spec="." args=[".",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: '.',
+7 verbose parsed url   path: '.',
+7 verbose parsed url   href: '.' }
+8 silly lockFile 3a52ce78- .
+9 verbose lock . /Users/frederic/.npm/3a52ce78-.lock
+10 verbose tar pack [ '/Users/frederic/.npm/AdmiralJS/2.0.0/package.tgz', '.' ]
+11 verbose tarball /Users/frederic/.npm/AdmiralJS/2.0.0/package.tgz
+12 verbose folder .
+13 info prepublish AdmiralJS@2.0.0
+14 silly lockFile 1f1177db-tar tar://.
+15 verbose lock tar://. /Users/frederic/.npm/1f1177db-tar.lock
+16 silly lockFile 3648026e--npm-AdmiralJS-2-0-0-package-tgz tar:///Users/frederic/.npm/AdmiralJS/2.0.0/package.tgz
+17 verbose lock tar:///Users/frederic/.npm/AdmiralJS/2.0.0/package.tgz /Users/frederic/.npm/3648026e--npm-AdmiralJS-2-0-0-package-tgz.lock
+18 silly lockFile 1f1177db-tar tar://.
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile 3648026e--npm-AdmiralJS-2-0-0-package-tgz tar:///Users/frederic/.npm/AdmiralJS/2.0.0/package.tgz
+21 silly lockFile 3648026e--npm-AdmiralJS-2-0-0-package-tgz tar:///Users/frederic/.npm/AdmiralJS/2.0.0/package.tgz
+22 silly lockFile d1d45aa1-eric-npm-AdmiralJS-2-0-0-package /Users/frederic/.npm/AdmiralJS/2.0.0/package
+23 verbose lock /Users/frederic/.npm/AdmiralJS/2.0.0/package /Users/frederic/.npm/d1d45aa1-eric-npm-AdmiralJS-2-0-0-package.lock
+24 silly lockFile d1d45aa1-eric-npm-AdmiralJS-2-0-0-package /Users/frederic/.npm/AdmiralJS/2.0.0/package
+25 silly lockFile d1d45aa1-eric-npm-AdmiralJS-2-0-0-package /Users/frederic/.npm/AdmiralJS/2.0.0/package
+26 silly lockFile 3a52ce78- .
+27 silly lockFile 3a52ce78- .
+28 silly publish { name: 'AdmiralJS',
+28 silly publish   version: '2.0.0',
+28 silly publish   description: 'Lightweight plug and play admin interface',
+28 silly publish   main: 'index.js',
+28 silly publish   dependencies:
+28 silly publish    { 'body-parser': '^1.8.1',
+28 silly publish      express: '^4.8.8',
+28 silly publish      'express-session': '^1.8.2',
+28 silly publish      formidable: '^1.0.15',
+28 silly publish      imagemagick: '^0.1.3',
+28 silly publish      lodash: '^2.4.1',
+28 silly publish      mkdirp: '^0.5.0',
+28 silly publish      mongodb: '^1.4.10',
+28 silly publish      'node-static': '^0.7.4',
+28 silly publish      'node-uuid': '^1.4.1',
+28 silly publish      passport: '^0.2.1',
+28 silly publish      'passport-local': '^1.0.0' },
+28 silly publish   devDependencies: {},
+28 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+28 silly publish   repository:
+28 silly publish    { type: 'git',
+28 silly publish      url: 'https://github.com/StudioDeTelevision/admiraljs.git' },
+28 silly publish   author: '',
+28 silly publish   license: 'ISC',
+28 silly publish   bugs: { url: 'https://github.com/StudioDeTelevision/admiraljs/issues' },
+28 silly publish   homepage: 'https://github.com/StudioDeTelevision/admiraljs',
+28 silly publish   readme: 'AdmiralJS 2.x\n===========\n**Lightweight plug and play admin interface**  \nhttp://www.admiraljs.com\n\ngithub page: https://github.com/StudioDeTelevision/admiraljs  \n\na web app for admin generation + a node server for api + file upload.\n\n## About\n\nThe goal of this project is to allow a quick generation of an admin interface, letting you spend more interesting time on the design of the front end with your favorite framework.\n  \n- Customisable field editors for your models \n- Instant admin generation from a schema.json  \n- Pluggable on any CRUD or RESTFUL API  (optimized for SailsJS)\n- Written in javascript with requirejs / jquery / backbone  \n- Usable with the bundled server or as a standalone webapp\n  \n## Use with bundled express/node server\n\nAdmiral can be easily plugged into a SAILSJS project, but in order to stay more flexible, it also comes as a nodejs module, offering a restful api server which can be used to manipulate your mongo database for your project.\n\nnpm install admiraljs  \n  \nadmiral.setConfig({  \n  \t"webappPath":"./admiraljs",  \n  \t"defaultProject":"example",  \n  \t"runApiServer":true,  \n  \t"runFileServer":true  \n  \t,  \n  \tapi: {"database":{host:"your host",  \n    \t\tname:"test"}  \n  \t},  \n  \tfileserver: {  \n    \t\tuploadDir:__dirname+"/public"  \n  \t}  \n}  \n)  \n  \nadmiral.start();\n\n\n### Server Configuration\n\n** webappPath **\n\n** defaultProject **\n\n** runApiServer **\n\n** runFileServer **\n\n** api **\n\n** fileserver **\n\n## Use as a standalone webapp\n\nAdmiralJS was developped as a clientside webapp.  \n  \nIt also may be used standalone - independently from the express server  \n- download latest and pick the app in the admiraljs folder\n- configure for your own restful api server (see webapp configuration)\n\n\n### Admiral Webapp Configuration\n\nConfiguration files must be set in the "Custom" folder  \nwhich will be reserved to all your project settings and hooks\nmaintaining the core of the app as cleaner as possible :-)\n\n- Let\'s choose a configuration name, "myproject"\n\n- Create a folder named "myproject" in "custom"\n\n- Create a subfolder named "config" in "myproject"\n\n- Create 2 configurations files schema.json and config.json\n( See the related sections for creating those or make a copy of the example project )\n\n- 2 ways to activate your configuration: \nin main.js, replace AJS.path.customFolder="example"; by AJS.path.customFolder="myproject"; OR start admiraljs with a config param: http://localhost:9999/admiraljs?config=myproject\n\n## Hook\n\nThe Custom folder is the place to add your own extensions data structure should be custom -> myproject -> editors custom -> myproject -> sidebar etc... to keep a clean code  \n  \nthe myproject folder must contain a myproject.js file see custom/example/example.js  \n  \nthis file will trigger all hooks  \n  \nwill load custom editors definition in custom/myproject/editors/editors.js ex:   define(["./import/import","./datetimearray/datetimearray","./pictosrestaurant/pictosrestaurant","./pictoszugast/pictoszugast",\'./gifupload/gifupload\',\'./arrowselect/arrowselect\',\'./imagekino/imagekino\',\'./imagetheater/imagetheater\',\'./logos/logos\',\'./textareacounter/textareacounter\'],function(Import,Datetimearray,Pictorestaurant,Pictozugast,GifUpload,ArrowSelect,ImageK,ImageT,Logos,TextAC) {\n  \nvar MyClass=function() {  \n  \nAJS.fieldClasses["import"]=Import;  \nAJS.fieldClasses["datetimearray"]=Datetimearray;  \nAJS.fieldClasses["pictosrestaurant"]=Pictorestaurant;  \nAJS.fieldClasses["pictoszugast"]=Pictozugast;  \nAJS.fieldClasses["gifupload"]=GifUpload;  \nAJS.fieldClasses["arrowselect"]=ArrowSelect;  \nAJS.fieldClasses["imagekino"]=ImageK;  \nAJS.fieldClasses["imagetheater"]=ImageT;  \nAJS.fieldClasses["logos"]=Logos;  \nAJS.fieldClasses["textareacounter"]=TextAC;  \n}  \n  \nreturn MyClass;  \n  \n});  \n\n\n## Field Editors\n\nAdmiralJS provide some basic field editors but you can write and add your own by extending the core/editor module\n\n### Basic Editors\n\nLocated in the editors folder, those editors are used to defined the fields\'edition strategies in schemas.json\n\n####collection\n\n####collectionembed\n\n####date\n\n####datetime\n\n####file\n\n####image\n\n####imagecropresize\n\n####imagedropdown\n\n####imagescollection\n\n####select\n\n####string\n\n####stringmultilangotf\n\n####textarea\n\n####textareamultilangotf\n\n####textareasimple\n\n####yesno\n\n## Contributions\n\nPlease contribute and share !\n\n## Contact\n\nFrédéric: studiodetelevision@gmail.com  \n\t\n',
+28 silly publish   readmeFilename: 'README.md',
+28 silly publish   gitHead: 'b0838f0bc36fd974c4a48f950ffb187f8489a7c0',
+28 silly publish   _id: 'AdmiralJS@2.0.0',
+28 silly publish   _shasum: 'bf530a50f8b18c2a2ed3bf36460c254f6f7dcc41',
+28 silly publish   _from: '.' }
+29 verbose request where is /AdmiralJS
+30 verbose request registry https://registry.npmjs.org/
+31 verbose request id 21a39af01592f06a
+32 verbose url raw /AdmiralJS
+33 verbose url resolving [ 'https://registry.npmjs.org/', './AdmiralJS' ]
+34 verbose url resolved https://registry.npmjs.org/AdmiralJS
+35 verbose request where is https://registry.npmjs.org/AdmiralJS
+36 info trying registry request attempt 1 at 17:40:40
+37 http PUT https://registry.npmjs.org/AdmiralJS
+38 info retry will retry, error on last attempt: Error: write EPIPE
+39 info trying registry request attempt 2 at 17:42:34
+40 http PUT https://registry.npmjs.org/AdmiralJS
+41 http 403 https://registry.npmjs.org/AdmiralJS
+42 verbose headers { date: 'Wed, 15 Oct 2014 15:43:37 GMT',
+42 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+42 verbose headers   'content-type': 'application/json',
+42 verbose headers   'cache-control': 'max-age=60',
+42 verbose headers   'content-length': '76',
+42 verbose headers   'accept-ranges': 'bytes',
+42 verbose headers   via: '1.1 varnish',
+42 verbose headers   'x-served-by': 'cache-ams4129-AMS',
+42 verbose headers   'x-cache': 'MISS',
+42 verbose headers   'x-cache-hits': '0',
+42 verbose headers   'x-timer': 'S1413387755.255609,VS0,VE62318',
+42 verbose headers   'keep-alive': 'timeout=10, max=50',
+42 verbose headers   connection: 'Keep-Alive' }
+43 error publish Failed PUT 403
+44 error Error: forbidden New packages must have all-lowercase names: AdmiralJS
+44 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:300:14)
+44 error     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:238:65)
+44 error     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:123:22)
+44 error     at Request.emit (events.js:98:17)
+44 error     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:893:14)
+44 error     at Request.emit (events.js:117:20)
+44 error     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:844:12)
+44 error     at IncomingMessage.emit (events.js:117:20)
+44 error     at _stream_readable.js:943:16
+44 error     at process._tickCallback (node.js:419:13)
+45 error If you need help, you may report this *entire* log,
+45 error including the npm and node versions, at:
+45 error     <http://github.com/npm/npm/issues>
+46 error System Darwin 12.5.0
+47 error command "node" "/usr/local/bin/npm" "publish"
+48 error cwd /Users/frederic/Classeur/DEV/www/admiraljs
+49 error node -v v0.10.31
+50 error npm -v 1.4.23
+51 verbose exit [ 1, true ]
