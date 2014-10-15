@@ -21,7 +21,7 @@ AdmiralJS allows a quick generation of an admin interface, letting you spend mor
 
 AdmiralJS comes as a nodejs module, offering a restful api server which can be used to manipulate your mongo database for your project.  
   
-Admiral can also be easily plugged into a SAILSJS project and thanks to waterline, you might have the hability to administrate data stored on a MYsql, Mongo, Redis server , etc  
+Admiral can also be easily plugged into a SAILSJS project and thanks to the waterline ORM, you might have the possibility to administrate data stored on a MYsql, Mongo, Redis server , etc ... 
   
 ### Installation
   
