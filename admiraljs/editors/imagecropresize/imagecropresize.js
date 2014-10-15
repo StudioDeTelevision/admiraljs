@@ -278,7 +278,16 @@ if (this.value) {
 		
 		})
 		
-		
+		View.display=function(val) {
+			
+			
+			var img=$('<img/>');
+			img.attr('src',AJS.config.fileDir+"thumbnail/"+val)
+			
+			return img;
+			//return $("<div/>").html(val).text();
+			
+		}
 		
         return View;
     }

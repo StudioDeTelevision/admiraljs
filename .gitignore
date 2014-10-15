@@ -1,8 +1,8 @@
-test.js
 /test.js
-/customs/*
-/node_modules/*
-/admiraljs/config/*
-!/admiraljs/config/sample
+/index.js
+/admiraljs/config
 /admiraljs/custom/*
 !/admiraljs/custom/example
+/trash/*
+/perso/*
+/node_modules/*

@@ -1,0 +1,22 @@
+.textareacounter_footer {
+	
+	color: rgb(140, 140, 140);
+	font-size: 9px;
+	z-index: 10000;
+	height: 10px;
+	padding: 0px 2px;
+	line-height: 8px;
+	position: absolute;
+	background: rgba(63, 63, 63, 1);
+	bottom: 3px;
+	left: 340px;
+	width: 38px;
+	text-align: center;
+	
+}
+
+.textareacounter_footer.over {
+	
+	color: red;
+	
+}

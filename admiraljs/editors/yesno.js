@@ -19,8 +19,12 @@ define(['jquery',     // lib/jquery/jquery
 				
 			},
 		setOnChange:function() {
-				var that=this;
-				var displayer=this.$el.find('.display').first();
+			var that=this;
+			
+				setTimeout(function() {
+			
+				
+				var displayer=that.$el.find('.display').first();
 				displayer.on('change',function() {
 					
 					that.value=$(this).is(':checked') ? 'yes' : 'no' ;
@@ -29,6 +33,9 @@ define(['jquery',     // lib/jquery/jquery
  					that.trigger('change');
 // 					console.log(that.value)
 				})
+				
+					},400)
+					// add a little delay to prevent change event on editor build
 				//
 			},
 			displayValue:function() {

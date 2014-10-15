@@ -22,7 +22,7 @@
 	background-position: center;
 }
 
-.cell-delete {
+.cell-delete,.cell-tool {
 	width:25px;
 }
 

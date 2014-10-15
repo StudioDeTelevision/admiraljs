@@ -19,7 +19,9 @@ define(['jquery',
 		var View=Backbone.View.extend({
 			tagName:"div",
 			className:"",
-			
+			events: {
+			"click .createButton":"createButtonClick"
+			},
 			initialize:function(options) {
 				var that=this;
 				
@@ -93,38 +95,15 @@ define(['jquery',
 				
 				
 				
-   			 var createButton=$('<div type="button" class="btn btn-default" >Create</div>');
+   			 var createButton=$('<div type="button" class="btn btn-default createButton" >Create</div>');
    			  $(this.$el).append("<br/>");
    			 $(this.$el).append(createButton);
 			 
-   			 createButton.click(function() {
-				 
-   				 var url=AJS.config.api+AJS.schemas[that.collection.schemaName].create;
-				
-   				 $.ajax({
-   				   dataType: "json",
-   				   url: url,
-   				   success: function(data) {
-   					   var id="";
-   					   if (data.id != null) id=data.id;
-   					   if (data._id != null) id=data._id;
-   					   if (id=="")
-   					   {
-   						   alert('Error from api')
-   						   					   return;
-						
-   					   } 
-				   	
-					  
-   	AJS.router.navigate("edit/"+that.collection.schemaName+"/"+id, {trigger: true})
-			
-					
-   				   }
-   				 });
-				 
-
-			 });
-				
+   			 var createButton2=$('<button class="createButton list-header-element" >Create</button>');
+   			 
+			listHeader.$el.append(createButton2);
+			 
+   			
 				
 				this.collection.fetch();
 				
@@ -139,6 +118,30 @@ define(['jquery',
 			 
 			 
 			 
+			},createButtonClick:function() {
+				var that=this;
+  				 var url=AJS.config.api+AJS.schemas[this.collection.schemaName].create;
+			
+  				 $.ajax({
+  				   dataType: "json",
+  				   url: url,
+  				   success: function(data) {
+  					   var id="";
+  					   if (data.id != null) id=data.id;
+  					   if (data._id != null) id=data._id;
+  					   if (id=="")
+  					   {
+  						   alert('Error from api')
+  						   					   return;
+					
+  					   } 
+			   	
+				  
+  	AJS.router.navigate("edit/"+that.collection.schemaName+"/"+id, {trigger: true})
+		
+				
+  				   }
+  				 });
 			}
 		})
 		

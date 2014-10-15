@@ -55,6 +55,7 @@ var PaginatedLine= Backbone.View.extend({
 		
 		
 	 var ToolsCell = new PaginatedLineCell();
+	 ToolsCell.$el.addClass('cell-tool')
 	 
 	 var deleteButton=$("<div class='button-remove' ></div>");
 	 deleteButton.on('click',function(e) {
@@ -143,7 +144,7 @@ var PaginatedView = Backbone.View.extend({
 	  })
 	  
 	  //tools header
-	   var td=$('<th/>');
+	   var td=$('<th class="cell-tool" />');
 	tr.append(td)
 	 
 	 

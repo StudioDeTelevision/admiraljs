@@ -1,0 +1,117 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400);
+
+@import "ui/popup.css" ;
+@import "ui/ui.css" ;
+@import "editors/editors.css" ;
+@import "ui/listview.css" ;
+
+/*body { padding-top: 100px; }
+
+*/
+body {
+	font-family:"Helvetica","Source Sans Pro","Verdana","Sans serif";
+	font-weight:200;
+}
+
+a {
+	text-decoration:none;
+	color:inherit;
+	
+}
+
+
+.logout {
+	float: right;
+	width: 25px;
+	height: 25px;
+	display: inline-block;
+	cursor: pointer;
+	background: url('images/logout.png') no-repeat;
+	background-size: 100%;
+	margin-top: 11px;
+	margin-right: 10px;
+}
+#screen {
+	margin-left: 185px;
+	padding-top: 41px;
+	padding-right: 20px;
+	padding-left: 28px;
+	padding-bottom: 30px;
+}
+#sidebar {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height:100%;
+	background: rgb(225, 225, 225);
+	padding:45px 0px 0px;
+	width:200px;
+
+}
+#sidebar ul,li {
+	list-style:none;
+	padding: 0px;
+	margin:0px;
+}
+#sidebar a {
+	display: block;
+	/* width: 100%; */
+	height: 26px;
+	padding: 10px 25px 1px 18px;
+}
+#sidebar a:hover {
+	
+	background: rgb(180, 180, 180);
+	
+}
+#sidebar a.selected {
+	
+	background: rgb(77, 77, 77);
+	color: rgb(239, 239, 239);
+}
+
+#navbar {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width:100%;
+	height:45px;
+		background: rgb(222, 242, 236);
+}
+#page_title {
+	margin-left: 10px;
+	font-size: 25px;
+	padding: 9px 7px;
+	display: inline-block;
+	color: rgb(58, 58, 58);
+}
+
+.editview input[type=text] {
+	width: 400px;
+	max-width: 100%;
+}
+
+.editview  textarea {
+	min-width:400px;
+	min-height:200px;
+}
+.editview input[type=text],.editview input[type=date],.editview  textarea {
+border: 1px solid #E2E2E2;
+padding: 5px 7px;
+}
+
+
+.bar {
+	height: 1px;
+	background: rgb(0, 194, 255);
+}
+
+.pagemask {
+	background:rgba(5, 5, 5, 0.74);
+	position:fixed;
+	top:0px;
+	left:0px;
+	width: 100%;
+	height: 100%;
+	display:none;
+}

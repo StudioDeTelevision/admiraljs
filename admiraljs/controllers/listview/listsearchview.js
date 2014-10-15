@@ -1,13 +1,14 @@
 define(['jquery',     // lib/jquery/jquery
   'underscore', // lib/underscore/underscore
-  'backbone'],
-    function($, _, Backbone) {
+  'backbone',
+  './querymaker'],
+    function($, _, Backbone,QueryMaker) {
         //return a function to define "foo/title".
         //It gets or sets the window title.
 		
 		var SearchView= Backbone.View.extend({
 			tagName:"div",
-			className:"list-search",
+			className:"list-search list-header-element",
 			events:{
 				"click .searchButton":"searchIt",
 				"click .resetButton":"resetMe"
@@ -31,7 +32,13 @@ define(['jquery',     // lib/jquery/jquery
 		
 		
 		this.input=$('<input class="input" type="text" name="search" value="" />');
-		
+		this.input.on("keypress",function(e) {
+			if(e.which == 13) {
+				that.searchIt()
+			    }
+			
+			
+		})
 		this.button=$('<button class="searchButton" >search</button>');
 		this.rbutton=$('<button class="resetButton" >reset</button>');
 		
@@ -46,15 +53,16 @@ define(['jquery',     // lib/jquery/jquery
 	},searchIt:function() {
 		
 	
-		var criteria="$regex";
+	//	var criteria="$regex";
 		
 		var val=this.input.val();
 		var searchFields=this.searchFields;
-		console.log('sf',searchFields)
+		
 		if (val!="") {
 this.filters={};
+
 if (searchFields.length>0) {
-	this.filters["$or"]=new Array();
+	this.filters[QueryMaker.or]=new Array();
 }
 			for (var f in searchFields) { 
 				
@@ -77,9 +85,12 @@ if (searchFields.length>0) {
 									var qObj={};
 									qObj[fieldName+langExt]={};
 								
-									qObj[fieldName+langExt][criteria]= ".*"+val+".*";
-									qObj[fieldName+langExt]["$options"]= "i";
-									this.filters["$or"].push(qObj)
+									//qObj[fieldName+langExt][criteria]= ".*"+val+".*";
+									
+									QueryMaker.contains(qObj[fieldName+langExt],val);
+									
+									
+									this.filters[QueryMaker.or].push(qObj)
 									
 					
 				}
@@ -90,9 +101,10 @@ if (searchFields.length>0) {
 						var qObj={};
 						qObj[fieldName]={};
 						
-						qObj[fieldName][criteria]= ".*"+val+".*";
-						qObj[fieldName]["$options"]= "i";
-						this.filters["$or"].push(qObj)
+						QueryMaker.contains(qObj[fieldName],val);
+						
+						
+						this.filters[QueryMaker.or].push(qObj)
 						
 					
 					

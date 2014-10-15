@@ -1,0 +1,38 @@
+.imagecollection {
+	
+	
+}
+.imagecollection .item{
+/*	width:100px;
+	height:100px;*/
+	width: 76px;
+	height: 76px;
+	border:1px solid rgb(223, 223, 223);
+	float:left;
+	cursor:pointer;
+	margin-right: 5px;
+	padding:5px;
+	position:relative;
+}
+.imagecollection .item:hover{
+border:1px solid #222;
+}
+.imagecollection .item > img{
+max-width: 100%;
+max-height: 100%;
+}
+.imagecollection .button-remove{
+background-color:white;	
+width:12px;
+height:10px !important;
+position: absolute;
+right: 5px;
+top: 5px;
+}
+.imagecollection .add{
+
+	/*background: url('../images/glyphicons_432_plus.png') no-repeat ;
+	background-position:center center;
+	background-size:20px !important;*/
+	
+}

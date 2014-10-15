@@ -8,6 +8,8 @@ define(['jquery',
 var PaginatedCollection = Backbone.Collection.extend({
 	page:1,
 	perPage:10,
+	skip:0,
+	limit:10,
 	filters:null,
   initialize: function() {
     _.bindAll(this, 'parse', 'url', 'pageInfo', 'nextPage', 'previousPage');
@@ -23,7 +25,9 @@ var PaginatedCollection = Backbone.Collection.extend({
     var self = this;
    
 	var success = options.success;
-	var data={page: this.page, per_page: this.perPage,where:{}};
+	
+	
+	var data={skip: (this.page-1)*this.perPage, limit: this.perPage,where:{}};
 	
     if (this.schema.findFilter) {
 		
@@ -60,9 +64,14 @@ var PaginatedCollection = Backbone.Collection.extend({
 		//.getAllResponseHeaders());
 		//console.log('FETCH ');
 		var reponseHeaders=q.xhr.getAllResponseHeaders();
-		console.log('reponseHeaders ',typeof reponseHeaders)
+		console.log('reponseHeaders ',reponseHeaders)
+		console.log('q.xhr ',q.xhr)
+		console.log('q.xhr.getResponseHeader(Content-Type) ',q.xhr.getResponseHeader('Content-Type'))
+		console.log('q.xhr.getResponseHeader(Content-Range) ',q.xhr.getResponseHeader('Content-Range'))
 		//alert(q.xhr.getResponseHeader('total'))
 		 self.total = parseInt(q.xhr.getResponseHeader('total'));
+		 self.skip = parseInt(q.xhr.getResponseHeader('skip'));
+		 self.limit = parseInt(q.xhr.getResponseHeader('limit'));
 		 self.page = parseInt(q.xhr.getResponseHeader('page'));
 		 self.perPage = parseInt(q.xhr.getResponseHeader('perPage'));
 		 console.log("TOTAL",self.total)
@@ -93,6 +102,8 @@ var PaginatedCollection = Backbone.Collection.extend({
     var info = {
       total: this.total,
       page: this.page,
+	  skip:this.skip,
+	  limit:this.limit,
       perPage: this.perPage,
       pages: Math.ceil(this.total / this.perPage) || 0,
       prev: false,

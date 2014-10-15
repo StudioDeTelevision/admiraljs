@@ -1,9 +1,8 @@
-define(['jquery',     // lib/jquery/jquery
-  'underscore', // lib/underscore/underscore
+define(['jquery',    
+  'underscore', 
   'backbone','bootstrap'],
     function($, _, Backbone,template) {
-        //return a function to define "foo/title".
-        //It gets or sets the window title.
+       
 		
 		var View=Backbone.View.extend({
 			tagName:"div",
@@ -13,7 +12,7 @@ define(['jquery',     // lib/jquery/jquery
 			template:null,
 			className:"form-group",
 			initialize:function(options) {
-			//	console.log('editor init')
+		
 				var that=this;
 				
 				for (var o in options) {
@@ -40,18 +39,13 @@ define(['jquery',     // lib/jquery/jquery
 				
 				this.$el.append(this.fieldContainer)
 				
-				//console.log('tempalte',this.$el.html())
-				
+			
 				this.input=this.$el.find('.input').first();
 				
-				//console.log('input',this.input)
+				
 				this.input.attr('name',this.name)
 				
-				//console.log(this.input)
-			//	if (  this.input[0].type != 'file') {
-					//alert(options.value)
-				//   this.input.val(options.value)
-				//}
+			
 				
 				
 				this.setOnChange();
@@ -60,10 +54,9 @@ define(['jquery',     // lib/jquery/jquery
 				
 				
 			},displayValue:function() {
-				// console.log("input",this.input)
-// 				this.input.val(this.value)
+			
 				if (  this.input[0].type != 'file') {
-									//alert(options.value)
+								
 								  this.input.val(this.value)
 							}
 				
@@ -71,7 +64,7 @@ define(['jquery',     // lib/jquery/jquery
 				
 				this.value=val;
 				this.displayValue();
-				//this.input.val(val)
+			
 				
 			},getValue:function(val) {
 			return	this.value;

@@ -1,0 +1,41 @@
+.AJSpopup {
+	width:500px;
+	height:400px;
+	position:fixed;
+	top:50%;
+	left:50%;
+	margin-top:-220px;
+	margin-left:-200px;
+	background:#F7F7F7;
+	-webkit-box-shadow: 1px 1px 12px 0px rgba(30, 30, 30, 0.93);
+	-moz-box-shadow:    1px 1px 12px 0px rgba(30, 30, 30, 0.93);
+	box-shadow:         1px 1px 12px 0px rgba(30, 30, 30, 0.93);
+	padding: 30px 15px 10px;
+
+	z-index: 100000;
+}
+.AJSpopup .closeme {
+	background: url('../images/glyphicons_207_remove_2.png') no-repeat ;
+	width: 10px;
+	height: 10px;
+	background-size:100% 100%;
+	position:absolute;
+	right:10px;
+	top:10px;
+}
+.AJSpopup .contentWrapper {
+overflow-y: auto;
+height: 320px;
+overflow-x: hidden;
+}
+.AJSpopup .content {
+	background: white;
+}
+
+.AJSpopup .footer {
+	position:absolute;
+	left:0px;
+	bottom: 4px;
+	width:100%;
+	text-align:center;
+}

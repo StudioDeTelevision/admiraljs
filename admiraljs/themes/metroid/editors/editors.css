@@ -1,0 +1,33 @@
+@import "imagescollection.css" ;
+@import "collection.css" ;
+@import "stringmultilangotf.css" ;
+
+
+.editview .form-group > label{
+	width: 16.666666666666664% !important;
+	float: left;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-top: 4px;
+padding-bottom: 3px;
+	text-align:right;
+	
+	position: relative;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+	background:#EAEAEA;
+	
+}
+
+.editview .form-group > div:first-of-type{
+	
+	position: relative;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+width: 66.66666666666666%;
+float:left;
+
+}
+

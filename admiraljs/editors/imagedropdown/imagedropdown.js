@@ -1,6 +1,6 @@
 define(['jquery',     // lib/jquery/jquery
   'underscore', // lib/underscore/underscore
-  'backbone','core/editor','./vendor/jquery.dd.min','css!./vendor/dd.css'],
+  'backbone','core/editor','./vendor/jquery.dd','css!./vendor/dd.css'],
     function($, _, Backbone,EditorClass) {
         //return a function to define "foo/title".
         //It gets or sets the window title.

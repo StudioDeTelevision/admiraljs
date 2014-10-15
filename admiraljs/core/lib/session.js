@@ -26,11 +26,14 @@ define([
           if(this.supportStorage){
               var data = sessionStorage.getItem(key);
               if(data && data[0] === '{'){
+				 
                   return JSON.parse(data);
               }else{
+				  
                   return data;
               }
           }else{
+			 
               return Backbone.Model.prototype.get.call(this, key);
           }
       },
@@ -38,6 +41,7 @@ define([
 
       set : function(key, value){
           if(this.supportStorage){
+			  if (typeof value=="object") value=JSON.stringify(value);
               sessionStorage.setItem(key, value);
           }else{
               Backbone.Model.prototype.set.call(this, key, value);

@@ -1,0 +1,44 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400);
+
+.loginBlock {
+	font-family:"Helvetica","Source Sans Pro","Verdana","Sans serif";
+	font-weight:200;
+position: fixed;
+top: 50%;
+left: 50%;
+margin-left: -200px;
+margin-top: -200px;
+width: 400px;
+
+}
+.loginBlock  input[type=text],.loginBlock input[type=password] {
+		padding: 5px 7px;
+		border: 1px solid #E2E2E2;
+margin: 0px;
+}
+
+.loginBlock   *[type="button"] , .loginBlock  .button,.loginBlock   button {
+	background: rgb(47, 47, 47);
+	color: white;
+	padding: 6px 10px;
+	display: inline-block;
+	cursor: pointer;
+	border:none;
+}
+
+.loginBlock .form-group > label{
+	width: 16.666666666666664% !important;
+	float: left;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-top: 4px;
+padding-bottom: 3px;
+	text-align:right;
+	
+	position: relative;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+	background:#EAEAEA;
+	
+}

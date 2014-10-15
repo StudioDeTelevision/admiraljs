@@ -155,8 +155,10 @@ define(['jquery',     // lib/jquery/jquery
 		var View=Backbone.View.extend({
 			template:_.template(htmlTemplate),
 		    initialize:function () {
+				$.ajaxSetup({xhrFields: {
+				                withCredentials: true
+				            }});
 		           console.log('Initializing Login View, test screen',$('#screen').size());
-				  
 				   this.render();
 				   console.log('login view ',this.el)
 		       },
@@ -175,26 +177,42 @@ define(['jquery',     // lib/jquery/jquery
 			   },
 
 		       login:function (event) {
+				   var that=this;
+				   
 		           event.preventDefault(); // Don't let this button submit the form
+				   if (!AJS.config.login) AJS.config.login={};
+				   if (!AJS.config.login.url) AJS.config.login.url="login";
 		           $('.alert-error').hide(); // Hide any errors on a new submit
-		           var url = '../api/login';
+		           var url = AJS.config.api+AJS.config.login.url;
 		           var formValues = {
-		               email: $('#inputEmail').val(),
+		               user: $('#inputEmail').val(),
 		               password: $('#inputPassword').val()
 		           };
-		           console.log('Loggin in... ');
-				   if (formValues.email=="admin" && sha1(formValues.password)=="d033e22ae348aeb5660fc2140aec35850c4da997") {
-					   Session.set('authenticated',true);
-					   Backbone.history.navigate('/home', { trigger : true });
+				    console.log('Loggin in... ');
 					
-				   }
-				   else {
-					   this.throwError("bad login")
 					
-				   }
+				   
+				   if (!AJS.config.login.mode || AJS.config.login.mode=="fake") {
+				   	
+					   if (formValues.user=="admin" && sha1(formValues.password)=="d033e22ae348aeb5660fc2140aec35850c4da997") {
+						   Session.set('authenticated',true);
+						 //  Backbone.history.navigate('/home', { trigger : true });
+						   that.trigger('success');
+					   
+					   }
+					   else {
+						   this.throwError("bad login")
+					
+					   }
 				  
 				 
-					return;
+						return;
+					
+				   }
+		          
+				   
+				    if (AJS.config.login.mode=="ajax") {
+				  
 				   
 		          
 
@@ -203,17 +221,28 @@ define(['jquery',     // lib/jquery/jquery
 		               type:'POST',
 		               dataType:"json",
 		               data: formValues,
+					  
 		               success:function (data) {
 		                   console.log(["Login request details: ", data]);
                
 		                   if(data.error) {  // If there is an error, show the error messages
-		                       $('.alert-error').text(data.error.text).show();
+		                       that.throwError(data.error)
 		                   }
 		                   else { // If not, send them back to the home page
-		                       window.location.replace('#');
+							    Session.set('authenticated',true);
+								Session.set('user',data.user)
+							
+		                        that.trigger('success');
 		                   }
 		               }
-		           });
+		           }) 
+				   
+				return;
+			
+		   }
+				   
+				   
+				   
 		       }
 		})
 		

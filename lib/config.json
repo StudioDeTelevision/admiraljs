@@ -1,0 +1,6 @@
+{
+	"webappPath":"./admiraljs",
+	"defaultProject":"example",
+	"runApiServer":true,
+	"runFileServer":true
+}

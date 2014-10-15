@@ -102,6 +102,8 @@ fetch: function( fetchOptions ) {
 					var options=fields[f];
 					options.value=this.model.get(fields[f].name);
 					var newfield=new fieldClass(options);
+					console.log('fieldClass fieldClass',fields[f].editor,newfield)
+				
 					newfield.setValue(this.model.get(fields[f].name));
 			
 					
@@ -109,7 +111,6 @@ fetch: function( fetchOptions ) {
 					
 						that.model.set(this.name,this.getValue());
 					
-				console.log('CHECK CHANGE ON #'+this.name,that.model.get(this.name))
 					
 						
 						that.model.save({}, {

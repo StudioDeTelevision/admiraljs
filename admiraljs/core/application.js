@@ -1,5 +1,5 @@
-define(['backbone','./lib/session','controllers/auth/auth','./ui/sidebar','./ui/topbar','controllers/listview/listview','controllers/editview','./ui/popup','core/approuter'],
-    function(Backbone,Session,AuthView,SideBar,TopBar,ListView,EditView,Popup,AppRouter) {
+define(['backbone','./lib/session','./modules/index','./ui/sidebar','./ui/topbar','controllers/listview/listview','controllers/editview','./ui/popup','core/approuter'],
+    function(Backbone,Session,Modules,SideBar,TopBar,ListView,EditView,Popup,AppRouter) {
       
 	
 		Backbone.Model.prototype._super =
@@ -22,12 +22,12 @@ define(['backbone','./lib/session','controllers/auth/auth','./ui/sidebar','./ui/
 			    statusCode: {
 			        401: function(){
 			            // Redirec the to the login page.
-			            window.location.replace('/#login');
+			            window.location.replace('#login');
          
 			        },
 			        403: function() {
 			            // 403 -- Access denied
-			            window.location.replace('/#denied');
+			            window.location.replace('#denied');
 			        }
 			    }
 			});
@@ -48,6 +48,8 @@ define(['backbone','./lib/session','controllers/auth/auth','./ui/sidebar','./ui/
 			var tb=new TopBar();
 			AJS.topbar=tb;
 			$("body").append(tb.$el)
+			
+
 			
 			
 			if (AJS.config.customClass) {
@@ -116,60 +118,65 @@ define(['backbone','./lib/session','controllers/auth/auth','./ui/sidebar','./ui/
 					/////
 		  	AppRouter.register("home","Home",function() {
   			  AJS.screen.empty();
+			 
+			  var homeView=new Modules.DefaultHome();
+			  	  AJS.screen.append(homeView.$el);
   			  console.log('set home view');
 		  	});
+			
+			/////
+  	AppRouter.register("denied","AdmiralJS Access Denied",function() {
+	 AJS.screen.empty();
+		//alert("Access denied")
+		  AJS.screen.append("<h2>Access denied</h2><h3>Please connect or reconnect to perform this action</h3>");
+	 
+  	});
+			
+			/////
+  	AppRouter.register("builder","Schema Builder",function() {
+	  AJS.screen.empty();
+	  var view=new Modules.SchemaBuilder();
+	  	  AJS.screen.append(view.$el);
+  	});
 				
 				/////
 				AppRouter.register("logout","Logout", function() {
 			   Session.set('authenticated',false);
-			   Backbone.history.navigate('#login', { trigger : true });
-			        
+			   if (!AJS.config.login) AJS.config.login={};
+			   if (!AJS.config.login.logout) AJS.config.login.logout="logout";
+	         
+	           var url = AJS.config.api+AJS.config.login.logout;
+	           $.ajax({
+	               url:url,
+	               type:'POST',
+	               dataType:"json",
+	               complete:function (data) {
+	                  
+           
+						  
+			 			   var loc = window.location.href,
+			 			       index = loc.indexOf('#');
+
+			 			   if (index > 0) {
+			 			     window.location.href = loc.substring(0, index);
+			 			   }
+	              
+	               }
+	           });
+			   
+			  
+			 
+			   
 			     });
-				 ///// 
-				AppRouter.register("login","Login", function() {
-					
-				          var isAuth = Session.get('authenticated');
-					
-if (isAuth==false || isAuth==null || isAuth=="false"){
-	
-    AJS.screen.empty();
-	
-	AJS.topbar.hide();
 
-	 AJS.sidebar.hide();
-	
-	var authView=new AuthView();
-	
-    AJS.screen.append(authView.$el);
-	
-	console.log('set auth view')
-	
-} else { 
-	
-	AJS.topbar.hide();
-
-	 AJS.sidebar.hide();
-	 
-	Backbone.history.navigate('home', { trigger : true });
- 
-}
-			
-
-			     })
-				 
-				/////
-		  	// AppRouter.register("*path","Home",function() {
- 	//   			  AJS.screen.empty();
- 	//   			  console.log('set home view');
- 	// 		  	});
-				 
 				  Backbone.history.start(); 
 				 
 				 
-				 
-				  if(window.location.hash) {
+				  if(window.location.hash && window.location.hash!="#login" && window.location.hash!="#home") {
+					
 				    // Fragment exists
 				  } else {
+					 
 				   Backbone.history.navigate('home', { trigger : true });
 				  }  
 				 /// END INTIALIZE

@@ -1,33 +1,29 @@
 {
-  "name": "admiraljs",
-  "version": "1.0.7",
+  "name": "AdmiralJS",
+  "version": "2.0.0",
   "description": "Lightweight, plug and play admin interface",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.8.1",
+    "express": "^4.8.8",
+    "lodash": "^2.4.1",
     "formidable": "^1.0.15",
     "imagemagick": "^0.1.3",
-    "express": "^4.8.8",
-    "mongodb": "^1.4.10",
     "mkdirp": "^0.5.0",
+    "mongodb": "^1.4.10",
     "node-static": "^0.7.4",
-    "body-parser": "^1.8.1",
-    "lodash": "^2.4.1"
+    "node-uuid": "^1.4.1"
   },
   "devDependencies": {},
-  "scripts": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/StudioDeTelevision/admiraljs.git"
   },
-  "keywords": [
-    "admin",
-    "admnistration",
-    "backend",
-    "restful",
-    "api"
-  ],
-  "author": "Frédéric Jean / Studiodetelevision.com",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/StudioDeTelevision/admiraljs/issues"
   },

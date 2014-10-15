@@ -137,7 +137,7 @@ if (adressStart=="http") that.image.crossOrigin = "Anonymous";
 			
 			
 			
-			 var dataURL    = that.canvas.toDataURL("image/jpeg",0.8);
+			 var dataURL    = that.canvas.toDataURL("image/jpeg",0.95);
 			 var blob = dataURItoBlob(dataURL);
 			 
 			 return blob;

@@ -7,6 +7,7 @@ AJS.fieldClasses=[];
 AJS.fieldClassesPathes=[];
 AJS.templates=[];
 AJS.ui={};
+AJS.path={};
 
 
 var consoleHolder = console;
@@ -31,17 +32,21 @@ return f;
 
 var params=extractUrlParams();
 
-var configFolder="./config/";
-console.log(params)
+AJS.path.customFolder="example";
+
+
+
+
 if (params["config"]) {
 	
-	configFolder=configFolder+params["config"]+"/";
+	AJS.path.customFolder=params["config"];
 }
 
+AJS.path.customFolderPath="./custom/"+AJS.path.customFolder+"/";
 
 
 var configObj={
-    baseUrl: '/admiraljs/',
+    baseUrl: './',
     paths: {
         "css": "./vendor/require/css",
         "text": "./vendor/require/text",
@@ -85,8 +90,7 @@ var configObj={
     	deps: ['jquery','css!./vendor/datetime/jquery.datetimepicker.css'],
     },
             'backbone': {
-                //These script dependencies should be loaded before loading
-                //backbone.js
+               
                 deps: ['jquery','underscore'],
         exports: "Backbone"
     }, 'jquery': {
@@ -103,7 +107,7 @@ var configObj={
       exports : 'Marionette'
     },
 	"jquery.fileupload": {deps: ['jquery.ui','jquery.iframe-transport']},
-	"bootstrap": {deps: ["jquery", 'css!./vendor/bootstrap/css/bootstrap.min', 'css!./vendor/bootstrap/css/bootstrap-theme.min']},
+	"bootstrap": {deps: ["jquery"]},
 	backgrid: {
 	            deps: ['jquery', 'backbone', 'underscore', 'css!./vendor/backgrid.min'],
 	            exports: 'Backgrid'
@@ -111,6 +115,10 @@ var configObj={
 }
 	};
 	
+
+
+	
+require.config(configObj);
 
 
 var editors=["string",
@@ -136,189 +144,100 @@ for (var i=0; i<editors.length; i++) {
 	var editor=editors[i];
 	if (typeof editor=="object") {
 		console.log("PREPARE FIELD EDITOR DEF ",editor.name)
-		
-		//configObj.paths['editors/'+editor.name]="./editors/"+editor.path;
+	
 AJS.fieldClassesPathes[editor.name]="./editors/"+editor.path;
 editorsPathesArray.push("./editors/"+editor.path)
 	}
 	if (typeof editor=="string") {
 		console.log("PREPARE FIELD EDITOR DEF ",editor)
-		//configObj.paths['editors/'+editor]="./editors/"+editor;
+		
 AJS.fieldClassesPathes[editor]="./editors/"+editor;
-editorsPathesArray.push("./editors/"+editor)
+	editorsPathesArray.push("./editors/"+editor)
 	}
 	
 	
 
 }
-	
-require.config(configObj);
 
-var requirepathes=['require'].concat(["./core/application","./core/helpers/tools","text!"+configFolder+"config.json","text!"+configFolder+"schemas.json"]).concat(editorsPathesArray);
 
-//console.log('pathes',requirepathes)
-  	
-require(requirepathes, function(req) {
+
+require(['require',"./core/helpers/tools","./core/approuter","./core/configloader",'./core/lib/session',"./core/application","./core/auth/index","./core/schemaloader"].concat(editorsPathesArray), function(req) {
 	
 	
-	var App=req("./core/application");
+	
+	var AppRouter=req("./core/approuter");
+	AJS.router=AppRouter;
 	AJS.tools=req("./core/helpers/tools");
-	var config=req("text!"+configFolder+"config.json");
-	var schemas=req("text!"+configFolder+"schemas.json");
-	try {
-		AJS.config=JSON.parse(config)
-		console.log(AJS.config)
-}
-catch (e) {
-	alert('Error in json syntax in config file')
-	return;
-}
-
-var idType=AJS.config.recordID;
-if (idType==null) alert('You must specify a recordID key to use for your models in config.json . ex: "recordID":"_id"')
-
-// SWITCH DEBUG MODE
-
-if (AJS.config.debug) {
-	debug(AJS.config.debug);
-}
-else debug(false);
-
-// APPLY THEME
-var themeFolder="default";
-if (AJS.config.theme) {
-	themeFolder=AJS.config.theme;
-}
-//,"css!./themes/default/style"
-
-var cssUrl = require.toUrl("./themes/"+themeFolder+"/style.css");
-
-$(document).ready(function(){
-
-  
-           if (document.createStyleSheet){
-               document.createStyleSheet(cssUrl);
-           }
-           else {
-               $("head").append($("<link rel='stylesheet' href='"+cssUrl+"' type='text/css' media='screen' />"));
-           }
-       
-   });
-
-
-	// try {
-// 		schemas=JSON.parse(schemas)
-// }
-// catch (e) {
-// 	alert('Error in json syntax in schema file')
-// 	return;
-// }
-//schemas=eval(schemas);
-
-
-schemas=eval('(' + schemas + ')');
-
-
-for (var i=0; i<schemas.length; i++) {
-	
-	var schem = _.clone(schemas[i]);
+	var ConfigLoader=req("./core/configloader");
+	var Session=req("./core/lib/session");
+	var App=req("./core/application");
+	var Authentification=req("./core/auth/index");
+	var SchemaLoader=req("./core/schemaloader");
 	
 	
-	if (schem.extends!=null) {
-		
-		var parent=_.findWhere(schemas,{"schemaName":schem.extends});
-		
-		if (parent) {
-			
-			for (var p in parent) {
-				
-				if (schem[p]) {
-					console.log("preserve attribute ",p)
-				}
-				else {
-						console.log("copy attribute ",p)
-					schem[p]=parent[p];
-				}
-				
-				
-				
+	
+	
+  	for (var c in AJS.fieldClassesPathes) {
+
+AJS.fieldClasses[c]=req(AJS.fieldClassesPathes[c]);
+	}
+	
+	
+	
+	
+		$(document).ready(function() {
+			$('body').empty()
+			var launchApp=function() {
+	  			
+					
+	  				var sl=new SchemaLoader({"folder":AJS.path.customFolderPath+"config/"});
+	  				sl.on('success',function() {
+					
+	  					var app=new App({"folder":AJS.path.customFolderPath+"config/"});
+	  					})
+					
+	  			
 			}
+		   
+		   
+  			var cl=new ConfigLoader({"folder":AJS.path.customFolderPath+"config/"});
+  			cl.on('success',function() {
+				    
+		   var isAuth = Session.get('authenticated');
+		 
+		
+		  
+		  if (isAuth==false || isAuth==null || isAuth=="false"){
+	  		var auth=new Authentification();
+	  		$("body").append(auth.$el);
+	  		auth.on('success',function() {
+	  			this.$el.remove();
+	  			
+			launchApp();
 			
-		}
-		
-		else {
-		
-			alert('extends undefined class (parent class must be defined before) '+schem.schemaName)
-		}
-		
-		
-	}
-	
-	// adds CRUD Urls if needed
-	
-	
-	if (schem.create==null) schem.create=schem.model+"/create";
-	if (schem.update==null) schem.update=schem.model+"/update";
-	if (schem.find==null) schem.find=schem.model+"/find";
-	if (schem.destroy==null) schem.destroy=schem.model+"/destroy";
-	
-	// Little loop to authorize use of Function in the schema definitions
-
-	
-	for (var p in schem) {
-		(function(p,myschem){
-	
-	
-		myschem["_"+p]=myschem[p];
-		delete myschem[p];
-		
-		
-		
-		Object.defineProperty(myschem,p,{
-		    get: function() { 
+	  			
+				
 			
-				if (typeof this["_"+p]=="function") {
-					return this["_"+p]();
-				}
-				else return this["_"+p];
-			 }
-		  });
-		  })(p,schem)
-	}
+	  		})
+	   }
+	   else {
+		  
+ 			launchApp();
+	   }
+	   
+	   
+	   })
+				
+	 
+	 
+	 
 	
-	// End of Little loop to authorize use of Function in the schema definitions
 		
 		
-		
-	
-	
-	AJS.schemas[schem.schemaName]=schem;
-	
-}
-
-
-
-		
-	  	for (var c in AJS.fieldClassesPathes) {
-	  		
-			console.log('define fields',c,AJS.fieldClassesPathes[c])
-	AJS.fieldClasses[c]=req(AJS.fieldClassesPathes[c])
-		}
-		
-		new App();
-		
-		
-		
-		
-		
-		
-		
-	
-		$(".page_title").html(AJS.config.title)
-		
-
-
+		});
 });
+
+
 
 
 
