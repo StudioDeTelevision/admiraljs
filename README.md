@@ -85,6 +85,14 @@ maintaining the core of the app as cleaner as possible :-)
 - 2 ways to activate your configuration: 
 in main.js, replace AJS.path.customFolder="example"; by AJS.path.customFolder="myproject"; OR start admiraljs with a config param: http://localhost:9999/admiraljs?config=myproject
 
+
+
+### Config.json
+
+	
+
+### Schemas.json
+
 ## Hook
 
 The Custom folder is the place to add your own extensions data structure should be custom -> myproject -> editors custom -> myproject -> sidebar etc... to keep a clean code  
@@ -154,10 +162,22 @@ Located in the editors folder, those editors are used to defined the fields'edit
 
 ####yesno
 
-## Contributions
+## Security
+  
+AdmiralJS provides 2 approches  
 
-Please contribute and share !
+1 For developement purpose, you can set the server with auth:false and the webapp with auth:{mode:"fake"} 
 
+2 For production, you might use our minimalist security implementation based on PassportJS. Set auth:{username:"adminname",password:"whatever"} on server side and auth:{mode:"ajax"} on client side
+
+
+
+## Issues & Contributions
+
+Please, post questions, bugs in the Issues on github.  
+  
+Please contribute and share your own field editor, themes etc...  
+  
 ## Contact
 
 Frédéric: studiodetelevision@gmail.com  
