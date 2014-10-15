@@ -23,6 +23,10 @@ Admiral can be easily plugged into a SAILSJS project, but in order to stay more 
 
 npm install admiraljs  
   
+  
+var admiral=require('admiraljs');  
+  
+  
 admiral.setConfig({  
   	"webappPath":"./admiraljs",  
   	"defaultProject":"example",  
