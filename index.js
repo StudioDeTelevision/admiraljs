@@ -7,6 +7,8 @@ var lodash = require('lodash');
 var config=require('./lib/config.json');
 
 
+
+
 module.exports.setConfig=function(cfg) {
 	
 	
@@ -16,16 +18,31 @@ module.exports.setConfig=function(cfg) {
 
 
 module.exports.start=function() {
+	
+	
+
+	if (config.auth!=false || config.auth!=null ) {
+		
+		
+		
+	
+		var authModule=require("./lib/security")(config.auth || null);
+		app.use(authModule);
+		
+		
+		
+	
+	}
 
 
-if (config.runApiServer) {
+if (config.runApiServer==true) {
 	
 	var api=require("./lib/apiserver")(config.api || null);
 	app.use(api);
 	
 }
 
-if (config.runFileServer) {
+if (config.runFileServer==true) {
 	
 	var fileserver=require("./lib/fileserver")(config.fileserver || null);
 	app.use(fileserver);

@@ -1,18 +1,21 @@
 {
   "name": "AdmiralJS",
   "version": "2.0.0",
-  "description": "Lightweight, plug and play admin interface",
+  "description": "Lightweight plug and play admin interface",
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.8.1",
     "express": "^4.8.8",
-    "lodash": "^2.4.1",
+    "express-session": "^1.8.2",
     "formidable": "^1.0.15",
     "imagemagick": "^0.1.3",
+    "lodash": "^2.4.1",
     "mkdirp": "^0.5.0",
     "mongodb": "^1.4.10",
     "node-static": "^0.7.4",
-    "node-uuid": "^1.4.1"
+    "node-uuid": "^1.4.1",
+    "passport": "^0.2.1",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {},
   "scripts": {

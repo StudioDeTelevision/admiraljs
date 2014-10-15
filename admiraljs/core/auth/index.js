@@ -186,6 +186,7 @@ define(['jquery',     // lib/jquery/jquery
 		           var url = AJS.config.api+AJS.config.login.url;
 		           var formValues = {
 		               user: $('#inputEmail').val(),
+		               username: $('#inputEmail').val(),
 		               password: $('#inputPassword').val()
 		           };
 				    console.log('Loggin in... ');
@@ -225,7 +226,7 @@ define(['jquery',     // lib/jquery/jquery
 		               success:function (data) {
 		                   console.log(["Login request details: ", data]);
                
-		                   if(data.error) {  // If there is an error, show the error messages
+		                   if(data.error ) {  // If there is an error, show the error messages
 		                       that.throwError(data.error)
 		                   }
 		                   else { // If not, send them back to the home page
