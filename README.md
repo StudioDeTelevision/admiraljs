@@ -60,9 +60,9 @@ admiral.start();
 
 ## Use as a standalone webapp
 
-AdmiralJS was developped as a clientside webapp.  
+AdmiralJS was developped as a client-side webapp.  
   
-It also may be used standalone - independently from the express server  
+It may also be used standalone - independently from the express server  
 - download latest and pick the app in the admiraljs folder
 - configure for your own restful api server (see webapp configuration)
 
@@ -89,9 +89,11 @@ in main.js, replace AJS.path.customFolder="example"; by AJS.path.customFolder="m
 
 ### Config.json
 
-	
+
 
 ### Schemas.json
+
+
 
 ## Hook
 
@@ -166,10 +168,9 @@ Located in the editors folder, those editors are used to defined the fields'edit
   
 AdmiralJS provides 2 approches  
 
-1 For developement purpose, you can set the server with auth:false and the webapp with auth:{mode:"fake"} 
+1 For developement purpose, you can use a fake auth method. Set the server with auth:false and the webapp with auth:{mode:"fake"} 
 
-2 For production, you might use our minimalist security implementation based on PassportJS. Set auth:{username:"adminname",password:"whatever"} on server side and auth:{mode:"ajax"} on client side
-
+2 For production, you might use our minimalist security implementation based on PassportJS. Set auth:{username:"AdminName",password:"whatever"} on server side and auth:{mode:"ajax"} on client side
 
 
 ## Issues & Contributions
