@@ -50,7 +50,9 @@ if (config.runFileServer==true) {
 }
 
 
+if (config.webappPath=="") config.webappPath=__dirname+"/admiraljs";
 app.use('/admiraljs', express.static(config.webappPath));
+
 
 
 var server = app.listen(9999, function() {

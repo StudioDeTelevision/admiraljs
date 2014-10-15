@@ -27,8 +27,7 @@ npm install admiraljs
 var admiral=require('admiraljs');  
   
   
-admiral.setConfig({  
-  	"webappPath":"./admiraljs",  
+admiral.setConfig({   
   	"defaultProject":"example",  
   	"runApiServer":true,  
   	"runFileServer":true  
