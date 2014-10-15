@@ -117,7 +117,7 @@ AdmiralJS provide some basic field editors but you can write and add your own by
 
 ### Basic Editors
 
-located in the editors folder this editors are used to defined field edition strategy in schemas.json
+Located in the editors folder, those editors are used to defined the fields'edition strategies in schemas.json
 
 ####collection
 
