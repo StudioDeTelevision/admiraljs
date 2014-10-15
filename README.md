@@ -19,7 +19,7 @@ admiral.setConfig({
 	"runApiServer":true,  
 	"runFileServer":true  
 	,  
-	api: {"database":{host:"37.59.30.80",  
+	api: {"database":{host:"your host",  
 		name:"test"}  
 	},  
 	fileserver: {  
