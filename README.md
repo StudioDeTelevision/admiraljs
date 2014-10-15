@@ -15,18 +15,19 @@ Pluggable on any CRUD or RESTFUL API
 ## Use with bundled express/node server
 
 npm install admiraljs  
+  
 admiral.setConfig({  
-	"webappPath":"./admiraljs",  
-	"defaultProject":"example",  
-	"runApiServer":true,  
-	"runFileServer":true  
-	,  
-	api: {"database":{host:"your host",  
-		name:"test"}  
-	},  
-	fileserver: {  
-		uploadDir:__dirname+"/public"  
-	}  
+  	"webappPath":"./admiraljs",  
+  	"defaultProject":"example",  
+  	"runApiServer":true,  
+  	"runFileServer":true  
+  	,  
+  	api: {"database":{host:"your host",  
+    		name:"test"}  
+  	},  
+  	fileserver: {  
+    		uploadDir:__dirname+"/public"  
+  	}  
 }  
 )  
   
