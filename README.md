@@ -18,19 +18,17 @@ AdmiralJS allows quick generation of an admin interface, letting you spend more 
 - Written in javascript with requirejs / jquery / backbone  
 - Usable with the bundled server or as a standalone webapp
   
-# Server
-
 AdmiralJS was developped as a client-side webapp, to make it as much as possible independant from frameworks and platforms.  
 It can be used with its own api server developped with expressjs under node
 It can easily be used with SAILSJS under node (see SailsJS Configuration)
 It can also just be used as a standalone webapp, and you might provide your own api server, under node, or under apache with php or whatever.
 
-## Use it with bundled express/node server
+# Use it with bundled express/node server
 
 It maybe the simplest way to start. AdmiralJS comes as a nodejs module, offering a restful api server which can be used to manipulate your mongo database for your project.  
   
   
-### Installation
+## Installation
 
 ** Requirements: **  
 ** NodeJS   **  
@@ -58,7 +56,7 @@ admiral.start();
 ** Next Step ** configure the web application
 
 
-### Server Configuration Options
+## Server Configuration Options
 
 - ** webappPath ** you might want to change your webapp path...  
 
@@ -72,11 +70,13 @@ admiral.start();
 > true will use default login: {username:"admin",password:"admiraljs"}
 > if you use auth, you must set auth:{mode:"ajax"} in the webapp config.json (see further)
 
-## Use it with SAILSJS
+# Use it with SAILSJS
 
 Why SailsJS ? Because it's a great nodejs framework, which let's you build restful apis on the fly and a lot of other great features.
 
-### Sails server configuration
+## Sails server configuration
+
+# Use it with any other server
 
 
 
