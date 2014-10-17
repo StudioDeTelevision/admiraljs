@@ -21,7 +21,7 @@ module.exports.start=function() {
 	
 	
 
-	if (config.auth!=false || config.auth!=null ) {
+	if (config.auth!=false && config.auth!=null ) {
 		
 		
 		
@@ -35,14 +35,14 @@ module.exports.start=function() {
 	}
 
 
-if (config.api!=false || config.api!=null) {
+if (config.api!=false && config.api!=null) {
 	
 	var api=require("./lib/apiserver")(config.api || null);
 	app.use(api);
 	
 }
 
-if (config.fileserver!=false || config.fileserver!=null) {
+if (config.fileserver!=false && config.fileserver!=null) {
 	
 	var fileserver=require("./lib/fileserver")(config.fileserver || null);
 	app.use(fileserver);
@@ -56,8 +56,11 @@ app.use('/admiraljs', express.static(config.webappPath));
 
 
 var server = app.listen(9999, function() {
+	
+	var url="http://localhost:%d/admiraljs";
+	
     console.log('********************************************************');
-    console.log('* AdmiralJS is now sailing on http://localhost:%d/admiraljs ', server.address().port);
+    console.log('* AdmiralJS is now sailing on '+url, server.address().port);
     console.log('********************************************************');
 });
 

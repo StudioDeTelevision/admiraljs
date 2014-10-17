@@ -119,7 +119,10 @@ define(['backbone','./lib/session','./modules/index','./ui/sidebar','./ui/topbar
   	AppRouter.register("denied","AdmiralJS Access Denied",function() {
 	 AJS.screen.empty();
 		//alert("Access denied")
-		  AJS.screen.append("<h2>Access denied</h2><h3>Please connect or reconnect to perform this action <a href='/admiraljs' ></a></h3>");
+		//  AJS.screen.append("<h2>Access denied</h2><h3>Please connect or reconnect to perform this action <a href='/admiraljs' ></a></h3>");
+	 
+	  Backbone.history.navigate('logout', { trigger : true });
+	 
 	 
   	});
 			
@@ -128,6 +131,16 @@ define(['backbone','./lib/session','./modules/index','./ui/sidebar','./ui/topbar
 	  AJS.screen.empty();
 	  var view=new Modules.SchemaBuilder();
 	  	  AJS.screen.append(view.$el);
+  	});	
+	
+	/////
+  	AppRouter.register("schema","Schema Editor",function() {
+	  AJS.screen.empty();
+	  var view=new Modules.SchemaEditor();
+	  	  AJS.screen.append(view.$el);
+	 // Modules.SchemaEditor.show();
+	 // AJS.screen.append(Modules.SchemaEditor.$el);
+	 // 	  AJS.screen.append(view.$el);
   	});
 				
 				/////
@@ -151,6 +164,9 @@ define(['backbone','./lib/session','./modules/index','./ui/sidebar','./ui/topbar
 			 			   if (index > 0) {
 			 			     window.location.href = loc.substring(0, index);
 			 			   }
+						   else {
+						   	 window.location.href = loc;
+						   }
 	              
 	               }
 	           });
@@ -170,6 +186,9 @@ define(['backbone','./lib/session','./modules/index','./ui/sidebar','./ui/topbar
 					 
 				   Backbone.history.navigate('home', { trigger : true });
 				  }  
+				  
+				  
+				  AJS.trigger('ready')
 				 /// END INTIALIZE
 				
 				//new Custom();

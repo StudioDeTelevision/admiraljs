@@ -4,6 +4,8 @@
 @import "ui/ui.css" ;
 @import "editors/editors.css" ;
 @import "ui/listview.css" ;
+@import "ui/schema.css" ;
+@import "ui/icons.css" ;
 
 /*body { padding-top: 100px; }
 
@@ -20,17 +22,7 @@ a {
 }
 
 
-.logout {
-	float: right;
-	width: 25px;
-	height: 25px;
-	display: inline-block;
-	cursor: pointer;
-	background: url('images/logout.png') no-repeat;
-	background-size: 100%;
-	margin-top: 11px;
-	margin-right: 10px;
-}
+
 #screen {
 	margin-left: 185px;
 	padding-top: 41px;

@@ -1,13 +1,17 @@
 define(['./defaulthome/index',
-'./schemabuilder/index'],
+'./schemabuilder/index',
+'./schemaeditor/index'],
     function(DefaultHome,
-		SchemaBuilder) {
+		SchemaBuilder,
+	SchemaEditor) {
        
 		
 		var Modules={};
 		
 		Modules.DefaultHome=DefaultHome;
 		Modules.SchemaBuilder=SchemaBuilder;
+		Modules.SchemaEditor=SchemaEditor;
+		
 		
         return Modules;
     }

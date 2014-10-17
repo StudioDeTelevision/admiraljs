@@ -1,0 +1,12 @@
+.schemaEditor {
+	
+	
+}
+
+.schemaEditor textarea {
+	width:100%;
+	min-height:500px;
+	font-size: 13px;
+	background: rgb(67, 67, 67);
+	color: rgb(224, 251, 213);
+}

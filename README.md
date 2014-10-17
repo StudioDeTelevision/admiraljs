@@ -18,13 +18,19 @@ AdmiralJS allows quick generation of an admin interface, letting you spend more 
 - Written in javascript with requirejs / jquery / backbone  
 - Usable with the bundled server or as a standalone webapp
   
-# Use with bundled express/node server
+# Server
 
-AdmiralJS comes as a nodejs module, offering a restful api server which can be used to manipulate your mongo database for your project.  
+AdmiralJS was developped as a client-side webapp, to make it as much as possible independant from frameworks and platforms.  
+It can be used with its own api server developped with expressjs under node
+It can easily be used with SAILSJS under node (see SailsJS Configuration)
+It can also just be used as a standalone webapp, and you might provide your own api server, under node, or under apache with php or whatever.
+
+## Use it with bundled express/node server
+
+It maybe the simplest way to start. AdmiralJS comes as a nodejs module, offering a restful api server which can be used to manipulate your mongo database for your project.  
   
-Admiral can also be easily plugged into a SAILSJS project and thanks to the waterline ORM, you might have the possibility to administrate data stored on a MYsql, Mongo, Redis server , etc ... 
   
-## Installation
+### Installation
 
 ** Requirements: **  
 ** NodeJS   **  
@@ -52,7 +58,7 @@ admiral.start();
 ** Next Step ** configure the web application
 
 
-## Server Configuration Options
+### Server Configuration Options
 
 - ** webappPath ** you might want to change your webapp path...  
 
@@ -66,14 +72,17 @@ admiral.start();
 > true will use default login: {username:"admin",password:"admiraljs"}
 > if you use auth, you must set auth:{mode:"ajax"} in the webapp config.json (see further)
 
-# AdmiralJS: The Web Application
+## Use it with SAILSJS
 
-AdmiralJS was developped as a client-side webapp.  
-  
-It may also be used standalone - independently from the express server  
-- download latest and pick the app in the admiraljs folder
-- configure for your own restful api server (see webapp configuration)
+Why SailsJS ? Because it's a great nodejs framework, which let's you build restful apis on the fly and a lot of other great features.
 
+### Sails server configuration
+
+
+
+# AdmiralJS
+
+The project itself is located in the admiraljs subfolder.
 
 ## Admiral Webapp Configuration
 

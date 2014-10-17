@@ -1,33 +1,88 @@
-AJS={};
-AJS.tools={};
-AJS.schemas=[];
-AJS.Application={};
-AJS.fieldClasses=[];
-AJS.fieldClassesPathes=[];
-AJS.templates=[];
-AJS.ui={};
-AJS.path={};
 
-// Define some default configuration
-// will be overriden by custom/myproject/config/config.json
 
-AJS.config={
-"api":"http://localhost:9999/",
-"fileUploadUrl":"http://localhost:9999/upload",
-"fileDir":"http://localhost:9999/files/",
-"thumbDir":"http://localhost:9999/files/thumbnail/",
-"defaultLanguage":"fr",
-"currentLanguage":"fr",
-"recordID":"_id",
-"login":{"mode":"fake"},
-"debug":false,
-"dateTimeFormat":"YYYY-MM-DD HH:mm:ss",
 
-"tinymce":{"plugins":"code,link,paste",
-           "toolbar":"code | bold italic | alignleft aligncenter alignright alignjustify   | link unlink | pastetext | undo redo",
-		   "theme": "modern",
-		    "skin": "light"}
+var AJSClass=function() {
+	
+	this.tools={};
+	this.schemas=[];
+	this.Application={};
+	this.fieldClasses=[];
+	this.fieldClassesPathes=[];
+	this.templates=[];
+	this.ui={};
+	this.path={};
+
+	// Define some default configuration
+	// will be overriden by custom/myproject/config/config.json
+
+	this.config={
+	"api":"http://localhost:9999/",
+	"fileUploadUrl":"http://localhost:9999/upload",
+	"fileDir":"http://localhost:9999/files/",
+	"thumbDir":"http://localhost:9999/files/thumbnail/",
+	"defaultLanguage":"fr",
+	"currentLanguage":"fr",
+	"recordID":"_id",
+	"login":{"mode":"fake"},
+	"debug":false,
+	"dateTimeFormat":"YYYY-MM-DD HH:mm:ss",
+
+	"tinymce":{"plugins":"code,link,paste",
+	           "toolbar":"code | bold italic | alignleft aligncenter alignright alignjustify   | link unlink | pastetext | undo redo",
+			   "theme": "modern",
+			    "skin": "light"}
+	};
+	
+    if (this._listeners == null)
+    {
+       this._listeners = [];
+    }
+    this.isEventDispatcher = true;
+    if (typeof(this.dispatchEvent) == "undefined")
+    {
+		
+        this.dispatchEvent=this.trigger = function(eventObject)
+        {
+			if (typeof eventObject=="string") {
+				eventObject=new Event(eventObject)
+			}
+            for ( var i = 0; i < this._listeners.length; i++)
+            {
+                var test = this._listeners[i];
+                if (test.type === eventObject.type)
+                {
+                   test.callback(eventObject);
+                   break;
+                }
+            }
+        };
+    }
+    if (typeof(this.addEventListener) == "undefined")
+    {
+        this.addEventListener=this.on = function (type, callback, capture) 
+        {
+            // no dupes
+            var declared = false;
+            for ( var i = 0; i < this._listeners.length; i++)
+            {
+                var test = this._listeners[i];
+                if (test.type === type && test.callback === callback)
+                {
+                    declared = true;
+                    break;
+                }
+            }
+            if (!declared)
+            {
+                this._listeners.push({'type':type,'callback':callback,'capture':capture});
+            }
+        };
+    }    
 };
+
+
+AJS=new AJSClass();
+
 
 
 var consoleHolder = console;
@@ -80,8 +135,6 @@ var configObj={
     "backbone.paginator" : './vendor/backbone.paginator.min',
 		'bootstrap': './vendor/bootstrap/js/bootstrap.min',
 		'datetimepicker': './vendor/datetime/jquery.datetimepicker',
-		  'backgrid': './vendor/backgrid.min',
-		  'backgrid-paginator': './vendor/backgrid-paginator.min',
 		  'moment': './vendor/moment.min',
 		  'jquery.ui.widget': './vendor/fileupload/jquery.ui.widget',
 		  'jquery.ui': './vendor/jquery-ui.min',
@@ -127,11 +180,7 @@ var configObj={
       exports : 'Marionette'
     },
 	"jquery.fileupload": {deps: ['jquery.ui','jquery.iframe-transport']},
-	"bootstrap": {deps: ["jquery"]},
-	backgrid: {
-	            deps: ['jquery', 'backbone', 'underscore', 'css!./vendor/backgrid.min'],
-	            exports: 'Backgrid'
-	        }
+	"bootstrap": {deps: ["jquery"]}
 }
 	};
 	

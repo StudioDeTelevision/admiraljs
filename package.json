@@ -1,6 +1,6 @@
 {
   "name": "admiraljs",
-  "version": "2.0.2",
+  "version": "2.0.4",
   "description": "Lightweight plug and play admin interface",
   "main": "index.js",
   "dependencies": {
@@ -12,10 +12,10 @@
     "lodash": "^2.4.1",
     "mkdirp": "^0.5.0",
     "mongodb": "^1.4.10",
-    "node-static": "^0.7.4",
-    "node-uuid": "^1.4.1",
     "passport": "^0.2.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "node-static": "^0.7.4",
+    "node-uuid": "^1.4.1"
   },
   "devDependencies": {},
   "scripts": {
@@ -25,7 +25,20 @@
     "type": "git",
     "url": "https://github.com/StudioDeTelevision/admiraljs.git"
   },
-  "author": "Frédéric Jean / studiodetelevision.com",
+  "keywords": [
+    "admin",
+    "administration",
+    "backend",
+    "sails",
+    "sailsjs",
+    "restful",
+    "express",
+    "backoffice",
+    "admin",
+    "generator",
+    "rest"
+  ],
+  "author": "Frédéric Jean, studiodetelevision.com",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/StudioDeTelevision/admiraljs/issues"

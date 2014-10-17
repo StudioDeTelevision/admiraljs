@@ -11,7 +11,7 @@ define(['jquery',     // lib/jquery/jquery
 			className:"navbar navbar-default navbar-fixed-top",
 			initialize:function() {
 				this.hide();
-				this.$el.html('<div id="topbar" class="container-fluid"><a id="page_title" class="page_title" href="#home" >'+AJS.config.title+'</a><a class="logout" href="#logout" ></a></div>')
+				this.$el.html('<div id="topbar" class="container-fluid"><a id="page_title" class="page_title" href="#home" >'+AJS.config.title+'</a><a class="logout icon-logout" href="#logout" ></a></div>')
   
 			},
 			
