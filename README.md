@@ -7,7 +7,7 @@ github page: https://github.com/StudioDeTelevision/admiraljs
 
 a web app for admin generation + a node server for api + file upload.
 
-## About
+# About
 
 AdmiralJS allows a quick generation of an admin interface, letting you spend more interesting time on the design of the front end with your favorite framework.
   
