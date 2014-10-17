@@ -56,11 +56,15 @@ admiral.start();
 
 - ** webappPath ** you might want to change your webapp path...  
 
-- ** defaultProject ** must correspond to your configuration folder name inside the webapp // needed for security and overrides  
+- ** projectName ** must correspond to your configuration folder name inside the webapp // needed for security and overrides  
 
-- ** api ** if not set won't run the api, maybe you'll want to use yours ?  
+- ** api ** You must specify your database connection settings / if not set won't run the api, maybe you'll prefer to use yours ?  
 > api:{database:{host:"",name:"",username:"",password:"",port:27017}}
 - ** fileserver **  if not set won't run the fileserver, maybe you'll want to use yours ?  
+
+- ** auth: ** false/true/{username:"AdminName",password:"whatever"}
+> true will use default login: {username:"admin",password:"admiraljs"}
+> if you use auth, you must set auth:{mode:"ajax"} in the webapp config.json (see further)
 
 # Use as a standalone webapp
 
@@ -109,6 +113,7 @@ OR start admiraljs with a config param: http://localhost:9999/admiraljs?config=m
 
 - **"thumbDir":**  url for file thumbnails reading, defaults to "http://localhost:9999/files/thumbnail/",
 
+- **"login":** {"mode":"ajax"} or {"mode":"fake"}
 
 ## Schemas.json
 >admiraljs/custom/myproject/config/schemas.json
