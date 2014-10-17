@@ -124,8 +124,8 @@ It's just a JSON object that MUST BE SET, minimum with a "title" parameter
 It's just a Array of schema definition objects [{...},{....}] that MUST BE SET IN ORDER TO EDIT SOMETHING FROM THE DATABASE :)
   
 ### Schema Object Structure:
-**Example of a minimum "post" schema structure:  **
-  
+> **Example of a minimal "post" schema structure:  **
+>    
 >{"schemaName":"posts",  
 >	 "model":"posts",  
 >	"label":"My posts",  
