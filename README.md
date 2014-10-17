@@ -25,6 +25,10 @@ AdmiralJS comes as a nodejs module, offering a restful api server which can be u
 Admiral can also be easily plugged into a SAILSJS project and thanks to the waterline ORM, you might have the possibility to administrate data stored on a MYsql, Mongo, Redis server , etc ... 
   
 ### Installation
+
+** Requirements: **
+** NodeJS   **
+** A mongo database to connect to   **
   
 npm install admiraljs   
   
