@@ -1,33 +1,9 @@
 {
 	"title":"ADMIRAL JS DEMO",
 	
-	"recordID":"_id",
-	
-"api":"http://localhost:9999/",
-
-"fileUploadUrl":"http://localhost:9999/upload",
-
-"fileDir":"http://localhost:9999/files/",
-
-"thumbDir":"http://localhost:9999/files/thumbnail/",
-
-"defaultLanguage":"fr",
-
-"currentLanguage":"fr",
-
 "login":{"mode":"ajax"},
 
-"debug":true,
-
-
-"dateTimeFormat":"YYYY-MM-DD HH:mm:ss",
-
-"tinymce":{"plugins":"code,link,paste",
-           "toolbar":"code | bold italic | alignleft aligncenter alignright alignjustify   | link unlink | pastetext | undo redo",
-		   "theme": "modern",
-		    "skin": "light"},
-			
-"customClass":"./custom/example/example"
+"debug":true
 
 
 }

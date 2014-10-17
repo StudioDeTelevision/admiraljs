@@ -93,10 +93,25 @@ OR start admiraljs with a config param: http://localhost:9999/admiraljs?config=m
 
 
 ## Config.json
+>admiraljs/custom/myproject/config/config.json
 
+- **title:** project title displayed in the top bar
+
+- **debug:** true/false
+
+- **recordID:** depending on your database can be "_id" or "id" or ... 
+
+- **api:** default configuration targets the bundled api on "http://localhost:9999/" , you might target yours
+
+- **"fileUploadUrl":** url for file upload, defaults to "http://localhost:9999/upload" 
+
+- **"fileDir":**  url for file reading, defaults to "http://localhost:9999/files/",
+
+- **"thumbDir":**  url for file thumbnails reading, defaults to "http://localhost:9999/files/thumbnail/",
 
 
 ## Schemas.json
+>admiraljs/custom/myproject/config/schemas.json
 
 
 

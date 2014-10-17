@@ -1,5 +1,4 @@
 AJS={};
-AJS.config={};
 AJS.tools={};
 AJS.schemas=[];
 AJS.Application={};
@@ -8,6 +7,27 @@ AJS.fieldClassesPathes=[];
 AJS.templates=[];
 AJS.ui={};
 AJS.path={};
+
+// Define some default configuration
+// will be overriden by custom/myproject/config/config.json
+
+AJS.config={
+"api":"http://localhost:9999/",
+"fileUploadUrl":"http://localhost:9999/upload",
+"fileDir":"http://localhost:9999/files/",
+"thumbDir":"http://localhost:9999/files/thumbnail/",
+"defaultLanguage":"fr",
+"currentLanguage":"fr",
+"recordID":"_id",
+"login":{"mode":"fake"},
+"debug":false,
+"dateTimeFormat":"YYYY-MM-DD HH:mm:ss",
+
+"tinymce":{"plugins":"code,link,paste",
+           "toolbar":"code | bold italic | alignleft aligncenter alignright alignjustify   | link unlink | pastetext | undo redo",
+		   "theme": "modern",
+		    "skin": "light"}
+};
 
 
 var consoleHolder = console;

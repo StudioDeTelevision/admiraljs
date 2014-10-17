@@ -1,12 +1,12 @@
-define(["jquery","backbone"], function ($,Backbone) {
+define(["jquery","backbone","lodash"], function ($,Backbone,lodash) {
 	
 
 	var Loader=Backbone.View.extend({initialize:function(options) {
 		var that=this;
 					var url=options.folder+"config.json";
 		$.getJSON(url,function(config) {
-			
-		AJS.config=config;
+			lodash.merge(AJS.config,config)
+		//AJS.config=config;
 			//
 	// 	try {
 	// 		AJS.config=JSON.parse(config)

@@ -49,25 +49,16 @@ define(['backbone','./lib/session','./modules/index','./ui/sidebar','./ui/topbar
 			AJS.topbar=tb;
 			$("body").append(tb.$el)
 			
+			require([AJS.path.customFolderPath+"index"], function (CustomApp) {
+				 
+			    var custom = new CustomApp();
+			   that.initialize();
+			  },function() {
+				 
+				  that.initialize();
+			  });
+			
 
-			
-			
-			if (AJS.config.customClass) {
-			
-				require([AJS.config.customClass], function (CustomApp) {
-				    var custom = new CustomApp();
-				   that.initialize();
-				  });
-			
-			
-			//
-			
-			}
-			else {
-			
-			this.initialize();
-			}
-			
 			
 		}
 		
