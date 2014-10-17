@@ -19,6 +19,7 @@ AdmiralJS allows quick generation of an admin interface, letting you spend more 
 - Usable with the bundled server or as a standalone webapp
   
 AdmiralJS was developped as a client-side webapp, to make it as much as possible independant from frameworks and platforms.  
+  
 It can be used with its own api server developped with expressjs under node
 It can easily be used with SAILSJS under node (see SailsJS Configuration)
 It can also just be used as a standalone webapp, and you might provide your own api server, under node, or under apache with php or whatever.
