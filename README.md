@@ -12,8 +12,8 @@ a web app for admin generation + a node server for api + file upload.
 AdmiralJS allows a quick generation of an admin interface, letting you spend more interesting time on the design of the front end with your favorite framework.
   
 - Customisable field editors for your models 
-- Change your model structure on the fly ! (great for development)
 - Instant admin generation from a schema.json  
+- That means you can change your models'structure on the fly ! (great for development)
 - Pluggable on any CRUD or RESTFUL API  (optimized for SailsJS)
 - Written in javascript with requirejs / jquery / backbone  
 - Usable with the bundled server or as a standalone webapp
