@@ -1,36 +1,36 @@
 [{  "schemaName":"evenements",
 	"model":"evenements",
-	"label":"Évènements",
+	"label":"Events",
 	"listFields":["title","artist","description"],
 	"searchFields":["title","diapo_title1"],
 	"fields":[{"name":"title","editor":"stringmultilangotf","label":"Titre"},
 	{"name":"artist","editor":"string","label":"Artiste"},
-	{"name":"shortdescription","type":"string","editor":"textareamultilangotf","label":"Courte Description"},
-	{"name":"description","type":"string","editor":"textareamultilangotf","label":"Description"},
-	{"name":"type_id","type":"number","editor":"select","relatedModel":"evenements_types","label":"Type d'évènement"},
-	{"name":"diapo_title1","type":"string","editor":"string","label":"Titre diapo 1"},
-	{"name":"diapo_title2","type":"string","editor":"string","label":"Titre diapo 2"},
+	{"name":"shortdescription","editor":"textareamultilangotf","label":"Courte Description"},
+	{"name":"description","editor":"textareamultilangotf","label":"Description"},
+	{"name":"type_id","editor":"select","relatedModel":"evenements_types","label":"Type d'évènement"},
+	{"name":"diapo_title1","editor":"string","label":"Titre diapo 1"},
+	{"name":"diapo_title2","editor":"string","label":"Titre diapo 2"},
 	{"name":"diapos",
-		"type":"collection",
+		
 		"relatedModel":"images",
 		"editor":"imagescollection",
 		"label":"Diaporama"
 	},
 	{"name":"documents",
-		"type":"collection",
+		
 		"relatedModel":"files",
 		"editor":"collection",
 		"label":"Documents"
 	},
 	{"name":"evenements",
-		"type":"collection",
+		
 		"relatedModel":"evenements",
 		"editor":"collection",
 		"label":"Évènements liés"
 	},
-	{"name":"credits","type":"string","editor":"textarea","label":"Crédits"},
-	{"name":"date_begin","type":"date","editor":"date","label":"Date de début"},
-	{"name":"date_end","type":"date","editor":"date","label":"Date de fin"}]
+	{"name":"credits","editor":"textarea","label":"Crédits"},
+	{"name":"date_begin","editor":"date","label":"Date de début"},
+	{"name":"date_end","editor":"date","label":"Date de fin"}]
 },
 {"schemaName":"posts",
 	 "model":"posts",
@@ -48,7 +48,7 @@
 	"find":"evenements_types/find",
 	"destroy":"evenements_types/destroy",
 	"listFields":["name"],
-	"fields":[{"name":"name","type":"string","editor":"string","label":"Type"}]
+	"fields":[{"name":"name","editor":"string","label":"Type"}]
 },
 { "schemaName":"blocks",
 	"model":"blocks",
@@ -58,9 +58,9 @@
 	"find":"blocks/find",
 	"destroy":"blocks/destroy",
 	"listFields":["code","title"],
-	"fields":[{"name":"code","type":"string","editor":"string","label":"Code"},
-	{"name":"title","type":"string","editor":"stringmultilangotf","label":"Titre"},
-{"name":"content","type":"string","editor":"textareamultilangotf","label":"Contenu"}]
+	"fields":[{"name":"code","editor":"string","label":"Code"},
+	{"name":"title","editor":"stringmultilangotf","label":"Titre"},
+{"name":"content","editor":"textareamultilangotf","label":"Contenu"}]
 },
 { "schemaName":"files",
 	"model":"files",
@@ -70,7 +70,7 @@
 	"find":"files/find",
 	"destroy":"files/destroy",
 	"listFields":["description"],
-	"fields":[{"name":"description","type":"string","editor":"string","label":"Description"},{"name":"src","type":"string","editor":"file","label":"Fichier"}]
+	"fields":[{"name":"description","editor":"string","label":"Description"},{"name":"src","editor":"file","label":"Fichier"}]
 },
 { "schemaName":"images",
 	 "model":"images",
@@ -81,13 +81,13 @@
 	"destroy":"images/destroy",
 	"listFields":["src","legende"],
 	"fields":[{"name":"src",
-		"type":"string",
+		
 		"editor":"image",
 		"label":"Image",
 		"formats":	{"thumbnail": {"width": 221,"height": 151},
 					 "normal": {"width": 960,"height": 540}}
 	},
-	{"name":"legende","type":"string","editor":"string","label":"Légende"}]
+	{"name":"legende","editor":"string","label":"Légende"}]
 },
 {  "schemaName":"users",
 	"model":"users",
@@ -97,7 +97,7 @@
 	"find":"users/find",
 	"destroy":"users/destroy",
 	"listFields":["email"],
-	"fields":[{"name":"email","type":"string","editor":"string","label":"Email"}]
+	"fields":[{"name":"email","editor":"string","label":"Email"}]
 }
 
 ]
