@@ -26,10 +26,10 @@ Admiral can also be easily plugged into a SAILSJS project and thanks to the wate
   
 ### Installation
 
-** Requirements: **
-** NodeJS   **
-** A mongo database to connect to   **
-  
+** Requirements: **  
+** NodeJS   **  
+** A mongo database to connect to   **  
+   
 npm install admiraljs   
   
   
