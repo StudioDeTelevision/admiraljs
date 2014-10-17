@@ -126,13 +126,13 @@ It's just a Array of schema definition objects [{...},{....}] that MUST BE SET I
 ### Schema Object Structure:
 **Example of a minimum "post" schema structure:  **
   
->{"schemaName":"posts",
->	 "model":"posts",
->	"label":"My posts",
->	"listFields":["title","published"],
->	"fields":[{"name":"title","editor":"stringmultilangotf","label":"Title"},
->	{"name":"content","editor":"textareamultilangotf","label":"Content"},
->{"name":"published","editor":"yesno","label":"Published"}]
+>{"schemaName":"posts",  
+>	 "model":"posts",  
+>	"label":"My posts",  
+>	"listFields":["title","published"],  
+>	"fields":[{"name":"title","editor":"stringmultilangotf","label":"Title"},  
+>	{"name":"content","editor":"textareamultilangotf","label":"Content"},  
+>{"name":"published","editor":"yesno","label":"Published"}]  
 >}
 
 
