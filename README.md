@@ -137,7 +137,7 @@ It's just a Array of schema definition objects [{...},{....}] that MUST BE SET I
 
 
 
-# Hook
+# Hooks and Customisation
 
 The Custom folder is the place to add your own extensions data structure should be custom -> myproject -> editors custom -> myproject -> sidebar etc... to keep a clean code  
   
