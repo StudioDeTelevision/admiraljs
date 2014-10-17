@@ -23,7 +23,7 @@ It can be used with its own api server developped with expressjs under node
 It can easily be used with SAILSJS under node (see SailsJS Configuration)
 It can also just be used as a standalone webapp, and you might provide your own api server, under node, or under apache with php or whatever.
 
-# Use it with bundled express/node server
+# Use it with its bundled express/node server
 
 It maybe the simplest way to start. AdmiralJS comes as a nodejs module, offering a restful api server which can be used to manipulate your mongo database for your project.  
   
@@ -76,15 +76,14 @@ Why SailsJS ? Because it's a great nodejs framework, which let's you build restf
 
 ## Sails server configuration
 
+You'll have to generate some api under sails, to enable cors. For auth and fileupload, documentation is coming ... 
+
 # Use it with any other server
 
+The webapp itself is located in the admiraljs subfolder, it can be easily extracted and started on any server that can serve an index.html file :)  
+See the configuration options below, to be able to plug it on any restful api.
 
-
-# AdmiralJS
-
-The project itself is located in the admiraljs subfolder.
-
-## Admiral Webapp Configuration
+# Admiral Webapp Configuration
 
 Configuration files must be set in the "Custom" folder  
 which will be reserved to all your project settings and hooks
@@ -173,6 +172,8 @@ AJS.fieldClasses["textareacounter"]=TextAC;
 return MyClass;  
   
 });  
+
+# Themes
 
 
 # Field Editors
