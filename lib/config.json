@@ -1,7 +1,7 @@
 {
 	"webappPath":"",
 	"defaultProject":"example",
-	"runApiServer":true,
-	"runFileServer":true,
+	"api":false,
+	"fileserver":false,
 	"auth":false
 }

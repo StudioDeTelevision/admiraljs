@@ -35,14 +35,14 @@ module.exports.start=function() {
 	}
 
 
-if (config.runApiServer==true) {
+if (config.api!=false || config.api!=null) {
 	
 	var api=require("./lib/apiserver")(config.api || null);
 	app.use(api);
 	
 }
 
-if (config.runFileServer==true) {
+if (config.fileserver!=false || config.fileserver!=null) {
 	
 	var fileserver=require("./lib/fileserver")(config.fileserver || null);
 	app.use(fileserver);

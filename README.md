@@ -37,12 +37,9 @@ var admiral=require('admiraljs');
   
   
 admiral.setConfig({   
-  	"defaultProject":"example",  
-  	"runApiServer":true,  
-  	"runFileServer":true  
-  	,  
-  	api: {"database":{host:"your host",  
-    		name:"test"}  
+  	"defaultProject":"example",
+  	api: {"database":{host:"your-host-address",  
+    		name:"your-database-name"}  
   	},  
   	fileserver: {  
     		uploadDir:__dirname+"/public"  
@@ -53,19 +50,15 @@ admiral.setConfig({
 admiral.start();
 
 
-## Server Configuration
+## Server Configuration Options
 
-** webappPath **
+- ** webappPath ** you might want to change your webapp path...  
 
-** defaultProject **
+- ** defaultProject ** must correspond to your configuration folder name inside the webapp // needed for security and overrides  
 
-** runApiServer **
-
-** runFileServer **
-
-** api **
-
-** fileserver **
+- ** api ** if not set won't run the api, maybe you'll want to use yours ?  
+> api:{database:{host:"",name:"",username:"",password:"",port:27017}}
+- ** fileserver **  if not set won't run the fileserver, maybe you'll want to use yours ?  
 
 # Use as a standalone webapp
 
