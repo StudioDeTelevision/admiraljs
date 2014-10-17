@@ -1,6 +1,6 @@
 {
 	"webappPath":"",
-	"defaultProject":"example",
+	"projectName":"example",
 	"api":false,
 	"fileserver":false,
 	"auth":false

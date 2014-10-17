@@ -9,7 +9,7 @@ a web app for admin generation + a node server for api + file upload.
 
 # About
 
-AdmiralJS allows a quick generation of an admin interface, letting you spend more interesting time on the design of the front end with your favorite framework.
+AdmiralJS allows quick generation of an admin interface, letting you spend more interesting time on the design of the front end with your favorite framework.
   
 - Customisable field editors for your models 
 - Instant admin generation from a schema.json  
@@ -37,7 +37,7 @@ var admiral=require('admiraljs');
   
   
 admiral.setConfig({   
-  	"defaultProject":"example",
+  	"projectName":"example",  
   	api: {"database":{host:"your-host-address",  
     		name:"your-database-name"}  
   	},  
@@ -47,7 +47,9 @@ admiral.setConfig({
 }  
 )  
   
-admiral.start();
+admiral.start();  
+  
+** Next Step ** configure the web application
 
 
 ## Server Configuration Options
@@ -85,7 +87,8 @@ maintaining the core of the app as cleaner as possible :-)
 ( See the related sections for creating those or make a copy of the example project )
 
 - 2 ways to activate your configuration: 
-in main.js, replace AJS.path.customFolder="example"; by AJS.path.customFolder="myproject"; OR start admiraljs with a config param: http://localhost:9999/admiraljs?config=myproject
+in main.js, replace AJS.path.customFolder="example"; by AJS.path.customFolder="myproject";  
+OR start admiraljs with a config param: http://localhost:9999/admiraljs?config=myproject
 
 
 
