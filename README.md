@@ -99,24 +99,41 @@ OR start admiraljs with a config param: http://localhost:9999/admiraljs?config=m
 ## Config.json
 >admiraljs/custom/myproject/config/config.json
 
+  
+It's just a JSON object that MUST BE SET, minimum with a "title" parameter
+
 - **title:** project title displayed in the top bar
 
-- **debug:** true/false
+- **debug(optionnal):** true/false
 
-- **recordID:** depending on your database can be "_id" or "id" or ... 
+- **recordID(optionnal):** depending on your database can be "_id" or "id" or ... 
 
-- **api:** default configuration targets the bundled api on "http://localhost:9999/" , you might target yours
+- **api(optionnal):** default configuration targets the bundled api on "http://localhost:9999/" , you might target yours
 
-- **"fileUploadUrl":** url for file upload, defaults to "http://localhost:9999/upload" 
+- **"fileUploadUrl(optionnal)":** url for file upload, defaults to "http://localhost:9999/upload" 
 
-- **"fileDir":**  url for file reading, defaults to "http://localhost:9999/files/",
+- **"fileDir(optionnal)":**  url for file reading, defaults to "http://localhost:9999/files/",
 
-- **"thumbDir":**  url for file thumbnails reading, defaults to "http://localhost:9999/files/thumbnail/",
+- **"thumbDir(optionnal)":**  url for file thumbnails reading, defaults to "http://localhost:9999/files/thumbnail/",
 
-- **"login":** {"mode":"ajax"} or {"mode":"fake"}
+- **"login(optionnal)":** {"mode":"ajax"} or {"mode":"fake"} , defaults to "fake" (fake mode will provide a fake login, with "admin/admin" credentials)
 
 ## Schemas.json
 >admiraljs/custom/myproject/config/schemas.json
+
+It's just a Array of schema definition objects [{...},{....}] that MUST BE SET IN ORDER TO EDIT SOMETHING FROM THE DATABASE :)
+  
+### Schema Object Structure:
+**Example of a minimum "post" schema structure:  **
+  
+>{"schemaName":"posts",
+>	 "model":"posts",
+>	"label":"My posts",
+>	"listFields":["title","published"],
+>	"fields":[{"name":"title","editor":"stringmultilangotf","label":"Title"},
+>	{"name":"content","editor":"textareamultilangotf","label":"Content"},
+>{"name":"published","editor":"yesno","label":"Published"}]
+>}
 
 
 

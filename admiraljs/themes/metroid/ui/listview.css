@@ -51,7 +51,9 @@ height:60px;
 .listview .button-remove {
 	float:right;
 }
-
+.listview .switchbutton {
+	float:right;
+}
 .pagination {
 	text-align:center;
 width:100%;
