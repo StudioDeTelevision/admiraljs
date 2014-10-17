@@ -66,7 +66,7 @@ admiral.start();
 > true will use default login: {username:"admin",password:"admiraljs"}
 > if you use auth, you must set auth:{mode:"ajax"} in the webapp config.json (see further)
 
-# Use as a standalone webapp
+# AdmiralJS: The Web Application
 
 AdmiralJS was developped as a client-side webapp.  
   
