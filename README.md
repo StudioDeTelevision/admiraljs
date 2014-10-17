@@ -18,13 +18,13 @@ AdmiralJS allows a quick generation of an admin interface, letting you spend mor
 - Written in javascript with requirejs / jquery / backbone  
 - Usable with the bundled server or as a standalone webapp
   
-## Use with bundled express/node server
+# Use with bundled express/node server
 
 AdmiralJS comes as a nodejs module, offering a restful api server which can be used to manipulate your mongo database for your project.  
   
 Admiral can also be easily plugged into a SAILSJS project and thanks to the waterline ORM, you might have the possibility to administrate data stored on a MYsql, Mongo, Redis server , etc ... 
   
-### Installation
+## Installation
 
 ** Requirements: **  
 ** NodeJS   **  
@@ -53,7 +53,7 @@ admiral.setConfig({
 admiral.start();
 
 
-### Server Configuration
+## Server Configuration
 
 ** webappPath **
 
@@ -67,7 +67,7 @@ admiral.start();
 
 ** fileserver **
 
-## Use as a standalone webapp
+# Use as a standalone webapp
 
 AdmiralJS was developped as a client-side webapp.  
   
@@ -76,7 +76,7 @@ It may also be used standalone - independently from the express server
 - configure for your own restful api server (see webapp configuration)
 
 
-### Admiral Webapp Configuration
+## Admiral Webapp Configuration
 
 Configuration files must be set in the "Custom" folder  
 which will be reserved to all your project settings and hooks
@@ -96,15 +96,15 @@ in main.js, replace AJS.path.customFolder="example"; by AJS.path.customFolder="m
 
 
 
-### Config.json
+## Config.json
 
 
 
-### Schemas.json
+## Schemas.json
 
 
 
-## Hook
+# Hook
 
 The Custom folder is the place to add your own extensions data structure should be custom -> myproject -> editors custom -> myproject -> sidebar etc... to keep a clean code  
   
@@ -133,47 +133,47 @@ return MyClass;
 });  
 
 
-## Field Editors
+# Field Editors
 
 AdmiralJS provide some basic field editors but you can write and add your own by extending the core/editor module
 
-### Basic Editors
+## Basic Editors
 
 Located in the editors folder, those editors are used to defined the fields'edition strategies in schemas.json
 
-####collection
+###collection
 
-####collectionembed
+###collectionembed
 
-####date
+###date
 
-####datetime
+###datetime
 
-####file
+###file
 
-####image
+###image
 
-####imagecropresize
+###imagecropresize
 
-####imagedropdown
+###imagedropdown
 
-####imagescollection
+###imagescollection
 
-####select
+###select
 
-####string
+###string
 
-####stringmultilangotf
+###stringmultilangotf
 
-####textarea
+###textarea
 
-####textareamultilangotf
+###textareamultilangotf
 
-####textareasimple
+###textareasimple
 
-####yesno
+###yesno
 
-## Security
+# Security
   
 AdmiralJS provides 2 approches  
 
@@ -182,13 +182,13 @@ AdmiralJS provides 2 approches
 2 For production, you might use our minimalist security implementation based on PassportJS. Set auth:{username:"AdminName",password:"whatever"} on server side and auth:{mode:"ajax"} on client side
 
 
-## Issues & Contributions
+# Issues & Contributions
 
 Please, post questions, bugs in the Issues on github.  
   
 Please contribute and share your own field editor, themes etc...  
   
-## Contact
+# Contact
 
 Frédéric: studiodetelevision@gmail.com  
 	
