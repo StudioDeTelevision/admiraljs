@@ -217,6 +217,16 @@ Located in the editors folder, those editors are used to defined the fields'edit
 
 ###yesno
 
+# Edition View Templates
+
+Declare your template name for your model Schema, in the schemas.json  
+  
+in Your custom Folder, from the index.js file, add html templates to AJS.templates['YOURTEMPLATENAME]=templateHTML;  
+  
+the templateHTML is a text object (loaded via the requirejs text plugin for example) and that must contain place holders for your field. Place Holders must provide an "for" attribute with the name of your editable field. ex: <div for="title" ></div>   
+  
+Better Documentation upcoming ...  
+  
 # Security
   
 AdmiralJS provides 2 approches  
