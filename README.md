@@ -241,7 +241,7 @@ AdmiralJS provides 2 approches
 # Issues, Contributions and Proposals
 
 Please, post questions, proposals, bugs in the Issues on github.  
-https://github.com/StudioDeTelevision/admiraljs  
+https://github.com/StudioDeTelevision/admiraljs/issues   
   
 Please contribute and share your own field editor, themes etc...  
   
