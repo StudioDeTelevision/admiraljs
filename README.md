@@ -238,13 +238,15 @@ AdmiralJS provides 2 approches
 2 For production, you might use our minimalist security implementation based on PassportJS. Set auth:{username:"AdminName",password:"whatever"} on server side and auth:{mode:"ajax"} on client side
 
 
-# Issues & Contributions
+# Issues, Contributions and Proposals
 
-Please, post questions, bugs in the Issues on github.  
+Please, post questions, proposals, bugs in the Issues on github.  
+https://github.com/StudioDeTelevision/admiraljs  
   
 Please contribute and share your own field editor, themes etc...  
   
-# Contact
+# Contact & Support
 
-Frédéric: studiodetelevision@gmail.com  
+Frédéric Jean: studiodetelevision@gmail.com  
+http://www.studiodetelevision.com
 	
