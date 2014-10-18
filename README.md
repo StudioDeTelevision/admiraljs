@@ -219,6 +219,8 @@ Located in the editors folder, those editors are used to defined the fields'edit
 
 # Edition View Templates
 
+For certains project you might want to design some specific edition views for your admin users. In such a case admiraljs offers a little templating system.  
+  
 Declare your template name for your model Schema, in the schemas.json  
   
 in Your custom Folder, from the index.js file, add html templates to AJS.templates['YOURTEMPLATENAME]=templateHTML;  
