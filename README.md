@@ -43,7 +43,7 @@ var admiral=require('admiraljs');
   
 admiral.setConfig({   
   	"projectName":"example",  
-  	api: {"database":{host:"your-host-address",  
+  	api: {"database":{host:"your-mongodb-host-address",  
     		name:"your-database-name"}  
   	},  
   	fileserver: {  
