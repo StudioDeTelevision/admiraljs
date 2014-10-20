@@ -84,6 +84,8 @@ You'll have to generate some api under sails, to enable cors. For auth and fileu
 The webapp itself is located in the admiraljs subfolder, it can be easily extracted and started on any server that can serve an index.html file :)  
 See the configuration options below, to be able to plug it on any restful api.
 
+If you want to develop your own api script, don't hesitate to contact me for mode details
+
 # Admiral Webapp Configuration
 
 Configuration files must be set in the "Custom" folder  
