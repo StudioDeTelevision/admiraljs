@@ -130,7 +130,13 @@ It's just a JSON object that MUST BE SET, minimum with a "title" parameter
 ## Schemas.json
 >admiraljs/custom/myproject/config/schemas.json
 
-It's just a Array of schema definition objects [{...},{....}] that MUST BE SET IN ORDER TO EDIT SOMETHING FROM THE DATABASE :)
+It's just a Array of schema definition objects [{...},{....}] that MUST BE SET IN ORDER TO EDIT SOMETHING FROM THE DATABASE :)  
+  
+  
+### Live schema edition
+
+You can edit your schemas.json file at runtime, using the params button in the bottom left corner.
+Changes will be applied to the current admiraljs instance running, but won't change the original schemas.json file - this has to be done manually.  
   
 ### Schema Object Structure:
 > **Example of a minimal "post" schema structure:  **
