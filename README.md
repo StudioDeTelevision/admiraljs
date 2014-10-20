@@ -166,6 +166,14 @@ Changes will be applied to the current admiraljs instance running, but won't cha
 - **findFilter** , default filter in the list view , can be a function if needed
 >	"findFilter":function() { return {"sort":{ createdAt: 'asc'},"where":{"name":"kino","date_end":{'<': moment().format('YYYY-MM-DD HH:mm')}}} }
 },
+
+
+- **You can also specify custom crud routes with: ** 
+- **find** , url
+- **create** , url
+- **update** , url
+- **destroy** , url
+
 # Hooks and Customisation
 
 The Custom folder is the place to add your own extensions data structure should be custom -> myproject -> editors custom -> myproject -> sidebar etc... to keep a clean code  
