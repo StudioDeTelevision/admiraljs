@@ -138,6 +138,7 @@ It's just a Array of schema definition objects [{...},{....}] that MUST BE SET I
 You can edit your schemas.json file at runtime, using the params button in the bottom left corner.
 Changes will be applied to the current admiraljs instance running, but won't change the original schemas.json file - this has to be done manually.  
   
+  
 ### Schema Object Structure:
 > **Example of a minimal "post" schema structure:  **
 >    
@@ -150,8 +151,21 @@ Changes will be applied to the current admiraljs instance running, but won't cha
 >{"name":"published","editor":"yesno","label":"Published"}]  
 >}
 
+- **schemaName** , a name for your schema to make it unique in the running instance
 
+- **model** , the data model name to target 
 
+- **label** , the name displayed in the sidebar
+
+- **listFields** , a array containing the names of the fields you want to be displayed in the list view.
+
+- **fields** , an array containing the description of your fields and their edition mode.
+
+- **extends** , name of the schema to extend (its "schemaName") , will extends an existing schema configuration
+
+- **findFilter** , default filter in the list view , can be a function if needed
+>	"findFilter":function() { return {"sort":{ createdAt: 'asc'},"where":{"name":"kino","date_end":{'<': moment().format('YYYY-MM-DD HH:mm')}}} }
+},
 # Hooks and Customisation
 
 The Custom folder is the place to add your own extensions data structure should be custom -> myproject -> editors custom -> myproject -> sidebar etc... to keep a clean code  
