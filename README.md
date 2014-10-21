@@ -199,7 +199,7 @@ define(["./editors/editors"],function() {
 	
 Then define your editors in a custom/myproject/editors/ folder  
   
-E:  custom/myproject/editors/editors.js  
+Ex:  custom/myproject/editors/editors.js  
     define(["./import/import","./datetimearray/datetimearray",'./textareacounter/textareacounter'],function(Import,Datetimearray,TextAC) {
   
 var MyClass=function() {  
