@@ -9,7 +9,7 @@ a web app for admin generation + a node server for api + file upload.
   
 IRC: 
 server:  irc.freenode.net  
-room: #admiraljs  
+channel: #admiraljs  
 
 # About
 
@@ -298,4 +298,4 @@ http://www.studiodetelevision.com
   
 IRC: 
 server:  irc.freenode.net  
-room: #admiraljs  	
+channel: #admiraljs  	
