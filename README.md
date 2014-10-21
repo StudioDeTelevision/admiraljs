@@ -180,23 +180,35 @@ Changes will be applied to the current admiraljs instance running, but won't cha
 
 The Custom folder is the place to add your own extensions data structure should be custom -> myproject -> editors custom -> myproject -> sidebar etc... to keep a clean code  
   
-the myproject folder must contain a myproject.js file see custom/example/example.js  
+At startup the admiral will try to load a index.js file located in:  
+custom/myproject/index.js  
   
-this file will trigger all hooks  
+this file will load and trigger all hooks  
+
+it's a simple requirejs module  
+define([],function() { 
+	var Custom;   
+	// init your hooks  
+	return Custom; } )  
   
-will load custom editors definition in custom/myproject/editors/editors.js ex:   define(["./import/import","./datetimearray/datetimearray","./pictosrestaurant/pictosrestaurant","./pictoszugast/pictoszugast",'./gifupload/gifupload','./arrowselect/arrowselect','./imagekino/imagekino','./imagetheater/imagetheater','./logos/logos','./textareacounter/textareacounter'],function(Import,Datetimearray,Pictorestaurant,Pictozugast,GifUpload,ArrowSelect,ImageK,ImageT,Logos,TextAC) {
+If you need to add custom editors, you could do:  
+define(["./editors/editors"],function() { 
+	var Custom;    
+	 	new Editors();  
+	return Custom;  } )  
+	
+Then define your editors in a custom/myproject/editors/ folder  
+  
+E:  custom/myproject/editors/editors.js  
+    define(["./import/import","./datetimearray/datetimearray",'./textareacounter/textareacounter'],function(Import,Datetimearray,TextAC) {
   
 var MyClass=function() {  
+	
+	/// HERE THE EDITORS.JS WILL DECLARE THE CUSTOM EDITORS FOR USE IN YOURS PROJECT
+	/// THOSE MUST INHERIT FROM core/editor as a Backbone View: var View=EditorClass.extend({...
   
 AJS.fieldClasses["import"]=Import;  
-AJS.fieldClasses["datetimearray"]=Datetimearray;  
-AJS.fieldClasses["pictosrestaurant"]=Pictorestaurant;  
-AJS.fieldClasses["pictoszugast"]=Pictozugast;  
-AJS.fieldClasses["gifupload"]=GifUpload;  
-AJS.fieldClasses["arrowselect"]=ArrowSelect;  
-AJS.fieldClasses["imagekino"]=ImageK;  
-AJS.fieldClasses["imagetheater"]=ImageT;  
-AJS.fieldClasses["logos"]=Logos;  
+AJS.fieldClasses["datetimearray"]=Datetimearray;
 AJS.fieldClasses["textareacounter"]=TextAC;  
 }  
   
