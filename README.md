@@ -45,8 +45,8 @@ npm install admiraljs
 var admiral=require('admiraljs');  
   
   
-admiral.setConfig({   
-  	"projectName":"example",  
+admiral.setConfig(  
+  	{"projectName":"example",  
   	api: {"database":{host:"your-mongodb-host-address",  
     		name:"your-database-name"}  
   	},  
