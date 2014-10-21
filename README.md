@@ -6,6 +6,10 @@ http://www.admiraljs.com
 github page: https://github.com/StudioDeTelevision/admiraljs  
 
 a web app for admin generation + a node server for api + file upload.
+  
+IRC: 
+server:  irc.freenode.net  
+room: #admiraljs  
 
 # About
 
@@ -291,4 +295,7 @@ Please contribute and share your own field editor, themes etc...
 
 Frédéric Jean: studiodetelevision@gmail.com  
 http://www.studiodetelevision.com
-	
+  
+IRC: 
+server:  irc.freenode.net  
+room: #admiraljs  	
