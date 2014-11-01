@@ -11,6 +11,9 @@ IRC:
 server:  irc.freenode.net  
 channel: #admiraljs  
 
+# Demo
+http://www.youtube.com/watch?v=HWKXCGQDAC0
+
 # About
 
 AdmiralJS allows quick generation of an admin interface, letting you spend more interesting time on the design of the front end with your favorite framework.

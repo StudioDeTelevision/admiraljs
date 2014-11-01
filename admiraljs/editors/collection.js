@@ -153,6 +153,12 @@ define(['underscore','backbone','core/editor',"./components/recordslist",'text!.
 						
 					}
 					
+					// clean and remove empty values
+					
+					this.value=_.filter(this.value,function(item) {
+						return (item!="")
+					})
+					
 				}
 				
 				else this.value=val;
@@ -175,10 +181,15 @@ define(['underscore','backbone','core/editor',"./components/recordslist",'text!.
 				}
 				console.log("COLLECTION VALUE",this.value)
 			
-			
+				// this.value=_.filter(this.value,function(item) {
+// 					return (item!="")
+// 				})
 			
 				var whereQuery={};
 				whereQuery[AJS.config.recordID]=this.value;
+				
+			
+				
 				var datax={'where':whereQuery};
 				
 				
