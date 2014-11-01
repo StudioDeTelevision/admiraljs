@@ -12,6 +12,7 @@ server:  irc.freenode.net
 channel: #admiraljs  
 
 # Demo
+<iframe width="420" height="315" src="//www.youtube.com/embed/HWKXCGQDAC0" frameborder="0" allowfullscreen></iframe>
 http://www.youtube.com/watch?v=HWKXCGQDAC0
 
 # About
