@@ -300,6 +300,9 @@ Please contribute and share your own field editor, themes etc...
 Frédéric Jean: studiodetelevision@gmail.com  
 http://www.studiodetelevision.com
   
+Or send me a postcard here:   
+http://postcardify.com/composer?to=studiodetelevision@gmail.com&name=Frédéric  
+  
 IRC: 
 server:  irc.freenode.net  
 channel: #admiraljs  	
