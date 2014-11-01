@@ -1,6 +1,6 @@
 define([],function() {
 	
-	var Adapter;
+	var Adapter={};
 	var MongoAdapter={
 		or:"$or",
 		criteria:"$regex",
@@ -24,8 +24,16 @@ define([],function() {
 		
 	}
 	
-	if (AJS.config.orm=="native" || typeof AJS.config.orm=="undefined" ) Adapter= MongoAdapter ;
-	if (AJS.config.orm=="waterline"  ) Adapter= WaterLineAdapter ;
+	Adapter.get=function(orm) {
+		
+		if (orm=="native" || typeof orm=="undefined" ) return MongoAdapter ;
+		if (orm=="waterline"  ) return WaterLineAdapter ;
+		return MongoAdapter ;
+	}
+	
+	
+	
+	
 	return Adapter;
 	
 	

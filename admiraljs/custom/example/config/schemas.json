@@ -7,7 +7,7 @@
 	{"name":"artist","editor":"string","label":"Artiste"},
 	{"name":"shortdescription","editor":"textareamultilangotf","label":"Courte Description"},
 	{"name":"description","editor":"textareamultilangotf","label":"Description"},
-	{"name":"type_id","editor":"select","relatedModel":"evenements_types","label":"Type d'évènement"},
+	{"name":"type_id","editor":"select","relatedModel":"evenements_types","label":"Event type"},
 	{"name":"diapo_title1","editor":"string","label":"Titre diapo 1"},
 	{"name":"diapo_title2","editor":"string","label":"Titre diapo 2"},
 	{"name":"diapos",
@@ -26,11 +26,21 @@
 		
 		"relatedModel":"evenements",
 		"editor":"collection",
-		"label":"Évènements liés"
+		"label":"Related Events"
 	},
-	{"name":"credits","editor":"textarea","label":"Crédits"},
-	{"name":"date_begin","editor":"date","label":"Date de début"},
-	{"name":"date_end","editor":"date","label":"Date de fin"}]
+	{"name":"credits","editor":"textarea","label":"Credits"},
+	{"name":"date_begin","editor":"date","label":"Date begin"},
+	{"name":"date_end","editor":"date","label":"Date end"}]
+},
+{"schemaName":"evenements_types",
+	 "model":"evenements_types",
+	"label":"Event types",
+	"create":"evenements_types/create",
+	"update":"evenements_types/update",
+	"find":"evenements_types/find",
+	"destroy":"evenements_types/destroy",
+	"listFields":["name"],
+	"fields":[{"name":"name","editor":"string","label":"Type"}]
 },
 {"schemaName":"posts",
 	 "model":"posts",
@@ -39,16 +49,6 @@
 	"fields":[{"name":"title","editor":"stringmultilangotf","label":"Title"},
 	{"name":"content","editor":"textareamultilangotf","label":"Content"},
 {"name":"published","editor":"yesno","label":"Published"}]
-},
-{"schemaName":"evenements_types",
-	 "model":"evenements_types",
-	"label":"Types d Évènements",
-	"create":"evenements_types/create",
-	"update":"evenements_types/update",
-	"find":"evenements_types/find",
-	"destroy":"evenements_types/destroy",
-	"listFields":["name"],
-	"fields":[{"name":"name","editor":"string","label":"Type"}]
 },
 { "schemaName":"blocks",
 	"model":"blocks",
@@ -70,7 +70,7 @@
 	"find":"files/find",
 	"destroy":"files/destroy",
 	"listFields":["description"],
-	"fields":[{"name":"description","editor":"string","label":"Description"},{"name":"src","editor":"file","label":"Fichier"}]
+	"fields":[{"name":"description","editor":"string","label":"Description"},{"name":"src","editor":"file","label":"File"}]
 },
 { "schemaName":"images",
 	 "model":"images",
@@ -87,7 +87,7 @@
 		"formats":	{"thumbnail": {"width": 221,"height": 151},
 					 "normal": {"width": 960,"height": 540}}
 	},
-	{"name":"legende","editor":"string","label":"Légende"}]
+	{"name":"legende","editor":"string","label":"Label"}]
 },
 {  "schemaName":"users",
 	"model":"users",

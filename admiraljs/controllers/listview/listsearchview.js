@@ -2,7 +2,7 @@ define(['jquery',     // lib/jquery/jquery
   'underscore', // lib/underscore/underscore
   'backbone',
   './querymaker'],
-    function($, _, Backbone,QueryMaker) {
+    function($, _, Backbone,QueryMakers) {
         //return a function to define "foo/title".
         //It gets or sets the window title.
 		
@@ -15,6 +15,9 @@ define(['jquery',     // lib/jquery/jquery
 			},
 			
 			initialize:function(options) {
+				
+				
+				
 				this.filters=null;
 		 this.fieldClasses=AJS.fieldClasses;
 		 var that=this;
@@ -52,6 +55,7 @@ define(['jquery',     // lib/jquery/jquery
 		 this.trigger('search')
 	},searchIt:function() {
 		
+		var QueryMaker=QueryMakers.get(AJS.config.orm);
 	
 	//	var criteria="$regex";
 		

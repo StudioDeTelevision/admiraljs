@@ -55,12 +55,13 @@
 	
 }
 .collection .defaultitem {
-	background: #F7F7F7;
+	background: #F2F2F2;
 	padding: 4px 0px 4px 11px;
 	margin-bottom: 1px;
 	position: relative;
 color: black;
-	
+
+margin-top: 4px;
 }
 .collection .defaultitem:hover {
 	background:#CCC;

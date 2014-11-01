@@ -199,6 +199,12 @@ _.bindAll(this, 'render', 'dragOver','dropfileSelect','uploadFile','removeFile',
 		           
 					
 					$(that.$el).fileupload();
+					$(that.$el).fileupload('option', {
+					    xhrFields: {
+					        withCredentials: false
+					    }
+					});
+					
 					$(that.$el).fileupload('send',{
 						maxChunkSize:10000000,
 						limitConcurrentUploads:1,

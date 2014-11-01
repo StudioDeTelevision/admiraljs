@@ -143,6 +143,23 @@ define(['underscore','backbone','core/editor',"./components/recordslist",'text!.
 					
 				})
 				
+			},setValue:function(val) {
+				
+				if (val && val.length>0) {
+					
+					if (val[0].id!=null && val[0].id!="undefined") {
+						
+						this.value=_.map(val, function(item){ return item.id; });
+						
+					}
+					
+				}
+				
+				else this.value=val;
+				
+				
+				this.displayValue();
+				
 			},displayValue:function() {
 				var that=this;
 				
@@ -157,6 +174,9 @@ define(['underscore','backbone','core/editor',"./components/recordslist",'text!.
 			
 				}
 				console.log("COLLECTION VALUE",this.value)
+			
+			
+			
 				var whereQuery={};
 				whereQuery[AJS.config.recordID]=this.value;
 				var datax={'where':whereQuery};
