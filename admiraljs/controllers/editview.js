@@ -75,6 +75,13 @@ fetch: function( fetchOptions ) {
 				
 				var fields=this.schema.fields;
 				
+				if (this.model.attributes._abstractSchema) {
+				 var additionalSchema=AJS.schemas[this.model.attributes._abstractSchema];
+				
+				 var additionalFields=additionalSchema.fields;
+				 	var fields = fields.concat(additionalFields);
+				}
+				
 				if (this.model.attributes._schema) {
 					
 				

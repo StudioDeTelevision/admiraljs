@@ -26,6 +26,14 @@
 	right: 5px;
 	height:18px;
 	cursor:pointer;
+	background-size: 60%;
+}
+.collection .button-edit {
+	position: absolute;
+	top: 5px;
+	right: 20px;
+	height:18px;
+	cursor:pointer;
 }
 
 .collection .add{

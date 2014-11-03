@@ -27,6 +27,15 @@ margin: 0px;
 	background-position: center;
 }
 
+.button-edit {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	cursor: pointer;
+	background: url('../images/pen.png') no-repeat;
+	background-size: 70%;
+	background-position: center;
+}
 .cell-delete,.cell-tool {
 	width:25px;
 }

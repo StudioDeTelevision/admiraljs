@@ -36,7 +36,7 @@ define(['jquery',     // lib/jquery/jquery
 				
 				for (var i in  AJS.schemas) {
 					
-					if (AJS.schemas[i].hidden!=true) {
+					if (AJS.schemas[i].hidden!=true && AJS.schemas[i].type!="abstract") {
 						
 						var b=new MyButton({label:AJS.schemas[i].label,
 							model:i,

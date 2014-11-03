@@ -6,7 +6,7 @@
 	left:50%;
 	margin-top:-220px;
 	margin-left:-200px;
-	background:#F7F7F7;
+	background: rgb(240, 240, 240);
 	-webkit-box-shadow: 1px 1px 12px 0px rgba(30, 30, 30, 0.93);
 	-moz-box-shadow:    1px 1px 12px 0px rgba(30, 30, 30, 0.93);
 	box-shadow:         1px 1px 12px 0px rgba(30, 30, 30, 0.93);
@@ -22,16 +22,22 @@
 	position:absolute;
 	right:10px;
 	top:10px;
+	cursor:pointer;
 }
 .AJSpopup .contentWrapper {
 overflow-y: auto;
-height: 320px;
+height: 370px;
 overflow-x: hidden;
+border: 1px solid rgb(227, 227, 227);
 }
 .AJSpopup .content {
-	background: white;
+	background: rgb(249, 249, 249);
+	padding:10px;
 }
-
+.AJSpopup .content label{
+	font-size:10px;
+	color:grey;
+}
 .AJSpopup .footer {
 	position:absolute;
 	left:0px;

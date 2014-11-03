@@ -177,12 +177,36 @@ Changes will be applied to the current admiraljs instance running, but won't cha
 >	"findFilter":function() { return {"sort":{ createdAt: 'asc'},"where":{"name":"kino","date_end":{'<': moment().format('YYYY-MM-DD HH:mm')}}} }
 },
 
+- **type** , for special schema types: multischema (see below) , abstract (see multischema paragraph) , normal (default)
+
 
 - **You can also specify custom crud routes with: ** 
 - **find** , url
 - **create** , url
 - **update** , url
 - **destroy** , url
+  
+#### Multischema Document Structure  
+  
+Using the flexibility of mongo's document structure, you might want to use one data collection containing documents with different schema structure.  
+This is the purpose of the Multischema Object Structure.    
+  
+- define some schemas and type them with "abstract". > ex:  {"schemaName":"pageabout",  
+>"type":"abstract",    
+>"fields" : [ {"name":"title","editor":"stringmultilangotf","label":"Titre"},    
+>{"name":"content","editor":"textareamultilangotf","label":"Contenu"},    
+>{"name" : "video","editor" : "string","label" : "Video Vimeo ID"}]}  
+			
+- define a schema with a "multischema" type and a "_schemaSchema" string field. > ex: {"schemaName":"mymultischema",  
+>"type":"multischema",    
+>"fields" : [ {"name":"_schemaSchema","editor":"string","label":"SchemaModel"}]}  
+  
+as soon as you will have give a valid abstract schema name in a "mymultischema" document,  
+refresh the edit page and you'll be able to use your abstract schema for that document.  
+
+  
+
+
 
 # Hooks and Customisation
 

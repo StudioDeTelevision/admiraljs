@@ -21,6 +21,8 @@ define([     // lib/jquery/jquery
 				console.log('MODEL LIST',this.model)
 				
 			 this.schema=options.schema;
+			 
+			
 			 console.log('MODEL schema',this.schema)
 			 
    			// var displayFieldName=this.schema.listFields[0];
@@ -47,13 +49,18 @@ define([     // lib/jquery/jquery
 			this.$el.append(raw)
 			
 			
+			var editButton=$("<div class='button-edit' ></div>");
+			this.$el.append(editButton)
 			var deleteButton=$("<div class='button-remove' ></div>");
 			this.$el.append(deleteButton)
+			editButton.click(function(e) {
+				e.stopPropagation();
+				that.trigger('edit',that.model.id);
+			})
 			deleteButton.click(function(e) {
 				e.stopPropagation();
 				that.trigger('delete',that.model.id);
 			})
-			
 			
 			this.$el.bind('sorted',function(event,index) {
 				console.log('sorted',index)
@@ -281,6 +288,37 @@ define([     // lib/jquery/jquery
  // 				
  			  })
 			  
+			  
+   		   im.bind('edit',function(itemid) {
+					var popup=new AJS.ui.PopUp();
+					 var model=that.collection.get(this.model)
+				   	var v=new VirtualEdit({schema:that.fieldSchema,model:model});
+					
+					popup.setContent(v.$el)
+					
+					var buttonInsert=$('<div class="button insert" >update</div>');
+					popup.addButton(buttonInsert)
+					
+					
+					buttonInsert.bind('click',function() {
+						
+						var obj=v.model;
+						
+						popup.closeMe();
+						
+						that.collection.set(obj,{remove: false})
+						
+						that.trigger('change');
+						
+						that.displayValue();
+						
+						
+						
+    			  })
+				  
+				  
+				  })
+				  
 			   im.bind('justsorted',function(data) {
 				   
 				   console.log('just sorted',data.index)

@@ -67,7 +67,7 @@
 },
 {  "schemaName":"users",
 	"model":"users",
-	"label":"Users",
+	"label":"Utilisateurs",
 	"listFields":["email"],
 	"fields":[{"name":"email","editor":"string","label":"Email"}]
 }
