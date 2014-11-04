@@ -1,11 +1,12 @@
 define(['jquery',     // lib/jquery/jquery
   'underscore', // lib/underscore/underscore
-  'backbone','text!./popup.html'],
+  'backbone','text!./popup.html','jquery.ui'],
     function($, _, Backbone,htmlTemplate) {
         //return a function to define "foo/title".
         //It gets or sets the window title.
 		
 		var View=Backbone.View.extend({
+			className:"AJSpopup",
 			events:{
 			"click .closeme":"closeMe"	,
 
@@ -16,6 +17,8 @@ define(['jquery',     // lib/jquery/jquery
 				this.$el.html(htmlTemplate)
 				$("body").append(this.$el)
 				this.show();
+				
+				this.$el.draggable();
 			},
 			show:function() {
 				$('.pagemask').show();

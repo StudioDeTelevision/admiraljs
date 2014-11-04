@@ -204,6 +204,7 @@ var editors=["string",
 "imagecropresize/imagecropresize",
 "imagescollection",
 "select",
+"selectincollection",
 "stringmultilangotf"
 ,"textareamultilangotf"];
 

@@ -1,11 +1,12 @@
 .AJSpopup {
-	width:500px;
-	height:400px;
-	position:fixed;
-	top:50%;
-	left:50%;
-	margin-top:-220px;
-	margin-left:-200px;
+
+	width: 570px;
+	height: 400px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -220px;
+	margin-left: -285px;
 	background: rgb(240, 240, 240);
 	-webkit-box-shadow: 1px 1px 12px 0px rgba(30, 30, 30, 0.93);
 	-moz-box-shadow:    1px 1px 12px 0px rgba(30, 30, 30, 0.93);
@@ -29,9 +30,9 @@ overflow-y: auto;
 height: 370px;
 overflow-x: hidden;
 border: 1px solid rgb(227, 227, 227);
+	background: rgb(249, 249, 249);
 }
 .AJSpopup .content {
-	background: rgb(249, 249, 249);
 	padding:10px;
 }
 .AJSpopup .content label{
@@ -45,3 +46,17 @@ border: 1px solid rgb(227, 227, 227);
 	width:100%;
 	text-align:center;
 }
+
+.AJSpopup  .form-group > div:first-of-type {
+
+margin-bottom: 10px;
+}
+.AJSpopup  input[type=text] {
+	width: 400px;
+	max-width: 100%;	
+}
+
+.AJSpopup .editview .form-group > label {
+width: 11.666667% !important;
+}
+

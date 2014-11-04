@@ -109,21 +109,35 @@ fetch: function( fetchOptions ) {
 					var options=fields[f];
 					options.value=this.model.get(fields[f].name);
 					var newfield=new fieldClass(options);
-					console.log('fieldClass fieldClass',fields[f].editor,newfield)
+					//console.log('fieldClass fieldClass',fields[f].editor,newfield)
 				
 					newfield.setValue(this.model.get(fields[f].name));
 			
 					
 					newfield.bind('change',function() {
 					
-						that.model.set(this.name,this.getValue());
-					
-					
 						
-						that.model.save({}, {
+						
+						var changeObj={};
+						changeObj[this.name]=this.getValue();
+						
+						//that.model.set(this.name,this.getValue()); OLD WAY
+						
+						that.model.set(changeObj);
+						// console.log('EVENT CHANGE VALUE',this.name,that.model.get(this.name));
+// 					console.log('EVENT CHANGE on',that.model);
+					
+					
+					
+						//console.log('EVENT CHANGE TO SAVE',this.name,this.getValue())
+						
+						that.model.save({}, {wait:true,
         url: AJS.config.api+AJS.schemas[that.schemaName].update+'/'+that.model.id,
 		success: function() { //
 		console.log("MODEL WAS SUCCESS FULLY SAVED",that.model) 
+		},
+		error:function() {
+			console.log("Error saving document")
 		}
 	})
 	

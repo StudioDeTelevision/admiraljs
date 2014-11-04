@@ -1,6 +1,8 @@
 .collection {
 	
 	width: 420px;
+
+	
 }
 .collection .item{
 /*	width:100px;
@@ -12,7 +14,11 @@
 	min-height:28px;
 	
 }
-
+.collection .collection-wrapper {
+	max-height: 400px;
+	clear: both;
+	overflow-y: auto;
+}
 .collection .collection-container {
 	
 }
@@ -31,7 +37,7 @@
 .collection .button-edit {
 	position: absolute;
 	top: 5px;
-	right: 20px;
+	right: 22px;
 	height:18px;
 	cursor:pointer;
 }
@@ -72,6 +78,6 @@ color: black;
 margin-top: 4px;
 }
 .collection .defaultitem:hover {
-	background:#CCC;
+	background:#EAEAEA;
 	
 }

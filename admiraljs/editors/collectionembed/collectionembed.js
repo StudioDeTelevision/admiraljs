@@ -93,6 +93,7 @@ define([     // lib/jquery/jquery
 		
 		
 		var VirtualEdit=Backbone.View.extend({
+			className:"editview",
 			initialize:function(options) {
 				var that=this;
 				if (options.model!=null) {
