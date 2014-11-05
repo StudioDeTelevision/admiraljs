@@ -1,6 +1,7 @@
 /test.js
 /magasin.js
 /lokr.js
+/postcardify.js
 /admiraljs/config
 /admiraljs/custom/*
 !/admiraljs/custom/example

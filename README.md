@@ -81,11 +81,38 @@ admiral.start();
 
 # Use it with SAILSJS
 
-Why SailsJS ? Because it's a great nodejs framework, which let's you build restful apis on the fly and a lot of other great features.
+The simplest way if you don't need to request directly your sails project  
+is to use admiraljs and its server for backend  
+
+But you might also prefer to connect directly to sails's restful api, so here's how:
 
 ## Sails server configuration
 
-You'll have to generate some api under sails, to enable cors. For auth and fileupload, documentation is coming ... 
+- Add some blueprints override for pagination.  
+http://www.admiraljs.com/blueprints.zip  
+
+- in config/cors.js set allRoutes: true
+
+For auth and fileupload, documentation is coming ... 
+
+## Start AdmiralJS
+
+var admiral=require('admiraljs');  
+admiral.start();  
+
+## Configure AdmiralJS
+
+in your custom/myproject/config/config.json :
+{  
+"title":"LOKREMISE",  
+"recordID":"id",  
+"api":"http://yoursailsserver:sailsport/",  
+"fileUploadUrl":"http://yoursailsserver:sailsport/upload/",  
+"fileDir":"http://yoursailsserver:sailsport/files/",  
+"thumbDir":"http://yoursailsserver:sailsport/files/thumbnail/", 
+"orm":"waterline",  
+"login":{"mode":"fake"}  
+}  
 
 # Use it with any other server
 
