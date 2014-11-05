@@ -288,10 +288,10 @@ AdmiralJS provide some basic field editors but you can write and add your own by
 Located in the editors folder, those editors are used to defined the fields'edition strategies in schemas.json
 
 ###collection
-- {"name":"myfieldnameindatabase",editor:"collection",relatedModel:"mySchemaModelName",label:"MyCollection"]}
+> {"name":"myfieldnameindatabase",editor:"collection",relatedModel:"mySchemaModelName",label:"MyCollection"]}
 
 ###collectionembed  
-- {"name" : "myfieldnameindatabase",  
+> {"name" : "myfieldnameindatabase",  
 	"type" : "collectionembed",  
 	"schema" : {"listFields" : ["title"],  
 	"fields" : [ {"name":"myfieldnameindatabase",editor:"string",label:"MyString"]},  
