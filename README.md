@@ -90,6 +90,7 @@ But you might also prefer to connect directly to sails's restful api, so here's 
 
 - Add some blueprints override for pagination.  
 http://www.admiraljs.com/blueprints.zip  
+place it in your api folder api/blueprints  
 
 - in config/cors.js set allRoutes: true
 
