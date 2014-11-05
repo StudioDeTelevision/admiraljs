@@ -288,9 +288,17 @@ AdmiralJS provide some basic field editors but you can write and add your own by
 Located in the editors folder, those editors are used to defined the fields'edition strategies in schemas.json
 
 ###collection
+- {"name":"myfieldnameindatabase",editor:"collection",relatedModel:"mySchemaModelName",label:"MyCollection"]}
 
-###collectionembed
-
+###collectionembed  
+- {"name" : "myfieldnameindatabase",  
+	"type" : "collectionembed",  
+	"schema" : {"listFields" : ["title"],  
+	"fields" : [ {"name":"myfieldnameindatabase",editor:"string",label:"MyString"]},  
+	{"name":"myfieldnameindatabase",editor:"string",label:"MyString"]}]},  
+	"editor" : "collectionembed",  
+	"label" : "MyCollection"  
+	}
 ###date
 
 ###datetime
@@ -306,8 +314,12 @@ Located in the editors folder, those editors are used to defined the fields'edit
 ###imagescollection
 
 ###select
+- {"name":"myfieldnameindatabase",editor:"select",label:"myfieldname",options:["bananas","potatoes","parrots"]}
+
+###selectincollection
 
 ###string
+- {"name":"myfieldnameindatabase",editor:"string",label:"MyString"]}
 
 ###stringmultilangotf
 
@@ -318,6 +330,7 @@ Located in the editors folder, those editors are used to defined the fields'edit
 ###textareasimple
 
 ###yesno
+- {"name":"myfieldnameindatabase",editor:"yesno",label:"ActiveStuff"]}
 
 # Edition View Templates
 
