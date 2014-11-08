@@ -81,10 +81,7 @@ admiral.start();
 
 # Use it with SAILSJS
 
-The simplest way if you don't need to request directly your sails project  
-is to use admiraljs and its server for backend  
-
-But you might also prefer to connect directly to sails's restful api, so here's how:
+In order to correctly bind admiraljs model's relations with sails's (waterline), you need to use sail's restful api. Here's how to configure your sails project.
 
 ## Sails server configuration
 
@@ -92,7 +89,7 @@ But you might also prefer to connect directly to sails's restful api, so here's 
 http://www.admiraljs.com/blueprints.zip  
 place it in your api folder api/blueprints  
 
-- in config/cors.js set allRoutes: true
+- in config/cors.js set allRoutes: true and headers: 'content-type,Content-Disposition'
 
 For auth and fileupload, documentation is coming ... 
 
@@ -308,6 +305,12 @@ Located in the editors folder, those editors are used to defined the fields'edit
 ###image
 
 ###imagecropresize
+
+{"name" : "myfieldnameindatabase",  
+"editor" : "imagecropresize",  
+"label" : "Image",  
+size:{"width" : 400,"height" : 300}  // the final size
+}
 
 ###imagedropdown
 

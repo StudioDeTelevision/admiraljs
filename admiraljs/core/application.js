@@ -119,9 +119,9 @@ define(['backbone','./lib/session','./modules/index','./ui/sidebar','./ui/topbar
   	AppRouter.register("denied","AdmiralJS Access Denied",function() {
 	 AJS.screen.empty();
 		//alert("Access denied")
-		//  AJS.screen.append("<h2>Access denied</h2><h3>Please connect or reconnect to perform this action <a href='/admiraljs' ></a></h3>");
+		  AJS.screen.append("<h2>Access denied</h2><h3>Please connect or reconnect to perform this action <a href='/admiraljs' ></a></h3>");
 	 
-	  Backbone.history.navigate('logout', { trigger : true });
+	  //Backbone.history.navigate('logout', { trigger : true });
 	 
 	 
   	});

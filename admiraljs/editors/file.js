@@ -47,14 +47,20 @@ define([     // lib/jquery/jquery
 				        done: function (e, data) {
 				        //    $.each(data.result.files, function (index, file) {
 								var file=data.result.files[0];
-								var filename = file.name.replace(/C:\\fakepath\\/i, '')
-								// alert("hey"+file.name.replace(/C:\\fakepath\\/i, ''))
- 								console.log(filename)
+								if (file) {
+									var filename = file.name.replace(/C:\\fakepath\\/i, '')
+									// alert("hey"+file.name.replace(/C:\\fakepath\\/i, ''))
+	 								console.log(filename)
 								
-								that.value=filename;
-								that.trigger('change')
+									that.value=filename;
+									that.trigger('change')
 								
-								that.displayValue();
+									that.displayValue();
+								}
+								else {
+									console.log('error saving file')
+								}
+							
 				               
 								
 								
@@ -73,7 +79,10 @@ define([     // lib/jquery/jquery
 			},displayValue:function() {
 				// console.log("input",this.input)
 // 				this.input.val(this.value)
-			 $('<p/>').text(this.value).appendTo(this.display);
+			 $('<p/>').text(AJS.config.fileDir+this.value).appendTo(this.display);
+			 
+			 
+			 
 									//alert(options.value)
 								//this.display.html(this.value)
 							

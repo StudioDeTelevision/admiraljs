@@ -18,11 +18,13 @@ define(['jquery',     // lib/jquery/jquery
 				$("body").append(this.$el)
 				this.show();
 				
-				this.$el.draggable();
+				// this.$el.draggable();
+				// draggable is not compatible with imagecropresize editor
 			},
 			show:function() {
 				$('.pagemask').show();
 				this.$el.fadeIn();
+				
 			},
 			closeMe:function() {
 				
@@ -35,6 +37,7 @@ define(['jquery',     // lib/jquery/jquery
 			,setContent:function(el) {
 				console.log('set content',el)
 				this.$el.find('.content').first().append(el)
+				this.$el.width(this.$el.find('.contentWrapper').width()+40)
 			},
 			addButton:function(el) {
 				

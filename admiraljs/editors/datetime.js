@@ -37,6 +37,12 @@ define(['jquery',     // lib/jquery/jquery
 						
 					
 			   
+			},setValue:function(val) {
+				
+				this.value=moment(val).format('YYYY-MM-DD HH:mm');
+				this.displayValue();
+			
+				
 			},setOnChange:function() {
 				var that=this;
 				this.input.on('change',function() {

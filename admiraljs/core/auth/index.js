@@ -186,6 +186,7 @@ define(['jquery',     // lib/jquery/jquery
 		           var url = AJS.config.api+AJS.config.login.url;
 		           var formValues = {
 		               user: $('#inputEmail').val(),
+		               email: $('#inputEmail').val(),
 		               username: $('#inputEmail').val(),
 		               password: $('#inputPassword').val()
 		           };

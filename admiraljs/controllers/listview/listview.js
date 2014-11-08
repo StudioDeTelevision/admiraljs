@@ -49,7 +49,7 @@ define(['jquery',
    				 var fieldname=this.schema.listFields[f];
 				 
    				var fieldDescription=_.findWhere(this.schema.fields,{"name":fieldname});
-				
+				if (typeof fieldDescription=="undefined") continue;
 				 
 				
 				 
