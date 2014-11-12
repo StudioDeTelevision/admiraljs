@@ -93,6 +93,22 @@ place it in your api folder api/blueprints
 
 For auth and fileupload, documentation is coming ... 
 
+- to override sails bodyparser, create config/express.js with:
+>var express = require('sails/node_modules/express');
+>
+>module.exports.express = {
+>   bodyParser: function() {
+>    return function (req, res, next){
+>      
+>        if (!(req.path === '/upload' && req.method === 'POST')) {
+>        return express.bodyParser()(req, res, next);
+>      } else {
+>        return next();
+>      }
+>    }
+>   }
+>}
+
 ## Start AdmiralJS
 
 var admiral=require('admiraljs');  
@@ -304,6 +320,11 @@ Located in the editors folder, those editors are used to defined the fields'edit
 
 ###image
 
+{"name":"src","editor":"image","label":"Image",
+"formats":	{"normal": {"width": 400,"height": 300},"thumbnail": {"width": 84,"height": 84}}}  
+  
+will upload the original image in the root folder, and create 2 versions for the 2 differents formats provided here. they will be located in subfolders corresponding to the format name. (normal and thumbnail)  
+  
 ###imagecropresize
 
 {"name" : "myfieldnameindatabase",  

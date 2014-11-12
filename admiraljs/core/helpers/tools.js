@@ -10,6 +10,63 @@ define([],function() {
 	    return uuid;
 	};
 	
+	Static.getFilePathFromSchema=function(val,name,schemaName,format) {
+		var schema=AJS.schemas[schemaName];
+		var fields=schema.fields;
+		var fieldSchema=_.findWhere(fields,{"name":name});
+	
+		var basePath=AJS.config.fileDir;
+		
+		
+		if (fieldSchema) {
+			
+			if (fieldSchema.subfolder) {
+				
+				basePath=basePath+fieldSchema.subfolder;
+				
+			}
+			
+			
+		}
+		
+		if (format) {
+			if (format.substr(-1,1)!="/") format=format+"/";
+			basePath=basePath+format;
+		}
+		
+		
+		
+		return basePath+val;
+		
+	}
+	
+	Static.getFilePath=function(val,fieldSchema,format) {
+	
+		var basePath=AJS.config.fileDir;
+		
+		
+		if (fieldSchema) {
+			
+			if (fieldSchema.subfolder) {
+				
+				basePath=basePath+fieldSchema.subfolder;
+				
+			}
+			
+			
+		}
+		
+		if (format) {
+			if (format.substr(-1,1)!="/") format=format+"/";
+			basePath=basePath+format;
+		}
+		
+		
+		
+		return basePath+val;
+		
+	}
+	
 	
 	return Static;
 })

@@ -18,6 +18,7 @@ define(['jquery',     // lib/jquery/jquery
 				this.buttonUpdate=$("<button class='update' >Update</div>");
 				this.$el.append(this.editor);
 				this.$el.append(this.buttonUpdate);
+				this.$el.append("<p>Update affects this current admiraljs'session but won't change your real schemas.json file. You'll have to save your changes manually.</p>");
 				
 					 
 				
@@ -25,7 +26,7 @@ define(['jquery',     // lib/jquery/jquery
 				
 			},updateSchema:function () {
 				AJS.schemaString=this.editor.val();
-				console.log("UPDATE")
+				
 				$('body').trigger('schemaUpdate')
 				
 			}

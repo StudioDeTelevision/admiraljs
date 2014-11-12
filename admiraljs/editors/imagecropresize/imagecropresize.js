@@ -16,6 +16,7 @@ define(['jquery',     // lib/jquery/jquery
 				var that=this;
 				this.value="";
 				this.name=options.name;
+				this.fieldOptions=options;
 				jQuery.event.props.push("dataTransfer");
 				//alert(htmlTemplate)
 				this.$el.html(_.template(htmlTemplate,options));
@@ -169,7 +170,11 @@ _.bindAll(this, 'render', 'dragOver','dropfileSelect','uploadFile','removeFile',
 			},
 			uploadFile:function() {
 				var that=this;
+				var formData={};
 				
+				if (this.fieldOptions.subfolder) {
+					formData.subfolder=this.fieldOptions.subfolder;
+				}
 				
 	// 			var imgObj=$('<img src="'+dataURL+'"/>');
 	// 			this.$el.append(imgObj)
@@ -209,6 +214,8 @@ _.bindAll(this, 'render', 'dragOver','dropfileSelect','uploadFile','removeFile',
 						maxChunkSize:10000000,
 						limitConcurrentUploads:1,
 						sequentialUploads:true,
+					 formData:formData,
+					 multipart:true,
 						url:AJS.config.fileUploadUrl,
 						files: blob})
 					    .success(function (result, textStatus, jqXHR) {
@@ -246,20 +253,15 @@ _.bindAll(this, 'render', 'dragOver','dropfileSelect','uploadFile','removeFile',
 			},
 			displayValue:function() {
 				var that=this;
-				// console.log("input",this.input)
-// 				this.input.val(this.value)
-				// if (  this.input[0].type != 'file') {
-// 									//alert(options.value)
-// 								  this.input.val(this.value)
-// 							}
+			
 if (this.value) {
-	that.$el.find('.edit').hide();
-	that.$el.find('.removeButton').show();
-	var img=$('<img src="'+AJS.config.fileDir+this.value+'" />');
+	this.$el.find('.edit').hide();
+	this.$el.find('.removeButton').show();
+	var img=$('<img src="'+AJS.tools.getFilePath(this.value,this.fieldOptions)+'" />');
 	
-	that.$el.find('.display').append(img);
-	that.$el.find('.display').show();
-	that.$el.find('.editbuttons').hide();
+	this.$el.find('.display').append(img);
+	this.$el.find('.display').show();
+	this.$el.find('.editbuttons').hide();
 }
 
 
@@ -275,20 +277,20 @@ if (this.value) {
 				
 			},setOnChange:function() {
 				var that=this;
-				// this.input.on('change',function() {
-// 					that.value=that.input.val();
-// 					that.trigger('change');
-// 					console.log(that.input.val())
-// 				})
+			
 			}
 		
 		})
 		
-		View.display=function(val) {
-			
+		View.display=function(val,name,model,schemaName) {
+				console.log('display field model',model)
 			
 			var img=$('<img/>');
-			img.attr('src',AJS.config.fileDir+"thumbnail/"+val)
+			
+			
+			
+			img.attr('src',AJS.tools.getFilePathFromSchema(val,name,schemaName,"thumbnail"));
+			// AJS.config.fileDir+"thumbnail/"+val)
 			
 			return img;
 			//return $("<div/>").html(val).text();

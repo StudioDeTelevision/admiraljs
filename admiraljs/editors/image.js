@@ -18,6 +18,8 @@ define(['jquery',     // lib/jquery/jquery
 					
 					}
 					else formats=options.formats;
+					this.subfolder=null;
+					if (options.subfolder!=null) this.subfolder=options.subfolder;
 						
 						var imageVersions=JSON.stringify(formats)	
 						console.log('FORMATS ARE',imageVersions)
@@ -26,6 +28,9 @@ define(['jquery',     // lib/jquery/jquery
 				
 			FileClass.prototype.initialize.call(this,options);
 			//AJS.config.fileDir
+				
+			},getFileDir:function() {
+				return (this.subfolder) ? AJS.config.fileDir+this.subfolder : AJS.config.fileDir;
 				
 			},displayValue:function() {
 				// console.log("input",this.input)
@@ -36,7 +41,7 @@ console.log('DISPLAY'+this.value)
 								
 									if (this.value) {
 										var img=$('<img/>');
-										img.attr('src',AJS.config.fileDir+"thumbnail/"+this.value)
+										img.attr('src',this.getFileDir+"thumbnail/"+this.value)
 										this.display.append(img)
 									}
 								
@@ -45,8 +50,11 @@ console.log('DISPLAY'+this.value)
 			}
 		})
 		
-		View.display=function(val) {
+		View.display=function(val,name,model,schemaName) {
 			
+			//raw,column.name,this.model,this.schemaName
+			
+			console.log('display field',this.model)
 			
 			var img=$('<img/>');
 			img.attr('src',AJS.config.fileDir+"thumbnail/"+val)
