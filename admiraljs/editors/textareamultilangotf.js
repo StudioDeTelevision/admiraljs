@@ -30,7 +30,11 @@
 				this.langList=$(".languagesList",this.$el).first();
 				this.addLang=$('.addLangbutton',this.$el).first();
 				
+				if (typeof this.value == "object" && Object.keys(this.value).length==0 ) {
 				
+					this.value=new Object();
+					this.value[AJS.config.defaultLanguage]="";
+				}
 				if (typeof this.value == "string") {
 					var temp=this.value;
 					this.value=new Object();
@@ -42,22 +46,11 @@
 					this.value[AJS.config.defaultLanguage]="";
 				}
 				
-				this.currentLang=AJS.config.defaultLanguage;
+				//this.currentLang=AJS.config.defaultLanguage;
 			
 				//this.value=options.value;
 			
-			this.languages=Multilang.parseLanguages(this.value);
-		
-		
-			_.each(this.languages,function(lang,index) {
-			
-				that.addLangButton(lang)
-				if (index==0) {
-				
-					that.currentLang=lang;
-				
-				}
-			})
+			//	this.createLanguageButtons();
 		
 		
 			this.addLang.click(function() {
@@ -126,41 +119,26 @@
 						       }
 			           });
 					   return;
-				// $('textarea',this.$el).redactor({minHeight: 200,
-// 				blurCallback: function(e)
-// 	{
-// 		
-// 		
-// 					var val= that.input.val();
-// 					
-// 					var rawtext=$('<div/>').html(val).text();
-// 					if (rawtext.length==0) {
-// 						
-// 						// alert(that.currentLang)
-// // 						console.log('delete ',that.currentLang)
-//  						$(".languageButton[lang='"+that.currentLang+"']",that.$el).remove();
-// 						if (that.value[that.currentLang]) delete that.value[that.currentLang];
-// 					//	alert('delete')
-// 						//that.value[this.currentLang];
-// 						
-// 					}
-// 					else {
-// 						that.setValue(that.input.val());
-// 					}
-// 		
-// 		
-// 		// that.setValue(that.input.val());
-// 		that.trigger("change");
-// 		
-// 		console.log("blur",this.get());
-// 	}
-// 					});
-// 					
-// 					
-// 					this.redactor=$('textarea',this.$el).redactor('getObject');
-					
+			
 			
 				
+				},createlanguageButtons:function() {
+						var that=this;
+					this.langList.empty();
+					
+					this.languages=Multilang.parseLanguages(this.value);
+					
+		
+					_.each(this.languages,function(lang,index) {
+			
+						that.addLangButton(lang)
+						if (index==0 && that.currentLang==null) {
+				
+							that.currentLang=lang;
+				
+						}
+					})	
+					
 				},
 				addLangButton:function(lang) {
 				
@@ -185,12 +163,10 @@
 				
 					newB.$el.click(function() {
 					
-					//	that.value=that.input.val();
+				
 					that.value[that.currentLang]=that.input.val();
 				
 				
-						//that.value=Multilang.setValue(that.value,that.input.val(),that.currentLang)
-						//console.log("VALUE",that.value)
 						var l=$(this).attr('lang');
 						that.currentLang=l;
 						that.displayValue();
@@ -214,9 +190,21 @@
 				
 					if (typeof val=='object') {
 						//alert(val)
+						if (Object.keys(val).length==0 ) {
+				
+											val=new Object();
+											val[AJS.config.defaultLanguage]="";
+										}
+						
 						this.value=val;
 					}
-				
+					
+					if (typeof val=="undefined" && this.default) {
+						
+						if (typeof this.default=='string') this.value[this.currentLang]=this.default;
+						if (typeof this.default=='object') this.value=this.default;
+					}
+					this.createlanguageButtons();
 					//alert(this.value)
 					this.displayValue();
 				},

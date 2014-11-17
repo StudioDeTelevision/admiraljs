@@ -1,4 +1,4 @@
-AdmiralJS 2.x
+AdmiralJS 2.x Beta
 ===========
 **Lightweight plug and play admin interface**  
 http://www.admiraljs.com
@@ -10,6 +10,8 @@ a web app for admin generation + a node server for api + file upload.
 IRC: 
 server:  irc.freenode.net  
 channel: #admiraljs  
+
+#ADMIRALJS is still in development. Any help is precious, please give feedback/bugs/requests at studiodetelevision@gmail.com
 
 # Demo
 <iframe width="420" height="315" src="//www.youtube.com/embed/HWKXCGQDAC0" frameborder="0" allowfullscreen></iframe>

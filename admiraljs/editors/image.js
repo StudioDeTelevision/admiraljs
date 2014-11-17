@@ -41,7 +41,8 @@ console.log('DISPLAY'+this.value)
 								
 									if (this.value) {
 										var img=$('<img/>');
-										img.attr('src',this.getFileDir+"thumbnail/"+this.value)
+										var img=$('<img src="'+AJS.tools.getFilePath(this.value,this.fieldOptions)+'" />');
+//										img.attr('src',this.getFileDir+"thumbnail/"+this.value)
 										this.display.append(img)
 									}
 								
@@ -57,8 +58,9 @@ console.log('DISPLAY'+this.value)
 			console.log('display field',this.model)
 			
 			var img=$('<img/>');
-			img.attr('src',AJS.config.fileDir+"thumbnail/"+val)
 			
+		//	img.attr('src',AJS.config.fileDir+"thumbnail/"+val)
+				img.attr('src',AJS.tools.getFilePathFromSchema(val,name,schemaName,"thumbnail"));
 			return img;
 			//return $("<div/>").html(val).text();
 			

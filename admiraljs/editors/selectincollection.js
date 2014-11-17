@@ -29,7 +29,16 @@ define(['jquery',     // lib/jquery/jquery
 					 col.forEach(function(item) {
 						 var display_field=AJS.schemas[options.relatedModel].listFields[0];
 						 var isselected=(that.value!=null) ? "selected" : "";
-						 var opt=$('<option value="'+item.id+'" '+isselected+' >'+item.get(display_field)+'</option>');
+						 
+						 var optionValue=item.get(display_field);
+						 if (typeof optionValue=="object") {
+						 	
+							
+							optionValue=optionValue[Object.keys(optionValue)[0]]
+						 } 
+						 
+						 
+						 var opt=$('<option value="'+item.id+'" '+isselected+' >'+optionValue+'</option>');
 						that.input.append(opt);
 						
 						
@@ -44,7 +53,7 @@ define(['jquery',     // lib/jquery/jquery
 				
 			},
 			setValue:function(val) {
-				
+				if (typeof val=="object") val=val.id;
 				this.value=val;
 				$("option[value=" + val + "]",this.input).attr('selected', 'selected');
 			}

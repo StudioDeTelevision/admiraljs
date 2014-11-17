@@ -11,9 +11,15 @@ define([],function() {
 	};
 	
 	Static.getFilePathFromSchema=function(val,name,schemaName,format) {
-		var schema=AJS.schemas[schemaName];
-		var fields=schema.fields;
-		var fieldSchema=_.findWhere(fields,{"name":name});
+		
+		
+		if (schemaName) {
+			var schema=AJS.schemas[schemaName];
+			var fields=schema.fields;
+			var fieldSchema=_.findWhere(fields,{"name":name});
+			
+		}
+		
 	
 		var basePath=AJS.config.fileDir;
 		
@@ -41,7 +47,7 @@ define([],function() {
 	}
 	
 	Static.getFilePath=function(val,fieldSchema,format) {
-	
+
 		var basePath=AJS.config.fileDir;
 		
 		

@@ -62,7 +62,13 @@ define(['jquery',
 				
 			},setValue:function(val) {
 				
-				this.value=val;
+				
+					this.value=val;
+				if (typeof val=="undefined" && this.default) {
+					this.value=this.default;
+				}
+				
+			
 				this.displayValue();
 			
 				
