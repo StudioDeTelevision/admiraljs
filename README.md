@@ -13,6 +13,8 @@ channel: #admiraljs
 
 #ADMIRALJS is still in development. Any help is precious, please give feedback/bugs/requests at studiodetelevision@gmail.com
 
+#NEW: EMBEDDED SCHEMA (see below)
+
 # Demo
 <iframe width="420" height="315" src="//www.youtube.com/embed/HWKXCGQDAC0" frameborder="0" allowfullscreen></iframe>
 http://www.youtube.com/watch?v=HWKXCGQDAC0
@@ -233,6 +235,8 @@ Changes will be applied to the current admiraljs instance running, but won't cha
   
 Using the flexibility of mongo's document structure, you might want to use one data collection containing documents with different schema structure.  
 This is the purpose of the Multischema Object Structure.    
+
+##### Two different approach: SCHEMA DEFINED
   
 - define some schemas and type them with "abstract". > ex:  {"schemaName":"pageabout",  
 >"type":"abstract",    
@@ -247,8 +251,11 @@ This is the purpose of the Multischema Object Structure.
 as soon as you will have give a valid abstract schema name in a "mymultischema" document,  
 refresh the edit page and you'll be able to use your abstract schema for that document.  
 
-  
+##### Two different approach: EMBEDDED SCHEMA
 
+- just add the option: "editor":true to a schema definition,
+and a new field will appear in the edition page : SCHEMA - with its [edit] button.
+This will give you the ability to add any kind of fields in the current document.
 
 
 # Hooks and Customisation
