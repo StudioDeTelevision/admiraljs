@@ -75,6 +75,11 @@ fetch: function( fetchOptions ) {
 				
 				var fields=this.schema.fields;
 				
+				if (this.schema.editor && this.schema.editor==true) {
+					var schemaEditor={"name":"_schema","editor":"schemaeditor","label":"Schema"}
+					var fields = fields.concat(schemaEditor);
+				}
+				
 				if (this.model.attributes._abstractSchema) {
 				 var additionalSchema=AJS.schemas[this.model.attributes._abstractSchema];
 				
@@ -86,7 +91,7 @@ fetch: function( fetchOptions ) {
 					
 				
 					
-					var additionalFields=this.model.attributes._schema.fields;
+					var additionalFields=JSON.parse(this.model.attributes._schema);
 					console.log("___ FIELDS EXTENSION")
 					console.log(fields)
 					console.log(additionalFields)

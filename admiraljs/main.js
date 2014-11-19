@@ -145,11 +145,14 @@ var configObj={
 		  "tinymce":"vendor/tinymce/jquery.tinymce.min",
 		  "combodate":'./vendor/combodate',
 		  'tools':'./core/tools',
-		  'switchbutton':'./vendor/jquery.switchButton'
+		  'switchbutton':'./vendor/jquery.switchButton',
+		'json2':"./vendor/json2",
+		"jsonlint":"./vendor/jsonlint"
     },
         shim: {"./core/application": {
         deps:	['jquery','underscore','backbone','tools'],
         },
+		"jsonlint": { deps:["json2"]},
 		'switchbutton': {
 		deps:['jquery','jquery.ui','css!./vendor/jquery.switchButton.css']	
 		},
@@ -202,6 +205,7 @@ var editors=["string",
 {name:"imagedropdown",path:"imagedropdown/imagedropdown"},
 "image",
 {name:"imagecropresize",path:"imagecropresize/imagecropresize"},
+{name:"schemaeditor",path:"schemaeditor/schemaeditor"},
 "imagescollection",
 "select",
 "selectincollection",
