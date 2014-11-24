@@ -27,26 +27,72 @@ define([     // lib/jquery/jquery
 			 
    			// var displayFieldName=this.schema.listFields[0];
 			
-			 
-   			var fieldDescription=this.schema.fields[0];
-			 
-   			 if (fieldDescription.editor!=null) {
-			 	
-   				 var editor=fieldDescription.editor;
-			 
-   			   var fieldClass=AJS.fieldClasses[editor];
-   			 }
 			
-		  var raw=this.model.get(fieldDescription.name);
-		   if (fieldClass!=null) {
-		    if (fieldClass.display!=null) {
-				this.$el.append(fieldClass.display(raw))
+			if (this.schema.listFields) {
+				
+				var displayLine="";
+				
+				_.each(this.schema.listFields,function(displayFieldName) {
+					
+					var fieldDescription=_.findWhere(that.schema.fields,{"name":displayFieldName});
+					 if (fieldDescription.editor!=null) {
+		   				 var editor=fieldDescription.editor;
+			 
+		   			   var displayLinefieldClass=AJS.fieldClasses[editor];
+						 
+					 }
+					 
+					  var raw=that.model.get(fieldDescription.name);
+					 
+					 
+		   		   if (displayLinefieldClass!=null) {
+		   		    if (displayLinefieldClass.display!=null) {
+		   				displayLine+="<span class='collectiondisplayvalue' >"+displayLinefieldClass.display(raw)+"</span>";
+		   			}
+		   			else 
+						displayLine+="<span class='collectiondisplayvalue' >"+raw+"</span>";
+			
+		   		}	else 
+		   				displayLine+="<span class='collectiondisplayvalue' >"+raw+"</span>";
+				
+				
+				
+					
+				})
+				
+					this.$el.append(displayLine)
 			}
-			else 
-			this.$el.append(raw)
+			else {
+				
+	   			var fieldDescription=this.schema.fields[0];
+			 
+	   			 if (fieldDescription.editor!=null) {
+			 	
+	   				 var editor=fieldDescription.editor;
+			 
+	   			   var fieldClass=AJS.fieldClasses[editor];
+	   			 }
 			
-		}	else 
-			this.$el.append(raw)
+			  var raw=this.model.get(fieldDescription.name);
+		  
+		  
+		  
+			   if (fieldClass!=null) {
+			    if (fieldClass.display!=null) {
+					this.$el.append(fieldClass.display(raw))
+				}
+				else 
+				this.$el.append(raw)
+			
+			}	else 
+				this.$el.append(raw)
+				
+				
+			}
+			
+		
+			 
+   		
 			
 			
 			var editButton=$("<div class='button-edit' ></div>");

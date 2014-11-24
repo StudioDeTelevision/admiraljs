@@ -41,7 +41,7 @@ console.log('DISPLAY'+this.value)
 								
 									if (this.value) {
 										var img=$('<img/>');
-										var img=$('<img src="'+AJS.tools.getFilePath(this.value,this.fieldOptions)+'" />');
+										var img=$('<img src="'+AJS.tools.getFilePath(this.value,this.fieldOptions,"thumbnail")+'" />');
 //										img.attr('src',this.getFileDir+"thumbnail/"+this.value)
 										this.display.append(img)
 									}

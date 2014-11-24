@@ -29,11 +29,11 @@ define(['jquery','underscore','backbone','vendor/canvas-to-blob.min'],
 
 		},zoomIn:function() {
 			console.log('ZOOM IN')
-			this.zoom=this.zoom+0.03;
+			this.zoom=this.zoom+0.01;
 			 this.drawImage();
 			
 	},zoomOut:function() {
-			this.zoom=this.zoom-0.03;
+			this.zoom=this.zoom-0.01;
 			 this.drawImage();
 			
 		},	setListeners:function(){
