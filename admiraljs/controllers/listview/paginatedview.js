@@ -123,7 +123,29 @@ var PaginatedView = Backbone.View.extend({
     'click .prev': 'previous',
     'click .next': 'next',
     'click .fprev': 'fprevious',
-    'click .fnext': 'fnext'
+    'click .fnext': 'fnext',
+	  'click th':'sortby'
+  },
+  sortby:function(e) {
+	  var target=e.currentTarget;
+	  var order=this.collection.sortOrder;
+	  if (order=="asc") {
+		  order="desc";
+	  }
+	  else {
+		 order="asc";
+	  } 
+	
+	  
+	  this.collection.sortOrder=order;
+	  
+	  var sortBy=$(target).attr('name');
+	  if (sortBy!=this.collection.sortBy) {
+		  this.collection.sortOrder='asc';
+		  this.collection.sortBy=sortBy;
+	  }
+	 
+	   this.collection.getPage(1);
   },
   render: function() {
 	  var that=this;
@@ -133,9 +155,12 @@ var PaginatedView = Backbone.View.extend({
 	 
 	  var tableHead=$('<thead/>');
 	    var tr=$('<tr/>');
+		
 		tableHead.append(tr)
 	  _.each(this.columns,function(hi) {
 		  var td=$('<th/>');
+		  td.attr("name",hi.name);
+		
 		  td.html(hi.label)
 		tr.append(td)
 		  

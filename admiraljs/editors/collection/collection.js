@@ -1,4 +1,4 @@
-define(['underscore','backbone','core/editor',"./components/recordslist",'text!./collection/collection.html','jquery','jquery.ui'],function( _, Backbone,EditorClass,RecordList,htmlTemplate,$) {
+define(['underscore','backbone','core/editor',"../components/recordslist",'text!./collection.html','jquery','jquery.ui'],function( _, Backbone,EditorClass,RecordList,htmlTemplate,$) {
      
 		
 		var DefaultCollectionItem=Backbone.View.extend({
@@ -13,28 +13,72 @@ define(['underscore','backbone','core/editor',"./components/recordslist",'text!.
 				
 				
 			 this.schema=AJS.schemas[options.modelName];
-   			 var displayFieldName=this.schema.listFields[0];
+   			
+		
+		if (this.schema.listFields) {
 			
-			 
-   			var fieldDescription=_.findWhere(this.schema.fields,{"name":displayFieldName});
-			 
-   			 if (fieldDescription.editor!=null) {
-			 	
-   				 var editor=fieldDescription.editor;
-			 
-   			   var fieldClass=AJS.fieldClasses[editor];
-   			 }
+			var displayLine=$('<div></div>');
+			
+			_.each(this.schema.listFields,function(displayFieldName) {
 				
-		  var raw=this.model.get(displayFieldName);
-		   if (fieldClass!=null) {
-		    if (fieldClass.display!=null) {
-				this.$el.append(fieldClass.display(raw))
-			}
-			else 
-			this.$el.append(raw)
+				var fieldDescription=_.findWhere(that.schema.fields,{"name":displayFieldName});
+				console.log("fieldDescription",fieldDescription)
+				 if (fieldDescription.editor!=null) {
+	   				 var editor=fieldDescription.editor;
+		 
+	   			   var displayLinefieldClass=AJS.fieldClasses[editor];
+					 
+				 }
+				 
+				  var raw=that.model.get(fieldDescription.name);
+				 
+				 var span=$("<span class='collectiondisplayvalue' ></span>");
+	   		   if (displayLinefieldClass!=null) {
+	   		    if (displayLinefieldClass.display!=null) {
+					console.log("fieldDescription",raw)
+					console.log("fieldDescription",displayLinefieldClass.display(raw))
+					
+					span.append(displayLinefieldClass.display(raw))
+	   				
+						
+	   			}
+	   			else 
+					span.append(raw);
+		
+	   		}	else 
+	   				span.append(raw);
 			
-		}	else 
-			this.$el.append(raw)
+			displayLine.append(span)
+			
+				
+			})
+			
+				this.$el.append(displayLine)
+		
+		} else {
+  			 var displayFieldName=this.schema.listFields[0];
+		
+		 
+  			var fieldDescription=_.findWhere(this.schema.fields,{"name":displayFieldName});
+		 
+  			 if (fieldDescription.editor!=null) {
+		 	
+  				 var editor=fieldDescription.editor;
+		 
+  			   var fieldClass=AJS.fieldClasses[editor];
+  			 }
+			
+	  var raw=this.model.get(displayFieldName);
+	   if (fieldClass!=null) {
+	    if (fieldClass.display!=null) {
+			this.$el.append(fieldClass.display(raw))
+		}
+		else 
+		this.$el.append(raw)
+		
+	}	else 
+		this.$el.append(raw)
+		}
 			
 			
 			var deleteButton=$("<div class='button-remove' ></div>");
@@ -44,8 +88,12 @@ define(['underscore','backbone','core/editor',"./components/recordslist",'text!.
 				that.trigger('delete',that.model.id);
 			})
 				
-				
-			
+			var editButton=$("<div class='button-edit' ></div>");
+			this.$el.append(editButton)
+			editButton.click(function(e) {
+				e.stopPropagation();
+				that.trigger('edit',that.model.id);
+			})
 		   
 				
 			}
@@ -193,15 +241,15 @@ define(['underscore','backbone','core/editor',"./components/recordslist",'text!.
 				var datax={'where':whereQuery};
 				
 				
-				console.log('datax',datax)
+				//console.log('datax',datax)
 				
 				
 				var col=new AJS.Data.Collection()
 				col.url=AJS.config.api+AJS.schemas[that.relatedModel].find+"?where="+JSON.stringify(whereQuery);
 				col.fetch({'success':function(data) {
-					console.log('DATA',data)
-					
-				    console.log('REPONSE',data,that.value)
+					// console.log('DATA',data)
+	//
+	// 			    console.log('REPONSE',data,that.value)
 				
 
 
@@ -211,24 +259,8 @@ define(['underscore','backbone','core/editor',"./components/recordslist",'text!.
 										   
 										   var modelItem=col.get(that.value[i]);
 										   
-										   console.log('MODEL',modelItem)
-										   
-										   
-				  						 // var modelItemFind=_.where(data, whereQuery) ;
- // 				  						 if (modelItemFind.length<=0) {
- // 				  							   whereQuery[AJS.config.recordID]=Number(that.value[i]);
- // 				  						 	modelItemFind=_.where(data, whereQuery) ;
- // 				  						 }
-
-
-				  						 // if (modelItemFind.length>0) {
- //
- //
- // 				  							 var modelItem=modelItemFind[0];
-				  							 console.log('CREATE ITEM')
+										
 				  		  				   var CollectionItem=that.CollectionItem;
-
-				  						  // alert(that.fieldOptions)
 
 
 
@@ -243,6 +275,66 @@ define(['underscore','backbone','core/editor',"./components/recordslist",'text!.
 				  						  that.trigger('change');
 
 				  					  })
+									  
+									  
+									  
+						      		   im.bind('edit',function(itemid) {
+						   					
+				  
+					   					var popup=new AJS.ui.PopUp();
+					
+					
+					
+					
+					
+					      				 var url=AJS.config.api+AJS.schemas[that.relatedModel].find+"/"+itemid;
+					      				 $.ajax({
+					      				   dataType: "json",
+					      				   url: url,
+					      				   success: function(data) {
+					   					   console.log("DATA ID",data[AJS.config.recordID])
+					   					  var schemaName= AJS.schemas[that.relatedModel].schemaName;
+					   				   	var v=new AJS.ui.EditView({schemaName:schemaName,modelId:data[AJS.config.recordID]});
+					
+					   					popup.setContent(v.$el)
+					
+					   					var buttonInsert=$('<div class="button insert" >update</div>');
+					   					popup.addButton(buttonInsert)
+					
+					
+					   					buttonInsert.bind('click',function() {
+					   						popup.closeMe();
+							setTimeout(function() {
+									that.displayValue();
+							},1000)
+										
+											
+					   						// console.log('insert ',that,that.value)
+//
+// 					   						if (that.value==null || typeof that.value=="undefined") {
+//
+// 					   							that.value=new Array();
+//
+// 					   						}
+//
+// 					   						that.value.push(data[AJS.config.recordID]);
+//
+// 					   						that.trigger('change');
+//
+// 					   						that.displayValue();
+					   					})
+					
+					
+					      				   }
+					      				 });
+										 
+										 
+										 
+				  
+						   				  })
+									  
+									  
+									  
 				  		  			 $('.collection-container',that.$el).append(im.$el)
 
 				  						 }
@@ -263,69 +355,7 @@ define(['underscore','backbone','core/editor',"./components/recordslist",'text!.
 				  
 				}})
 				
- 				 // var url=AJS.config.api+AJS.schemas[that.relatedModel].find;
- // 				 $.ajax({
- // 				   dataType: "json",
- // 				   url: url,
- // 				   method: "POST",
- // 				   data:datax,
- // 				   success: function(data) {
- // 					   console.log('REPONSE',data,that.value)
- //
- //
- //
- // 					   for (var i=0;i<that.value.length;i++) {
- // 						   var whereQuery={}
- // 						   whereQuery[AJS.config.recordID]=that.value[i];
- // 						 var modelItemFind=_.where(data, whereQuery) ;
- // 						 if (modelItemFind.length<=0) {
- // 							   whereQuery[AJS.config.recordID]=Number(that.value[i]);
- // 						 	modelItemFind=_.where(data, whereQuery) ;
- // 						 }
- //
- //
- // 						 if (modelItemFind.length>0) {
- // 							 var modelItem=modelItemFind[0];
- // 							 console.log('CREATE ITEM')
- // 		  				   var CollectionItem=that.CollectionItem;
- //
- // 						  // alert(that.fieldOptions)
- //
- //
- //
- // 		  			  var im=new CollectionItem({model:modelItem,modelName:that.relatedModel,fieldOptions:that.fieldOptions});
- //
- //
- // 		  			  im.$el.attr('itemid',modelItem[AJS.config.recordID])
- // 					  im.bind('delete',function(itemid) {
- //
- // 						that.value.splice(that.value.indexOf(itemid), 1);
- // 						  $(this.$el).remove();
- // 						  that.trigger('change');
- //
- // 					  })
- // 		  			 $('.collection-container',that.$el).append(im.$el)
- //
- // 						 }
- //
- //
- // 					   }
- //
- //
- //
- // 		  $('.collection-container',that.$el).sortable({"stop":function(event,ui) {
- //
- // 			  var result = $(this).sortable('toArray', {attribute: 'itemid'});
- // 			  that.value=result;
- // 			  that.trigger('change');
- // 		  }});
- //
- //
- //
- // 		   }
- // 	   });
-				
-				//////// HERE			
+ 					
 				
 			}
 		})

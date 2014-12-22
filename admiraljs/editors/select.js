@@ -25,7 +25,7 @@ define(['jquery',     // lib/jquery/jquery
 						var opt=options.options[o];
 					
 						 var isselected=(that.value==opt) ? "selected" : "";
-						 var opt=$('<option value="'+opt+'" '+isselected+' >'+opt+'</option>');
+						 var opt=$('<option value="'+o+'" '+isselected+' >'+opt+'</option>');
 						that.input.append(opt);
 						
 						

@@ -1,6 +1,6 @@
 define(['jquery',     // lib/jquery/jquery
   'underscore', // lib/underscore/underscore
-  'backbone','text!./stringmultilangotf/stringmultilangotf.html','core/helpers/multilang'],
+  'backbone','text!./stringmultilangotf.html','core/helpers/multilang'],
     function($, _, Backbone,htmlTemplate,Multilang) {
         //return a function to define "foo/title".
         //It gets or sets the window title.
@@ -27,20 +27,26 @@ define(['jquery',     // lib/jquery/jquery
 				if (typeof this.value == "string") {
 					var temp=this.value;
 					this.value=new Object();
+					_.each(AJS.config.defaultLanguages,function(lang) {
+						that.value[lang]="";
+					})
 					this.value[AJS.config.defaultLanguage]=temp;
 				}
 				
 				
 				if (typeof this.value == "undefined") {
 					this.value=new Object();
-					this.value[AJS.config.defaultLanguage]="";
+
+					_.each(AJS.config.defaultLanguages,function(lang) {
+						that.value[lang]="";
+					})
 				}
 				
 				this.$el.html(_.template(htmlTemplate,options));
 				
 				this.input=$("input",this.$el).first();
 				this.langList=$(".languagesList",this.$el).first();
-				this.addLang=$('.addLangbutton',this.$el).first();
+				
 			
 			
 			
@@ -58,34 +64,54 @@ that.changed();
 				this.currentLang=AJS.config.defaultLanguage;
 				
 				//this.value=options.value;
+				if (AJS.config.defaultLanguages) {
+					_.each(AJS.config.defaultLanguages,function(lang) {
+						var newButton=that.addLangButton(lang);
+						if (AJS.config.defaultLanguage==lang && newButton) newButton.$el.addClass('selected')
+					})
+				}
+			
 				
 			this.languages=Multilang.parseLanguages(this.value);
 			
 			
 			_.each(this.languages,function(lang,index) {
 				
-				that.addLangButton(lang)
+				var newButton=that.addLangButton(lang)
 				if (index==0) {
-					
+					if (AJS.config.defaultLanguage==lang && newButton) newButton.$el.addClass('selected')
 					that.currentLang=lang;
 					
 				}
 			})
 			
+			this.addLang=$('.addLangbutton',this.$el).first();
+			if (options.options) {
+			if (options.options.addlang==true || options.options.addlang==null ) {
+				
 			
-			this.addLang.click(function() {
+			
+			this.addLang.click(function(e) {
+				
 				
 				var newlang=prompt('Entrez une nouvelle langue');
 				
 				if (newlang=="" || newlang==null || typeof newlang=="undefined") return;
 				
-				that.addLangButton(newlang)
-				
+				var newButton=that.addLangButton(newlang)
+				that.langList.find('.languageButton').removeClass('selected')
+				newButton.$el.addClass('selected')
 				that.value[that.currentLang]=that.input.val();
 				that.currentLang=newlang;
 				that.input.val("");
 				
 			})
+			
+		}
+		else {
+			this.addLang.hide();
+		}
+		}
 			
 			//this.$el.append(this.addLang)
 		
@@ -95,12 +121,14 @@ that.changed();
 			},
 			addLangButton:function(lang) {
 				
-				
+				if (this.langList.find('.languageButton[lang='+lang+']').size()>0) return null;
 				
 				var that=this;
 				var newB=new languageButton();
 				newB.$el.html(lang);
 				newB.$el.attr('lang',lang);
+				
+				
 			
 				this.langList.append(newB.$el);
 				
@@ -110,8 +138,9 @@ that.changed();
 				
 				
 				
-				newB.$el.click(function() {
-					
+				newB.$el.click(function(e) {
+					that.langList.find('.languageButton').removeClass('selected')
+					$(e.currentTarget).addClass('selected');
 				//	that.value=that.input.val();
 				that.value[that.currentLang]=that.input.val();
 				
@@ -123,6 +152,7 @@ that.changed();
 					that.displayValue();
 					
 				})
+				return newB;
 			},
 			setValue:function(val) {
 				
@@ -149,8 +179,15 @@ that.changed();
 			},
 			getValue:function() {
 				console.log('get value',this.value)
-				return	this.value;
-				
+				return	this.cleanValue(this.value);
+			
+			},
+			cleanValue:function(val) {
+				for (var p in val) {
+					if (val[p]=="") delete val[p];
+					
+				}
+				return val;
 			},
 			displayValue:function() {
 				if (this.currentLang==null) {
@@ -159,7 +196,7 @@ that.changed();
 				else {
 					
 					//alert(this.value)
-					console.log("LANGGGG",this.value)
+					//console.log("LANGGGG",this.value)
 					
 					this.input.val(this.value[this.currentLang]);
 					
@@ -186,8 +223,8 @@ that.changed();
 						// alert(that.currentLang)
 // 						console.log('delete ',that.currentLang)
  						$(".languageButton[lang='"+that.currentLang+"']",that.$el).remove();
-						if (that.value[that.currentLang]) delete that.value[that.currentLang];
 						
+						if (typeof that.value[that.currentLang]!="undefined") 	delete that.value[that.currentLang];
 						//that.value[this.currentLang];
 						
 					}

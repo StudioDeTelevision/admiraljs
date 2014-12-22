@@ -1,6 +1,6 @@
 		define([     // lib/jquery/jquery
 		  'underscore', // lib/underscore/underscore
-		  'backbone','text!./textareamultilangotf/textareamultilangotf.html','core/helpers/multilang',
+		  'backbone','text!./textareamultilangotf.html','core/helpers/multilang',
 		  'jquery',"tinymce"],
 		    function( _, Backbone,htmlTemplate,Multilang,$) {
         //return a function to define "foo/title".
@@ -26,49 +26,67 @@
 				this.redactor=null;
 				this.$el.html(_.template(htmlTemplate,options));
 				
-				this.input=$("textarea",this.$el).first();
-				this.langList=$(".languagesList",this.$el).first();
-				this.addLang=$('.addLangbutton',this.$el).first();
-				
+				this.input=this.$el.find("textarea").first();
+				this.langList=this.$el.find(".languagesList").first();
+				this.addLang=this.$el.find('.addLangbutton').first();
+			
 				if (typeof this.value == "object" && Object.keys(this.value).length==0 ) {
 				
 					this.value=new Object();
-					this.value[AJS.config.defaultLanguage]="";
+					_.each(AJS.config.defaultLanguages,function(lang) {
+						that.value[lang]="";
+					})
 				}
 				if (typeof this.value == "string") {
 					var temp=this.value;
 					this.value=new Object();
+					_.each(AJS.config.defaultLanguages,function(lang) {
+						that.value[lang]="";
+					})
 					this.value[AJS.config.defaultLanguage]=temp;
 				}
 				
 				if (typeof this.value == "undefined") {
 					this.value=new Object();
-					this.value[AJS.config.defaultLanguage]="";
+					_.each(AJS.config.defaultLanguages,function(lang) {
+						that.value[lang]="";
+					})
 				}
+			
+		
+	
+		
+			if (options.options) {
 				
-				//this.currentLang=AJS.config.defaultLanguage;
+			if (options.options.addlang==true || options.options.addlang==null ) {
+				
 			
-				//this.value=options.value;
 			
-			//	this.createLanguageButtons();
-		
-		
-			this.addLang.click(function() {
-			
+			this.addLang.click(function(e) {
+				
+				
 				var newlang=prompt('Entrez une nouvelle langue');
 			
 				if (newlang=="" || newlang==null || typeof newlang=="undefined") return;
 			
-				that.addLangButton(newlang)
+				var newButton=that.addLangButton(newlang)
 			
 				that.value[that.currentLang]=that.input.val();
+				
 				that.currentLang=newlang;
 				that.input.val("");
+				that.langList.find('.languageButton').removeClass('selected')
+				newButton.$el.addClass('selected')
 			if (that.redactor) that.redactor.setContent("");
+				
 			})
+			
+		}
+		else {
+			this.addLang.hide();
+		}
 		
-			//this.$el.append(this.addLang)
-	
+		}
 			
 				
 				setTimeout(function() {
@@ -98,24 +116,51 @@
 				   					var rawtext=$('<div/>').html(val).text();
 				   					if (rawtext.length==0) {
 						
-				   						// alert(that.currentLang)
-				   // 						console.log('delete ',that.currentLang)
 				    						$(".languageButton[lang='"+that.currentLang+"']",that.$el).remove();
-				   						if (that.value[that.currentLang]) delete that.value[that.currentLang];
-				   					//	alert('delete')
-				   						//that.value[this.currentLang];
-						
+										
+											
+											if (typeof that.value[that.currentLang]!="undefined") 	delete that.value[that.currentLang];
+				   			
 				   					}
 				   					else {
-				   						that.setValue(that.input.val());
+										that.value[that.currentLang]=val;
+				   						
 				   					}
 		
-		
-				   		// that.setValue(that.input.val());
 				   		that.trigger("change");
 									  
 									  
 						           });
+								   if (that.limit) {
+									   editor.on('keydown',function(ed, e) {
+									    //define local variables
+									    var tinymax, tinylen, htmlcount;
+									    //manually setting our max character limit
+										tinymax = that.limit;
+									  //  tinymax = editor.settings.charLimit;
+									   //grabbing the length of the curent editors content
+									    tinylen = editor.getContent().length;
+									   //setting up the text string that will display in the path area
+									    htmlcount =  tinylen + "/" + tinymax;
+									    //if the user has exceeded the max turn the path bar red.
+										console.log(htmlcount)
+									    if (tinylen>tinymax){
+										
+									     htmlcount = "<span style='font-weight:bold; color: #f00;'>" + htmlcount + "</span>"
+									    }
+										
+									    //enable to override the limit for various editors here
+									    //tinyMCE.editors["mytextarea1"].settings.charLimit = 3000; 
+									    //this line writes the html count into the path row of the active editor
+that.$el.find('.textinfos').html('<span id="max_char_string">&nbsp;'+htmlcount+'</span>')
+      
+									   
+									    });
+								   }
+								   
+								   
+								   
+								   
 						       }
 			           });
 					   return;
@@ -126,17 +171,29 @@
 						var that=this;
 					this.langList.empty();
 					
+					
+					if (AJS.config.defaultLanguages) {
+						_.each(AJS.config.defaultLanguages,function(lang) {
+							var newButton=that.addLangButton(lang);
+							if (AJS.config.defaultLanguage==lang && newButton) newButton.$el.addClass('selected')
+						})
+							that.currentLang=AJS.config.defaultLanguages[0];
+					}
+					
 					this.languages=Multilang.parseLanguages(this.value);
 					
 		
 					_.each(this.languages,function(lang,index) {
 			
-						that.addLangButton(lang)
-						if (index==0 && that.currentLang==null) {
-				
-							that.currentLang=lang;
-				
-						}
+						var newButton=that.addLangButton(lang)
+						
+							if (AJS.config.defaultLanguage==lang && newButton) {
+								
+								newButton.$el.addClass('selected')
+								that.currentLang=lang;
+							}
+					
+						
 					})	
 					
 				},
@@ -145,6 +202,10 @@
 				
 				
 					var that=this;
+					
+					if (this.langList.find('.languageButton[lang='+lang+']').size()>0) return null;
+				
+					
 					var newB=new languageButton();
 					newB.$el.html(lang);
 					newB.$el.attr('lang',lang);
@@ -161,8 +222,10 @@
 				
 				
 				
-					newB.$el.click(function() {
-					
+					newB.$el.click(function(e) {
+						var thisButton=e.currentTarget;
+						that.langList.find('.languageButton').removeClass('selected')
+						$(e.currentTarget).addClass('selected');
 				
 					that.value[that.currentLang]=that.input.val();
 				
@@ -172,9 +235,11 @@
 						that.displayValue();
 					
 					})
+					
+					return newB;
 				},
 				setValue:function(val) {
-				
+			
 					if (typeof this.value=="string") {
 					
 						var temp=this.value;
@@ -191,7 +256,7 @@
 					if (typeof val=='object') {
 						//alert(val)
 						if (Object.keys(val).length==0 ) {
-				
+			
 											val=new Object();
 											val[AJS.config.defaultLanguage]="";
 										}
@@ -210,10 +275,19 @@
 				},
 				getValue:function() {
 					console.log('get value',this.value)
-					return	this.value;
+					
+					return	this.cleanValue(this.value);
 				
 				},
+				cleanValue:function(val) {
+					for (var p in val) {
+						if (val[p]=="") delete val[p];
+						
+					}
+					return val;
+				},
 				displayValue:function() {
+				
 					if (this.currentLang==null) {
 						this.input.val(this.value)
 						if (this.redactor) this.redactor.setContent(this.value);
@@ -230,6 +304,7 @@
 						this.input.val(this.value);
 					}
 					if (typeof this.value=="object") {
+						
 						if (this.redactor) this.redactor.setContent(this.value[this.currentLang]);
 						this.input.val(this.value[this.currentLang]);
 					}

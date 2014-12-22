@@ -30,11 +30,12 @@ define([     // lib/jquery/jquery
 			
 			if (this.schema.listFields) {
 				
-				var displayLine="";
+				var displayLine=$('<div></div>');
 				
 				_.each(this.schema.listFields,function(displayFieldName) {
 					
 					var fieldDescription=_.findWhere(that.schema.fields,{"name":displayFieldName});
+					console.log("fieldDescription",fieldDescription)
 					 if (fieldDescription.editor!=null) {
 		   				 var editor=fieldDescription.editor;
 			 
@@ -44,18 +45,23 @@ define([     // lib/jquery/jquery
 					 
 					  var raw=that.model.get(fieldDescription.name);
 					 
-					 
+					 var span=$("<span class='collectiondisplayvalue' ></span>");
 		   		   if (displayLinefieldClass!=null) {
 		   		    if (displayLinefieldClass.display!=null) {
-		   				displayLine+="<span class='collectiondisplayvalue' >"+displayLinefieldClass.display(raw)+"</span>";
+						console.log("fieldDescription",raw)
+						console.log("fieldDescription",displayLinefieldClass.display(raw))
+						
+						span.append(displayLinefieldClass.display(raw))
+		   				
+							
 		   			}
 		   			else 
-						displayLine+="<span class='collectiondisplayvalue' >"+raw+"</span>";
+						span.append(raw);
 			
 		   		}	else 
-		   				displayLine+="<span class='collectiondisplayvalue' >"+raw+"</span>";
+		   				span.append(raw);
 				
-				
+				displayLine.append(span)
 				
 					
 				})
@@ -142,6 +148,7 @@ define([     // lib/jquery/jquery
 			className:"editview",
 			initialize:function(options) {
 				var that=this;
+				
 				if (options.model!=null) {
 					this.model=options.model;
 				}
@@ -159,6 +166,8 @@ define([     // lib/jquery/jquery
 					var fieldClass=fieldClasses[fields[f].editor];
 					var options=fields[f];
 					options.value=this.model.get(fields[f].name);
+					options.model=this.model;
+					
 					console.log(fields[f].name+" - editor:"+fields[f].editor+" &class: "+fieldClass )
 					var newfield=new fieldClass(options);
 					newfield.setValue(this.model.get(fields[f].name));

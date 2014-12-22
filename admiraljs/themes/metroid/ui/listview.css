@@ -20,6 +20,9 @@ background: rgb(246, 241, 241);
 .listview table thead {
 /*background: #EEEEEE;*/
 }
+.listview table th {
+	cursor:pointer;
+}
 .listview table th , .listview table td {
 	padding: 0.44444rem 0.7rem 0.55556rem;
 }

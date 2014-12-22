@@ -112,9 +112,12 @@ fetch: function( fetchOptions ) {
 					
 					
 					var options=fields[f];
+					options.model=this.model;
 					options.value=this.model.get(fields[f].name);
+					console.log('fieldClass name',fields[f].name)
+					console.log('fieldClass editor',fields[f].editor)
 					var newfield=new fieldClass(options);
-					//console.log('fieldClass fieldClass',fields[f].editor,newfield)
+					console.log('fieldClass fieldClass',fields[f].editor,newfield)
 				
 					newfield.setValue(this.model.get(fields[f].name));
 			

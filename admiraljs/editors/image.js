@@ -9,6 +9,8 @@ define(['jquery',     // lib/jquery/jquery
 			
 			initialize:function(options) {
 				var that=this;
+				
+				
 				var formats=null;
 				if (options.formats==null ) {
 					
@@ -26,23 +28,24 @@ define(['jquery',     // lib/jquery/jquery
 				this.formData={"imageVersions":imageVersions};
 				
 				
-			FileClass.prototype.initialize.call(this,options);
+				FileClass.prototype.initialize.call(this,options);
+				
+			
+			
+			
 			//AJS.config.fileDir
 				
 			},getFileDir:function() {
 				return (this.subfolder) ? AJS.config.fileDir+this.subfolder : AJS.config.fileDir;
 				
 			},displayValue:function() {
-				// console.log("input",this.input)
-// 				this.input.val(this.value)
-console.log('DISPLAY'+this.value)
+			
 			this.display.empty();
-									//alert(options.value)
+								
 								
 									if (this.value) {
-										var img=$('<img/>');
+									
 										var img=$('<img src="'+AJS.tools.getFilePath(this.value,this.fieldOptions,"thumbnail")+'" />');
-//										img.attr('src',this.getFileDir+"thumbnail/"+this.value)
 										this.display.append(img)
 									}
 								

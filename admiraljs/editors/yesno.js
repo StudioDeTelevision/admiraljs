@@ -100,19 +100,26 @@ define(['jquery',     // lib/jquery/jquery
     url: AJS.config.api+AJS.schemas[schemaName].update+"/"+model.id
 })
 
+if (!$(this).is(':checked')) {
+	$(wrapper).parent().parent().css('opacity','0.4');
+	}
+	else {
+		$(wrapper).parent().parent().css('opacity','1');
+	}
+	
 
 /// CHANGE OPACITY OF LINE IN LIST VIEW 
-$(".switchbutton").each(function() {
-var ch=$(this).find('input[type="checkbox"]').is(':checked');
-console.log('switch',ch)
-if (ch=="false") {
-$(this).parent().parent().css('opacity','0.4');
-}
-else {
-	$(this).parent().parent().css('opacity','1');
-}
-
-});
+// $(".switchbutton").each(function() {
+// var ch=$(this).find('input[type="checkbox"]').is(':checked');
+// console.log('switch',ch)
+// if (ch=="false") {
+// $(this).parent().parent().css('opacity','0.4');
+// }
+// else {
+// 	$(this).parent().parent().css('opacity','1');
+// }
+//
+// });
 			
 		})
 

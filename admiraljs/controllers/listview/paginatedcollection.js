@@ -7,9 +7,11 @@ define(['jquery',
 
 var PaginatedCollection = Backbone.Collection.extend({
 	page:1,
-	perPage:10,
+	perPage:30,
 	skip:0,
 	limit:10,
+	sortBy:null,
+	sortOrder:"asc",
 	filters:null,
   initialize: function() {
     _.bindAll(this, 'parse', 'url', 'pageInfo', 'nextPage', 'previousPage');
@@ -53,9 +55,19 @@ var PaginatedCollection = Backbone.Collection.extend({
   
 		
 			data.where=JSON.stringify(data.where);
-			if (data.sort) data.sort=JSON.stringify(data.sort);
+			
+			
+			this.sortBy = this.sortBy || this.schema.listFields[0];
+			
+			//alert(this.schema.listFields[0])
+			// data.sort=(this.sortBy) ? this.sortBy+":'"+this.sortOrder+"'" : (this.schema.listFields) ? this.schema.listFields[0]+":'"+this.sortOrder+"'" : null;
+			
+			data.sort={};
+			data.sort[this.sortBy]=this.sortOrder;
+			
+			//if (data.sort) data.sort=JSON.parse(data.sort);
   
-  
+ // alert(data.sort)
 	
 	options.data=data;
 	

@@ -9,6 +9,13 @@ define(['jquery','underscore','backbone','vendor/canvas-to-blob.min'],
 			this.zoom=1;
     this.canvas.width = options.width;
     this.canvas.height = options.height;
+
+	if (options.retina==true) {
+		
+	    this.canvas.width = this.canvas.width*2;
+	    this.canvas.height = this.canvas.height*2;
+		
+	}
 	
 			this.x=0;
 			this.y=0;
@@ -29,11 +36,40 @@ define(['jquery','underscore','backbone','vendor/canvas-to-blob.min'],
 
 		},zoomIn:function() {
 			console.log('ZOOM IN')
+			
+			
+			var imgw=this.image.width*this.zoom;
+			var imgh=this.image.height*this.zoom;		
+			
+			
 			this.zoom=this.zoom+0.01;
+			
+			var newimgw=this.image.width*this.zoom;
+			var newimgh=this.image.height*this.zoom;		
+			
+			var offX=(newimgw-imgw)/2;
+			var offY=(newimgh-imgh)/2;
+			this.x=this.x-offX;
+			this.y=this.y-offY;
+			
 			 this.drawImage();
 			
 	},zoomOut:function() {
-			this.zoom=this.zoom-0.01;
+			
+			var imgw=this.image.width*this.zoom;
+			var imgh=this.image.height*this.zoom;		
+			
+			
+		this.zoom=this.zoom-0.01;
+			
+			var newimgw=this.image.width*this.zoom;
+			var newimgh=this.image.height*this.zoom;		
+			
+			var offX=(newimgw-imgw)/2;
+			var offY=(newimgh-imgh)/2;
+			this.x=this.x-offX;
+			this.y=this.y-offY;
+			
 			 this.drawImage();
 			
 		},	setListeners:function(){
@@ -106,7 +142,7 @@ if (adressStart=="http") that.image.crossOrigin = "Anonymous";
 			  												that.canMouseXOrg=canMouseX;
 			  												that.canMouseYOrg=canMouseY;
 															
-															console.log(that.x,that.y,offX,offY)
+															//console.log(that.x,that.y,offX,offY)
 															  
 															 // console.log(canMouseX,canMouseY)
 													          that.drawImage();

@@ -21,6 +21,7 @@ define(['jquery',     // lib/jquery/jquery
 				//alert(htmlTemplate)
 				this.$el.html(_.template(htmlTemplate,options));
 				//this.$el.append($(htmlTemplate))
+				if (options.formats) this.formats=options.formats;
 				if (options.size) {
 					
 					
@@ -175,6 +176,14 @@ _.bindAll(this, 'render', 'dragOver','dropfileSelect','uploadFile','removeFile',
 				if (this.fieldOptions.subfolder) {
 					formData.subfolder=this.fieldOptions.subfolder;
 				}
+				
+				if (this.formats) {
+							var imageVersions=JSON.stringify(this.formats)	
+							console.log('FORMATS ARE',imageVersions)
+					formData={"imageVersions":imageVersions};
+					
+				}
+					
 				
 	// 			var imgObj=$('<img src="'+dataURL+'"/>');
 	// 			this.$el.append(imgObj)

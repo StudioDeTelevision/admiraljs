@@ -22,7 +22,7 @@ define(['jquery',
 				this.fieldOptions=options;
 				
 				this.name=options.name;
-				
+				this.model=options.model;
 				
 				this.label=$('<label/>');
 				this.label.html(options.label)

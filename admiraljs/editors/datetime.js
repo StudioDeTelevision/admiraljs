@@ -53,6 +53,11 @@ define(['jquery',     // lib/jquery/jquery
 			}
 		})
 		
+		View.display=function(val,name,model,schemaName) {
+		
+			return moment(val).format("L");
+			
+		}
 		
 		
         return View;

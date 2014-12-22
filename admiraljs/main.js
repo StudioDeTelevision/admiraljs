@@ -147,7 +147,8 @@ var configObj={
 		  'tools':'./core/tools',
 		  'switchbutton':'./vendor/jquery.switchButton',
 		'json2':"./vendor/json2",
-		"jsonlint":"./vendor/jsonlint"
+		"jsonlint":"./vendor/jsonlint",
+		"tag-it":"./vendor/tagit/tag-it.min"
     },
         shim: {"./core/application": {
         deps:	['jquery','underscore','backbone','tools'],
@@ -174,6 +175,9 @@ var configObj={
     },'jquery.ui':{
     	 deps: ['jquery']
     },
+	"tag-it":{
+		deps:['jquery.ui.widget','css!./vendor/tagit/jquery.tagit.css']
+	},
 
     'underscore': {
         exports: "_"
@@ -194,13 +198,14 @@ require.config(configObj);
 
 
 var editors=["string",
+	"integer",
 "textarea",
 'textareasimple',
 "yesno",
 "date"
 ,"datetime",
 "file",
-"collection",
+{name:"collection",path:"collection/collection"},
 {name:"collectionembed",path:"collectionembed/collectionembed"},
 {name:"imagedropdown",path:"imagedropdown/imagedropdown"},
 "image",
@@ -208,9 +213,11 @@ var editors=["string",
 {name:"schemaeditor",path:"schemaeditor/schemaeditor"},
 "imagescollection",
 "select",
-"selectincollection",
-"stringmultilangotf"
-,"textareamultilangotf"];
+	"selectincollection",
+{name:"tags",path:"tags/tags"},
+{name:"stringmultilangotf",path:"stringmultilangotf/stringmultilangotf"},
+	{name:"textareamultilangotf",path:"textareamultilangotf/textareamultilangotf"}
+	];
 
 
 var editorsPathesArray=new Array();
@@ -278,7 +285,7 @@ AJS.fieldClasses[c]=req(AJS.fieldClassesPathes[c]);
   			cl.on('success',function() {
 				    
 		   var isAuth = Session.get('authenticated');
-		 
+		   
 		
 		  
 		  if (isAuth==false || isAuth==null || isAuth=="false"){

@@ -1,6 +1,6 @@
 define(['jquery',     // lib/jquery/jquery
   'underscore', // lib/underscore/underscore
-  'backbone','./collection'],
+  'backbone','./collection/collection'],
     function($, _, Backbone,CollectionClass) {
         //return a function to define "foo/title".
         //It gets or sets the window title.

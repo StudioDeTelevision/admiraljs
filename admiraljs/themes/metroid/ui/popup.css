@@ -13,7 +13,7 @@
 	box-shadow:         1px 1px 12px 0px rgba(30, 30, 30, 0.93);
 	padding: 30px 15px 10px;
 
-	z-index: 100000;
+	z-index: 50000;
 }
 .AJSpopup .closeme {
 	background: url('../images/glyphicons_207_remove_2.png') no-repeat ;

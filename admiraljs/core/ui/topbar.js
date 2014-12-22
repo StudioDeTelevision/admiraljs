@@ -12,7 +12,8 @@ define(['jquery',     // lib/jquery/jquery
 			initialize:function() {
 				this.hide();
 				this.$el.html('<div id="topbar" class="container-fluid"><a id="page_title" class="page_title" href="#home" >'+AJS.config.title+'</a><a class="logout icon-logout" href="#logout" ></a></div>')
-  
+		   
+	 		   if (AJS.config.title) $('title').text(AJS.config.title)
 			},
 			
 			append:function(el) {

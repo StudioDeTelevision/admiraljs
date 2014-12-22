@@ -17,6 +17,9 @@ margin: 0px;
 	width: 100px;
 	margin-top: 10px;
 }
+.AJSpopup .button-edit-delete {
+display: none !important;
+}
 .button-remove {
 	width: 16px;
 	height: 16px;
