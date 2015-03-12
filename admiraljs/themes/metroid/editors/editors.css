@@ -20,6 +20,14 @@ padding-bottom: 3px;
 	
 }
 
+.editview .form-group > label.help.control-label {
+ 
+  background-image: url(../images/help.png);
+  background-repeat: no-repeat;
+  background-size: 13px;
+  background-position: 4px center;
+}
+
 .editview .form-group > div:first-of-type{
 	
 	position: relative;

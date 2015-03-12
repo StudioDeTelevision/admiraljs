@@ -90,7 +90,14 @@ define(['jquery',     // lib/jquery/jquery
 			}
 		})
 		
+		View.display=function(val,name,model,schemaName) {
+			
+			
+			return (val) ? val.join(", ") : "";
+			
 		
+			
+		}
 		
         return View;
     }

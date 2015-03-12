@@ -87,13 +87,16 @@ define(['underscore','backbone','core/editor',"../components/recordslist",'text!
 				e.stopPropagation();
 				that.trigger('delete',that.model.id);
 			})
+			if ( this.schema.actions.update ) {
+				var editButton=$("<div class='button-edit' ></div>");
+				this.$el.append(editButton)
+				editButton.click(function(e) {
+					e.stopPropagation();
+					that.trigger('edit',that.model.id);
+				})
 				
-			var editButton=$("<div class='button-edit' ></div>");
-			this.$el.append(editButton)
-			editButton.click(function(e) {
-				e.stopPropagation();
-				that.trigger('edit',that.model.id);
-			})
+			}
+			
 		   
 				
 			}
@@ -145,7 +148,9 @@ define(['underscore','backbone','core/editor',"../components/recordslist",'text!
 				});
 				
 			});
-				
+			
+					if ( AJS.schemas[options.relatedModel].actions.create ) {
+						
 				$(".add",this.$el).click(function() {
 					var popup=new AJS.ui.PopUp();
 					
@@ -191,13 +196,18 @@ define(['underscore','backbone','core/editor',"../components/recordslist",'text!
 					
 				})
 				
-			},setValue:function(val) {
+			}
+			else {
+				$(".add",this.$el).hide();
+			}
 				
+			},setValue:function(val) {
+				console.log("COLLECTION SET VALUE ORIGINAL=",JSON.stringify(val))
 				if (val && val.length>0) {
 					
-					if (val[0].id!=null && val[0].id!="undefined") {
+					if (val[0][AJS.config.recordID]!=null && val[0][AJS.config.recordID]!="undefined") {
 						
-						this.value=_.map(val, function(item){ return item.id; });
+						this.value=_.map(val, function(item){ return item[AJS.config.recordID]; });
 						
 					}
 					
@@ -206,11 +216,15 @@ define(['underscore','backbone','core/editor',"../components/recordslist",'text!
 					this.value=_.filter(this.value,function(item) {
 						return (item!="")
 					})
+					console.log("COLLECTION TRIGGER changewithoutsaving" )
+					this.trigger('changewithoutsaving');
+					
 					
 				}
 				
 				else this.value=val;
 				
+				console.log("COLLECTION SET VALUE PARSED=",JSON.stringify(this.value))
 				
 				this.displayValue();
 				
@@ -242,14 +256,14 @@ define(['underscore','backbone','core/editor',"../components/recordslist",'text!
 				
 				
 				//console.log('datax',datax)
-				
+				console.log("relatedModel",that.relatedModel)
 				
 				var col=new AJS.Data.Collection()
 				col.url=AJS.config.api+AJS.schemas[that.relatedModel].find+"?where="+JSON.stringify(whereQuery);
 				col.fetch({'success':function(data) {
 					// console.log('DATA',data)
 	//
-	// 			    console.log('REPONSE',data,that.value)
+	 			    console.log('COLLECTION REPONSE',data,that.value)
 				
 
 
@@ -269,10 +283,13 @@ define(['underscore','backbone','core/editor',"../components/recordslist",'text!
 
 				  		  			  im.$el.attr('itemid',modelItem[AJS.config.recordID])
 				  					  im.bind('delete',function(itemid) {
-
-				  						that.value.splice(that.value.indexOf(itemid), 1);
-				  						  $(this.$el).remove();
-				  						  that.trigger('change');
+										  if (confirm("Voulez vous supprimer cet élément ?")) {
+	  				  						that.value.splice(that.value.indexOf(itemid), 1);
+	  				  						  $(this.$el).remove();
+	  				  						  that.trigger('change');
+											
+										  }
+				  						
 
 				  					  })
 									  

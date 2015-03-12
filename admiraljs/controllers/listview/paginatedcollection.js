@@ -38,7 +38,7 @@ var PaginatedCollection = Backbone.Collection.extend({
 		
 	
     lodash.merge(data,ff)
-	console.log('SCHEMA FF',data)
+	
 		
     }
 	
@@ -57,13 +57,18 @@ var PaginatedCollection = Backbone.Collection.extend({
 			data.where=JSON.stringify(data.where);
 			
 			
-			this.sortBy = this.sortBy || this.schema.listFields[0];
+			this.sortBy = this.sortBy || this.schema.sortBy || this.schema.listFields[0];
 			
 			//alert(this.schema.listFields[0])
 			// data.sort=(this.sortBy) ? this.sortBy+":'"+this.sortOrder+"'" : (this.schema.listFields) ? this.schema.listFields[0]+":'"+this.sortOrder+"'" : null;
-			
-			data.sort={};
-			data.sort[this.sortBy]=this.sortOrder;
+			if (AJS.config.orm=="waterline") {
+				data.sort={};
+				data.sort[this.sortBy]=this.sortOrder;
+			} else {
+				data.sort=new Array();
+				data.sort.push([this.sortBy,this.sortOrder]);
+				data.sort=JSON.stringify(data.sort);
+			}
 			
 			//if (data.sort) data.sort=JSON.parse(data.sort);
   

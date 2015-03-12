@@ -115,34 +115,53 @@ fetch: function( fetchOptions ) {
 					options.model=this.model;
 					options.value=this.model.get(fields[f].name);
 					console.log('fieldClass name',fields[f].name)
+					
+					if (fields[f].hidden) continue;
+					
 					console.log('fieldClass editor',fields[f].editor)
 					var newfield=new fieldClass(options);
 					console.log('fieldClass fieldClass',fields[f].editor,newfield)
+					
+					var fieldValue=this.model.get(fields[f].name);
+					
 				
-					newfield.setValue(this.model.get(fields[f].name));
+				
 			
+					newfield.bind('changewithoutsaving',function() {
+					
+						
+						
+						var changeObj={};
+						changeObj[this.name]=this.getValue();
+						that.model.set(changeObj, {silent: true});
+						//console.log("changewithoutsaving",this.name,this.getValue())
+						//console.log("changewithoutsaving",that.model);
+					})
+					
+				
+					newfield.setValue(fieldValue);
 					
 					newfield.bind('change',function() {
 					
-						
+						//console.log("MODEL BEFORE SET ",that.model) 
 						
 						var changeObj={};
 						changeObj[this.name]=this.getValue();
 						
 						//that.model.set(this.name,this.getValue()); OLD WAY
 						
-						that.model.set(changeObj);
+						that.model.set(changeObj, {silent: true});
 						// console.log('EVENT CHANGE VALUE',this.name,that.model.get(this.name));
 // 					console.log('EVENT CHANGE on',that.model);
 					
 					
 					
 						//console.log('EVENT CHANGE TO SAVE',this.name,this.getValue())
-						
+						//	console.log("MODEL BEFORE SAVE",that.model) 
 						that.model.save({}, {wait:true,
         url: AJS.config.api+AJS.schemas[that.schemaName].update+'/'+that.model.id,
 		success: function() { //
-		console.log("MODEL WAS SUCCESS FULLY SAVED",that.model) 
+		//console.log("MODEL WAS SUCCESS FULLY SAVED",that.model) 
 		},
 		error:function() {
 			console.log("Error saving document")
@@ -197,8 +216,9 @@ fetch: function( fetchOptions ) {
 				
 				
    			 var deleteButton=$('<div type="button" class="button-edit-delete btn btn-danger" >Delete</div>');
-			
-   			 $(this.$el).append(deleteButton);
+	   	  if (AJS.schemas[that.schemaName].actions  &&  AJS.schemas[that.schemaName].actions.delete==false) {
+	  	
+	   	  } else 	 $(this.$el).append(deleteButton);
 				
 			 deleteButton.click(function() {
 				 

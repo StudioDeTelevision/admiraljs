@@ -26,6 +26,10 @@ define(['jquery',
 				
 				this.label=$('<label/>');
 				this.label.html(options.label)
+				if (options.help) {
+					this.label.attr("title",options.help);
+					this.label.addClass("help");
+				}
 				this.label.addClass("col-sm-2 control-label");
 				
 				this.$el.append(this.label)

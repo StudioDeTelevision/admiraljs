@@ -1,10 +1,13 @@
-define(["jquery","backbone"], function ($,Backbone) {
+define(["jquery","backbone","lodash","text!./defaultmodel.json"], function ($,Backbone,lodash,DefaultModel) {
 	
+	
+		DefaultModel=eval('(' + DefaultModel + ')');
+		console.log("DefaultModel",DefaultModel)
 
 	var Loader=Backbone.View.extend({initialize:function(options) {
 		var that=this;
 		var url=options.folder+"schemas.json";
-		
+			
 		
 	    $.ajax({
 	               url : url,
@@ -29,7 +32,16 @@ define(["jquery","backbone"], function ($,Backbone) {
 
 		for (var i=0; i<schemas.length; i++) {
 
-			var schem = _.clone(schemas[i]);
+			var clone = _.clone(schemas[i]);
+			
+			var schem = JSON.parse(JSON.stringify(DefaultModel));
+			
+			//var schem = $.extend(true, DefaultModel, schemas[i]);
+		//	lodash.assign(DefaultModel,schem) 
+			// MERGE DEFAULTS
+			console.log("default model schema",schem)
+			//lodash.merge(schem,clone);
+			lodash.merge(schem,clone)
 
 
 			if (schem.extends!=null) {
@@ -61,8 +73,13 @@ define(["jquery","backbone"], function ($,Backbone) {
 	
 	
 			}
-
+			
+			
+			
+			
+			
 			// adds CRUD Urls if needed
+			
 
 
 			if (schem.create==null) schem.create=schem.model+"/create";

@@ -57,6 +57,8 @@ var PaginatedLine= Backbone.View.extend({
 	 var ToolsCell = new PaginatedLineCell();
 	 ToolsCell.$el.addClass('cell-tool')
 	 
+	
+	 
 	 var deleteButton=$("<div class='button-remove' ></div>");
 	 deleteButton.on('click',function(e) {
 	   e.preventDefault();
@@ -83,7 +85,7 @@ var PaginatedLine= Backbone.View.extend({
 	 })
 	 
 	 
-	 ToolsCell.$el.append(deleteButton)
+	  if (AJS.schemas[that.model.collection.schemaName].actions.delete==true) ToolsCell.$el.append(deleteButton)
 	 
 	  this.$el.append(ToolsCell.$el)
 	 

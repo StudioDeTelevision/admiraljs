@@ -335,12 +335,14 @@ define([     // lib/jquery/jquery
 			  
 		   im.bind('delete',function(itemid) {
  // 			  	
- 
- that.collection.remove(this.model);
- that.displayValue();
-  			//	that.value.splice(that.value.indexOf(itemid), 1);
- 				 // $(this.$el).remove();
-				  that.trigger('change');
+  if (confirm("Voulez vous supprimer cet élément ?")) {
+	  that.collection.remove(this.model);
+	  that.displayValue();
+	   			
+	 				  that.trigger('change');
+	  
+  }
+
  // 				
  			  })
 			  

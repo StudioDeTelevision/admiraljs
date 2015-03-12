@@ -1,0 +1,5 @@
+{ 
+"actions":{"delete":true,"update":true,"read":true,"create":true},
+"hidden":false,
+	
+}

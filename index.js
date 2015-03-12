@@ -49,6 +49,12 @@ if (config.fileserver!=false && config.fileserver!=null) {
 	
 }
 
+if (config.projectCustomPath!=null) {
+	
+	app.use('/admiraljs/custom', express.static(config.projectCustomPath));
+	
+}
+
 
 if (config.webappPath=="") config.webappPath=__dirname+"/admiraljs";
 app.use('/admiraljs', express.static(config.webappPath));

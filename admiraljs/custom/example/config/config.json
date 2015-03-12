@@ -1,7 +1,8 @@
 {
 	"title":"ADMIRAL JS DEMO",
 	
-"login":{"mode":"ajax"},
+"login":{"mode":"fake"},
+"defaultLanguages":["fr","en"],
 
 "debug":true
 

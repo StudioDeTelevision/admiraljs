@@ -47,7 +47,7 @@ It maybe the simplest way to start. AdmiralJS comes as a nodejs module, offering
 ** NodeJS   **  
 ** A mongo database to connect to   **  
    
-npm install admiraljs   
+sudo npm install admiraljs   
   
   
 var admiral=require('admiraljs');  
@@ -60,7 +60,7 @@ admiral.setConfig(
   	},  
   	fileserver: {  
     		uploadDir:__dirname+"/public"  
-  	}  
+  	}
 }  
 )  
   
@@ -82,6 +82,9 @@ admiral.start();
 - ** auth: ** false/true/{username:"AdminName",password:"whatever"}
 > true will use default login: {username:"admin",password:"admiraljs"}
 > if you use auth, you must set auth:{mode:"ajax"} in the webapp config.json (see further)
+
+- ** projectCustomPath ** /local/path/to/custom defines your own client config file path  
+> will avoid you to make changes in the /nodes_modules/admiraljs/custom folder
 
 # Use it with SAILSJS
 
@@ -144,6 +147,8 @@ If you want to develop your own api script, don't hesitate to contact me for mod
 Configuration files must be set in the "Custom" folder  
 which will be reserved to all your project settings and hooks
 maintaining the core of the app as cleaner as possible :-)
+
+
 
 - Let's choose a configuration name, "myproject"
 
