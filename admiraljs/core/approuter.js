@@ -27,8 +27,10 @@ if (isAuth==false || isAuth==null || isAuth=="false" ){
 
 	if ( AJS.sidebar)  AJS.sidebar.hide();
 	 
-	 console.log('trigger login view')
-	Backbone.history.navigate('login', { trigger : true });
+	 //console.log('trigger login view')
+	//Backbone.history.navigate('login', { trigger : true });
+	
+	Backbone.history.loadUrl();
 	
 	return false;
 	

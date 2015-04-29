@@ -28,20 +28,26 @@ define(['jquery',     // lib/jquery/jquery
 				var MyCollection = Backbone.Collection.extend({model:ModelDynamic});
 			this.collection=new MyCollection();
 				this.collection.modelName=options.modelName;
-			 this.collection.url = AJS.config.api+AJS.schemas[options.modelName].find;
+				
+				
+				var firstFieldName=this.schema.listFields[0];
+				
+			 this.collection.url = AJS.config.api+AJS.schemas[options.modelName].find+"?limit=50000&sort="+firstFieldName;
+			 
+			 /// TODO ADD PAGINATE
 			 
 			 
-			 var displayFieldName=this.schema.listFields[0];
-			
-			 
-			var fieldDescription=_.findWhere(this.schema.fields,{"name":displayFieldName});
-			 
-			 if (fieldDescription.editor!=null) {
-			 	
-				 var editor=fieldDescription.editor;
-			 
-			   var fieldClass=AJS.fieldClasses[editor];
-			 }
+			 // var displayFieldName=this.schema.listFields[0];
+ //
+ //
+ // 			var fieldDescription=_.findWhere(this.schema.fields,{"name":displayFieldName});
+ //
+ // 			 if (fieldDescription.editor!=null) {
+ //
+ // 				 var editor=fieldDescription.editor;
+ //
+ // 			   var fieldClass=AJS.fieldClasses[editor];
+ // 			 }
 			
 		  // console.log(AJS.fieldClasses,"fieldClass",fieldClass)
 		   
@@ -52,22 +58,57 @@ define(['jquery',     // lib/jquery/jquery
 				  col.forEach(function(item) {
 					  console.log('ITEM',item.id)
 					
-					  var i=$("<div class='recorditem' />");
-					  i.attr('itemid',item.id)
-					  var raw=item.get(displayFieldName);
-					   if (fieldClass!=null) {
-					    if (fieldClass.display!=null) {
-							i.html(fieldClass.display(raw))
-						}
-						else 
-						i.html(raw)
+					  var displayLine=$("<div class='recorditem' />");
+					  displayLine.attr('itemid',item.id)
+					  
+		  			_.each(that.schema.listFields,function(displayFieldName) {
+						if (displayFieldName=="published") return;
+		  				var fieldDescription=_.findWhere(that.schema.fields,{"name":displayFieldName});
+		  				console.log("fieldDescription",fieldDescription)
+		  				 if (fieldDescription.editor!=null) {
+		  	   				 var editor=fieldDescription.editor;
+		 
+		  	   			   var displayLinefieldClass=AJS.fieldClasses[editor];
+					 
+		  				 }
+				 
+		  				  var raw=item.get(fieldDescription.name);
+				 
+		  				 var span=$("<span class='collectiondisplayvalue' ></span>");
+		  	   		   if (displayLinefieldClass!=null) {
+		  	   		    if (displayLinefieldClass.display!=null) {
+		  					console.log("fieldDescription",raw)
+		  					console.log("fieldDescription",displayLinefieldClass.display(raw))
+					
+		  					span.append(displayLinefieldClass.display(raw))
+	   				
 						
-					}	else 
-						i.html(raw)
+		  	   			}
+		  	   			else 
+		  					span.append(raw);
+		
+		  	   		}	else 
+		  	   				span.append(raw);
+			
+		  			displayLine.append(span)
+			
+				
+		  			})
+					  
+					  // var raw=item.get(displayFieldName);
+  // 					   if (fieldClass!=null) {
+  // 					    if (fieldClass.display!=null) {
+  // 							i.html(fieldClass.display(raw))
+  // 						}
+  // 						else
+  // 						i.html(raw)
+  //
+  // 					}	else
+  // 						i.html(raw)
 					  
 					 
 					
-					  	that.container.append(i)
+					  	that.container.append(displayLine)
 					
 				  })
 				

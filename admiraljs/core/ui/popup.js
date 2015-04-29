@@ -22,8 +22,13 @@ define(['jquery',     // lib/jquery/jquery
 				// draggable is not compatible with imagecropresize editor
 			},
 			show:function() {
+				var that=this;
 				$('.pagemask').show();
 				this.$el.fadeIn();
+				this.$el.resizable({resize:function(event,ui) {
+					that.$el.css('marginLeft',-that.$el.width()/2)
+					that.$el.css('marginTop',-that.$el.height()/2)
+				}});
 				
 			},
 			closeMe:function() {

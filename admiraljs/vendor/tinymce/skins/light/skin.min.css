@@ -24,3 +24,7 @@
 .mce-textbox:focus{border-color:#38add7;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none}
 .mce-menu-item:hover,.mce-menu-item.mce-selected,.mce-menu-item:focus{background:#eee}
 .mce-menu-item:hover .mce-text,.mce-menu-item.mce-selected .mce-text{color:#333}
+.mce-toolbar .mce-btn.mce-active button {
+  background: #BBBABA !important;
+
+}

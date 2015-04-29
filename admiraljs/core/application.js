@@ -22,12 +22,14 @@ define(['backbone','./lib/session','./modules/index','./ui/sidebar','./ui/topbar
 			    statusCode: {
 			        401: function(){
 			            // Redirec the to the login page.
-			            window.location.replace('#login');
-         
+			            //window.location.replace('#login');
+         Backbone.history.navigate('logout', { trigger : true });
 			        },
 			        403: function() {
 			            // 403 -- Access denied
-			            window.location.replace('#denied');
+			            Backbone.history.navigate('logout', { trigger : true });
+						//window.location.replace('#denied');
+						
 			        }
 			    }
 			});

@@ -28,6 +28,7 @@ display: none !important;
 	background: url('../images/glyphicons_207_remove_2.png') no-repeat;
 	background-size: 54%;
 	background-position: center;
+	background-color: inherit;
 }
 
 .button-edit {
@@ -38,6 +39,7 @@ display: none !important;
 	background: url('../images/pen.png') no-repeat;
 	background-size: 70%;
 	background-position: center;
+	background-color: inherit;
 }
 .cell-delete,.cell-tool {
 	width:25px;
@@ -58,6 +60,7 @@ display: none !important;
 
 .recordscontainer .recorditem {
 	width:100%;
+  width: 96%;
 	cursor:pointer;
 	background: #DDDDDD;
 	padding: 4px 10px 4px 11px;

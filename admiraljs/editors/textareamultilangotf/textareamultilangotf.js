@@ -100,11 +100,12 @@
 			renderEditor:function(that) {
 				
 			    $('textarea',this.$el).tinymce({
-					menubar:false, statusbar: false, 
+					menubar:false, statusbar: true, 
 					plugins: AJS.config.tinymce.plugins,
 					toolbar: AJS.config.tinymce.toolbar,
 					theme: AJS.config.tinymce.theme,
 					skin: AJS.config.tinymce.skin,
+					resize: "both",
 					width:420,
 			               // Optional parameters
 						   setup: function(editor) {
@@ -114,8 +115,14 @@
 				   					var val= that.input.val();
 					
 				   					var rawtext=$('<div/>').html(val).text();
-				   					if (rawtext.length==0) {
-						
+				   					if (rawtext.length==0 && AJS.config.defaultLanguages.indexOf(that.currentLang)==-1) {
+							//console.log('delete ',that.currentLang)
+										
+										// if (AJS.config.defaultLanguages.indexOf(that.currentLang)!=-1) {
+	//
+	// 									}
+										
+										
 				    						$(".languageButton[lang='"+that.currentLang+"']",that.$el).remove();
 										
 											

@@ -56,7 +56,7 @@ fetch: function( fetchOptions ) {
 				this.form=new Form();
 				this.form.$el.attr('role','form');
 				this.form.$el.addClass('form-horizontal');
-				
+				this.fields=new Array();
 				this.$el.append(this.form.$el)
 				this.model=new Document();
 				this.model.schema=this.schema;
@@ -74,6 +74,8 @@ fetch: function( fetchOptions ) {
 				var that=this;
 				
 				var fields=this.schema.fields;
+				
+				
 				
 				if (this.schema.editor && this.schema.editor==true) {
 					var schemaEditor={"name":"_schema","editor":"schemaeditor","label":"Schema"}
@@ -134,7 +136,7 @@ fetch: function( fetchOptions ) {
 						var changeObj={};
 						changeObj[this.name]=this.getValue();
 						that.model.set(changeObj, {silent: true});
-						//console.log("changewithoutsaving",this.name,this.getValue())
+						console.log("changewithoutsaving",this.name,this.getValue())
 						//console.log("changewithoutsaving",that.model);
 					})
 					
@@ -143,14 +145,24 @@ fetch: function( fetchOptions ) {
 					
 					newfield.bind('change',function() {
 					
-						//console.log("MODEL BEFORE SET ",that.model) 
+						console.log("change MODEL",that.model) 
 						
-						var changeObj={};
-						changeObj[this.name]=this.getValue();
+						// var changeObj={};
+// 						changeObj[this.name]=this.getValue();
 						
 						//that.model.set(this.name,this.getValue()); OLD WAY
-						
+						var changeObj={};
+						for (var fName in that.fields) {
+							console.log("fName",fName)
+							
+							var fieldObj=that.fields[fName];
+						console.log("fieldObj",fieldObj)
+						changeObj[fName]=fieldObj.getValue();
+							
+						}
+						console.log("changeObject",changeObj)
 						that.model.set(changeObj, {silent: true});
+						//that.model.set(changeObj, {silent: true});
 						// console.log('EVENT CHANGE VALUE',this.name,that.model.get(this.name));
 // 					console.log('EVENT CHANGE on',that.model);
 					
@@ -175,7 +187,7 @@ fetch: function( fetchOptions ) {
 					
 					
 					fieldsGrid[fields[f].name]=newfield.$el;
-					
+					that.fields[fields[f].name]=newfield;
 					
 					
 	   			
@@ -213,7 +225,11 @@ fetch: function( fetchOptions ) {
 					
 				}
 				
-				
+				if (that.schema.preview) {
+					var link=$("<a href='' class=' button preview' target='_blank' >Preview</a>");
+					link.attr('href',that.schema.preview+that.model.id)
+					this.$el.append(link)
+				}
 				
    			 var deleteButton=$('<div type="button" class="button-edit-delete btn btn-danger" >Delete</div>');
 	   	  if (AJS.schemas[that.schemaName].actions  &&  AJS.schemas[that.schemaName].actions.delete==false) {

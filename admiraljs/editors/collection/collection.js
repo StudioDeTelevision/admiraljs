@@ -256,14 +256,14 @@ define(['underscore','backbone','core/editor',"../components/recordslist",'text!
 				
 				
 				//console.log('datax',datax)
-				console.log("relatedModel",that.relatedModel)
+			//	console.log("relatedModel",that.relatedModel)
 				
 				var col=new AJS.Data.Collection()
 				col.url=AJS.config.api+AJS.schemas[that.relatedModel].find+"?where="+JSON.stringify(whereQuery);
 				col.fetch({'success':function(data) {
 					// console.log('DATA',data)
 	//
-	 			    console.log('COLLECTION REPONSE',data,that.value)
+	 			  //  console.log('COLLECTION REPONSE',data,that.value)
 				
 
 
