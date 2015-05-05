@@ -1,6 +1,6 @@
 {
   "name": "admiraljs",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Lightweight plug and play admin interface",
   "main": "index.js",
   "dependencies": {
