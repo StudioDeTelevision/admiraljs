@@ -153,7 +153,7 @@ define(['underscore','backbone','core/editor',"../components/recordslist",'text!
 						
 				$(".add",this.$el).click(function() {
 					var popup=new AJS.ui.PopUp();
-					
+					console.log('create collection item')
 					
 					
    				 var url=AJS.config.api+AJS.schemas[options.relatedModel].create;
@@ -310,8 +310,9 @@ define(['underscore','backbone','core/editor',"../components/recordslist",'text!
 					      				   url: url,
 					      				   success: function(data) {
 					   					   console.log("DATA ID",data[AJS.config.recordID])
+					   					   console.log("DATA ID",itemid)
 					   					  var schemaName= AJS.schemas[that.relatedModel].schemaName;
-					   				   	var v=new AJS.ui.EditView({schemaName:schemaName,modelId:data[AJS.config.recordID]});
+					   				   	var v=new AJS.ui.EditView({schemaName:schemaName,modelId:itemid});
 					
 					   					popup.setContent(v.$el)
 					

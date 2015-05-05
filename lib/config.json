@@ -3,5 +3,6 @@
 	"projectName":"example",
 	"api":false,
 	"fileserver":false,
-	"auth":false
+	"auth":false,
+	"port":9999
 }

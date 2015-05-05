@@ -16,8 +16,13 @@ module.exports.setConfig=function(cfg) {
 	console.log('Override Configuration ',config)
 }
 
+module.exports.setExpress=function(newapp) {
 
-module.exports.start=function() {
+	app=newapp;	
+	
+}
+
+module.exports.init=function() {
 	
 	
 
@@ -61,15 +66,26 @@ app.use('/admiraljs', express.static(config.webappPath));
 
 
 
-var server = app.listen(9999, function() {
+
+return app;
+
+}
+
+
+module.exports.serve=function() {
+	var server = app.listen(config.port, function() {
+
+		var url="http://localhost:%d/admiraljs";
+
+	    console.log('********************************************************');
+	    console.log('* AdmiralJS is now sailing on '+url, server.address().port);
+	    console.log('********************************************************');
+	});
+
 	
-	var url="http://localhost:%d/admiraljs";
-	
-    console.log('********************************************************');
-    console.log('* AdmiralJS is now sailing on '+url, server.address().port);
-    console.log('********************************************************');
-});
+}
 
-
-
+module.exports.start=function() {
+	this.init();
+	this.serve();
 }
