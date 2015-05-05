@@ -198,6 +198,24 @@ define(['jquery',     // lib/jquery/jquery
 				   	
 					   if (formValues.user=="admin" && sha1(formValues.password)=="d033e22ae348aeb5660fc2140aec35850c4da997") {
 						   Session.set('authenticated',true);
+						   var fakeAdmin={
+  "user": {
+    "createdAt": "2014-04-01T15:42:49.397Z",
+    "email": "admin",
+    "updatedAt": "2015-05-05T07:39:03.972Z",
+    "firstname": "Administrateur",
+    "lastname": "Du site",
+    "groups": [
+      "admin"
+    ],
+    "admingroups": [
+      "superadmin"
+    ],
+    "id": "533ade796424795e29106455"
+  }
+}
+						   
+						   Session.set('user',fakeAdmin)
 						 //  Backbone.history.navigate('/home', { trigger : true });
 						   that.trigger('success');
 					   
