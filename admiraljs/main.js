@@ -108,6 +108,7 @@ return f;
 var params=extractUrlParams();
 
 AJS.path.customFolder="example";
+AJS.path.customFolder="booking";
 
 
 

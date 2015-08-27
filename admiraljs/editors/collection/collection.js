@@ -263,7 +263,7 @@ define(['underscore','backbone','core/editor',"../components/recordslist",'text!
 				col.fetch({'success':function(data) {
 					// console.log('DATA',data)
 	//
-	 			  //  console.log('COLLECTION REPONSE',data,that.value)
+	 			    console.log('COLLECTION REPONSE',data,that.value)
 				
 
 
@@ -273,11 +273,15 @@ define(['underscore','backbone','core/editor',"../components/recordslist",'text!
 										   
 										   var modelItem=col.get(that.value[i]);
 										   
+										   console.log('CREATE COLLECTION ITEM ',modelItem)
 										
 				  		  				   var CollectionItem=that.CollectionItem;
 
 
-
+										   if (typeof modelItem=="undefined") {
+											   delete that.value[i];
+											   continue;
+										   }
 				  		  			  var im=new CollectionItem({model:modelItem,modelName:that.relatedModel,fieldOptions:that.fieldOptions});
 
 
@@ -309,8 +313,8 @@ define(['underscore','backbone','core/editor',"../components/recordslist",'text!
 					      				   dataType: "json",
 					      				   url: url,
 					      				   success: function(data) {
-					   					   console.log("DATA ID",data[AJS.config.recordID])
-					   					   console.log("DATA ID",itemid)
+					   					//   console.log("DATA ID",data[AJS.config.recordID])
+					   					  // console.log("DATA ID",itemid)
 					   					  var schemaName= AJS.schemas[that.relatedModel].schemaName;
 					   				   	var v=new AJS.ui.EditView({schemaName:schemaName,modelId:itemid});
 					
